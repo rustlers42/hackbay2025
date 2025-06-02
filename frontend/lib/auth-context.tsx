@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { BASE_API_URL } from "./api-config";
 
 type User = {
   id: string;
@@ -56,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/users/me", {
+      const response = await fetch(BASE_API_URL + "/users/me", {
         headers: {
           authorization: `Bearer ${token}`,
         },

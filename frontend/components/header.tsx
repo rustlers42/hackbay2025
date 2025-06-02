@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BASE_API_URL } from "@/lib/api-config";
 
 type UserProfile = {
   email: string;
@@ -25,7 +26,7 @@ export default function Header() {
   const { isAuthenticated, user, logout } = useAuth();
 
   // Only fetch user profile when authenticated
-  const { data: userProfile, isLoading } = useFetchApi<UserProfile>("http://localhost:8000/users/me", {
+  const { data: userProfile, isLoading } = useFetchApi<UserProfile>(BASE_API_URL + "/users/me", {
     requireAuth: true,
     // Skip the API call if not authenticated
     enabled: isAuthenticated,
