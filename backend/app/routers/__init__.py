@@ -15,6 +15,7 @@ router = APIRouter()
 router.include_router(health_router, prefix="/health", tags=["health"])
 router.include_router(users_router, prefix="/users")
 
+
 @router.post("/token", tags=["auth"])
 async def login(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
@@ -28,7 +29,5 @@ async def login(
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token_expires = timedelta(minutes=settings.access_token_expire_minutes)
-    access_token = create_access_token(
-        data={"email": user.email}, expires_delta=access_token_expires
-    )
+    access_token = create_access_token(data={"email": user.email}, expires_delta=access_token_expires)
     return Token(access_token=access_token, token_type="bearer")

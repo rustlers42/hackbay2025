@@ -1,6 +1,4 @@
 import logging
-import random
-from datetime import date, timedelta
 
 from sqlmodel import Session, select
 

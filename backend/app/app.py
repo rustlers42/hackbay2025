@@ -8,7 +8,6 @@ from sqlmodel import Session, SQLModel
 from .database import engine
 from .mock_data_helper import setup_mock_data
 from .routers import router as api_router
-from .settings import settings
 
 
 def create_db_and_tables():
@@ -17,6 +16,7 @@ def create_db_and_tables():
 
     with Session(engine) as session:
         setup_mock_data(session)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
