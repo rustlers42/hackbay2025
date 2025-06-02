@@ -15,9 +15,7 @@ export default function LandingPage() {
               <div className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 mb-2">
                 Boilerplate
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
-                Leck Eier 🫩🤤
-              </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">Leck Eier 🫩🤤</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
                 Join the movement that rewards you for growing rare and endangered seeds while helping create a greener,
                 more sustainable future.
