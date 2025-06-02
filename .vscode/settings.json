@@ -8,5 +8,9 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "python.defaultInterpreterPath": "./adopt-a-seed-api/.venv"
+  "python.defaultInterpreterPath": "./backend/.venv",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "notebook.defaultFormatter": "charliermarsh.ruff"
+  }
 }
