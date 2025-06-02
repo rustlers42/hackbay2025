@@ -1,0 +1,9 @@
+.venv
+.ruff_cache
+Dockerfile
+.dockerignore
+.git
+README.md
+database.db
+.env
+__pycache__

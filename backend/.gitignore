@@ -1,0 +1,6 @@
+.venv
+.ruff_cache
+*.db
+__pycache__
+build
+.idea

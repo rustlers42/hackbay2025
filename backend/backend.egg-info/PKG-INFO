@@ -1,0 +1,40 @@
+Metadata-Version: 2.4
+Name: backend
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+Requires-Dist: async-lru>=2.0.5
+Requires-Dist: bcrypt>=4.3.0
+Requires-Dist: fastapi>=0.115.11
+Requires-Dist: passlib>=1.7.4
+Requires-Dist: pydantic-settings>=2.8.1
+Requires-Dist: pydantic>=2.10.6
+Requires-Dist: pyjwt>=2.10.1
+Requires-Dist: python-multipart>=0.0.20
+Requires-Dist: pyyaml>=6.0.2
+Requires-Dist: sqlmodel>=0.0.24
+Requires-Dist: uvicorn>=0.34.0
+
+# adopt-a-seed-api
+
+## start the backend
+
+firstly you need to create a .env file
+
+```
+DATABASE_URL="<changeme>"
+SECRET_KEY="<changeme>"
+ALGORITHM="<changeme>"
+ACCESS_TOKEN_EXPIRE_MINUTES=<changeme>
+```
+
+```bash
+uv run main.py
+```
+
+## swagger
+
+http://127.0.0.1:8000/docs
+
+### setup some mock data :)
