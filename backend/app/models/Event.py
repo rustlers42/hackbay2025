@@ -3,7 +3,11 @@ from enum import Enum
 
 from sqlmodel import Field, SQLModel
 
-EventOrganiserType = Enum("EventOrganiserType", ["individual", "company", "advertisement"])
+
+class EventOrganiserType(str, Enum):
+    individual = "individual"
+    company = "company"
+    advertisement = "advertisement"
 
 
 class Event(SQLModel, table=True):
