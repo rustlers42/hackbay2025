@@ -81,9 +81,10 @@ export const PersonalStep: React.FC = () => {
       </div>
 
       <div>
-        <Label htmlFor="email">Password</Label>
+        <Label htmlFor="password">Password</Label>
         <Input
-          id="email"
+          id="password"
+          type="password"
           {...register("password")}
           className={formErrors.password || errors.password ? "border-red-500" : ""}
         />
