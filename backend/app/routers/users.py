@@ -165,7 +165,7 @@ async def get_users_me(*, current_user: User = Depends(get_current_user)):
     """
     Get the current user
     """
-    return UserDTO(email=current_user.email, username=current_user.username, bonus_points=current_user.bonus_points)
+    return UserDTO(id=current_user.id, email=current_user.email, username=current_user.username, bonus_points=current_user.bonus_points)
 
 
 @router.get("/leaderboard", response_model=list[UserDTO])
