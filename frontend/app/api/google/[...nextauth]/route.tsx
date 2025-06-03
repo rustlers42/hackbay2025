@@ -14,7 +14,6 @@ const handler = NextAuth({
           scope: "openid profile email https://www.googleapis.com/auth/calendar",
           access_type: "offline",
           prompt: "consent",
-          redirect_uri: process.env.GOOGLE_REDIRECT_URI,
         },
       },
     }),
