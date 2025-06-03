@@ -1,6 +1,7 @@
 from datetime import datetime
 from enum import Enum
 
+from pydantic import BaseModel
 from sqlmodel import Field, Relationship, SQLModel
 
 from .EventTagLink import EventTagLink
@@ -14,9 +15,7 @@ class EventOrganiserType(str, Enum):
     advertisement = "advertisement"
 
 
-class Event(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-
+class EventDTO(BaseModel):
     name: str
     description: str
 
@@ -24,11 +23,16 @@ class Event(SQLModel, table=True):
     organiser_id: str
     latitude: float
     longitude: float
-    max_participants: int | None = None  # when none than unlimited
+    max_participants: int | None = None # when none then unlimited
     bonus_points: int = 0
 
     start_date: datetime
     end_date: datetime
+
+
+class Event(SQLModel, EventDTO, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+
     created_at: datetime
     updated_at: datetime
 
