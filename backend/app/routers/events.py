@@ -27,9 +27,7 @@ def get_event(event_id: int, session: Session = Depends(get_session)):
         "event": event,
         "tags": event.tags,
         "attendees": [
-            UserDTO(
-                id=attendee.id, email=attendee.email, username=attendee.username, bonus_points=attendee.bonus_points
-            )
+            UserDTO(email=attendee.email, username=attendee.username, bonus_points=attendee.bonus_points)
             for attendee in event.attendees
         ],
     }
