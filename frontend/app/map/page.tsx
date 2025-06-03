@@ -1,7 +1,7 @@
 "use client";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
 
 import classes from "./page.module.css";
@@ -14,7 +14,7 @@ interface Location {
   lat: number;
   long: number;
   color: string;
-  onClick?  : () => void;
+  onClick?: () => void;
 }
 
 interface Event {
@@ -22,17 +22,16 @@ interface Event {
   name: string;
   description: string;
   start_date: string; // ISO 8601 date string
-  end_date: string;   // ISO 8601 date string
+  end_date: string; // ISO 8601 date string
   latitude: number;
   longitude: number;
 }
 
 const MapView: React.FC = () => {
-  const { data: eventData } = useFetchApi<Event[]>("http://lukas.dev.rustlers.xyz:8000/events");
-  console.log(eventData)
+  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
-  const [locations, setLocations] = useState<Location[]>([  ]);
+  const [locations, setLocations] = useState<Location[]>([]);
 
   const addPin = useCallback((loc: Location) => {
     setLocations((prev) => [...prev, loc]);
@@ -42,11 +41,14 @@ const MapView: React.FC = () => {
     setLocations((prev) => []);
   }, []);
 
-  const mapLocation = eventData.map((data) => {
-    return {lat: data.latitude, long: data.longitude, color: "red"}
-  })
-  
-  setLocations(mapLocation)
+  useEffect(() => {
+    if (eventData) {
+      const mapLocation = eventData.map((data) => {
+        return { lat: data.latitude, long: data.longitude, color: "red" };
+      });
+      setLocations(mapLocation);
+    }
+  }, [eventData]);
 
   const markers = useMemo(
     () =>
@@ -75,6 +77,10 @@ const MapView: React.FC = () => {
     pitch: 70,
     padding: { top: 0, bottom: 0, left: 0, right: 0 },
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ProtectedRoute>
