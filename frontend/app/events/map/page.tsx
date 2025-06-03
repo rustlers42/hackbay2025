@@ -245,12 +245,6 @@ const MapView: React.FC = () => {
       {showFullDetails && selectedEvent && (
         <div className="fixed inset-0 bg-black/50 z-60 flex justify-center items-center">
           <div className="bg-white max-w-4xl w-full overflow-auto max-h-[100vh] relative">
-            <button
-              onClick={() => setShowFullDetails(false)}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-200"
-            >
-              <X className="w-5 h-5" />
-            </button>
 
             {/* You can reuse your event detail UI here or import the detail component */}
             <EventDetailsOverlay eventId={selectedEvent.id} onClose={() => setShowFullDetails(false)} />

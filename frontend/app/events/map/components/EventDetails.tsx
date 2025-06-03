@@ -52,7 +52,6 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
   const [isAttending, setIsAttending] = useState(false)
 
   const handleAttendToggle = () => {
-    // Mock toggle (you can replace with a POST/DELETE API call later)
     setIsAttending((prev) => !prev)
   }
 
@@ -96,7 +95,7 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
             <h2 className="text-xl font-semibold text-gray-900 mb-2">Event Not Found</h2>
             <p className="text-gray-600 mb-6">No event found or error loading event.</p>
             <Link href="/events">
-              <Button variant="outline">
+              <Button variant="outline" >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Events
               </Button>
@@ -131,7 +130,7 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
         {/* Header */}
         <div className="flex items-center gap-4 pt-4">
           <Link href="/events/map">
-            <Button variant="ghost" size="sm" className="text-green-700 hover:text-green-800 hover:bg-green-100">
+            <Button variant="ghost" size="sm" className="text-green-700 hover:text-green-800 hover:bg-green-100" onClick={onClose}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Events
             </Button>
