@@ -63,7 +63,7 @@ const MapView: React.FC = () => {
           <Pin color={loc.color} />
         </Marker>
       )),
-    [locations]
+    [locations],
   );
 
   const initialViewState: ViewState = {
@@ -72,6 +72,7 @@ const MapView: React.FC = () => {
     zoom: 18,
     bearing: 40,
     pitch: 70,
+    padding: { top: 0, left: 0, right: 0, bottom: 0 },
   };
 
   if (isLoading) {
