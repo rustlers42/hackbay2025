@@ -1,13 +1,11 @@
 "use client";
 
-import "mapbox-gl/dist/mapbox-gl.css";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
-
-import classes from "./page.module.css";
-
 import ProtectedRoute from "@/components/protected-route";
+import "mapbox-gl/dist/mapbox-gl.css";
+import React, { useEffect, useMemo, useState } from "react";
+import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
 import { useFetchApi } from "../../../lib/use-api";
+import classes from "./page.module.css";
 import Pin from "./pin";
 
 interface Location {
@@ -21,8 +19,8 @@ interface Event {
   id: number;
   name: string;
   description: string;
-  start_date: string; // ISO 8601 date string
-  end_date: string; // ISO 8601 date string
+  start_date: string;
+  end_date: string;
   latitude: number;
   longitude: number;
 }
@@ -34,19 +32,17 @@ const MapView: React.FC = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
-  const addPin = useCallback((loc: Location) => {
-    setLocations((prev) => [...prev, loc]);
-  }, []);
-
-  const clearPins = useCallback(() => {
-    setLocations((prev) => []);
-  }, []);
-
   useEffect(() => {
     if (eventData) {
-      const mapLocation = eventData.map((data) => {
-        return { lat: data.latitude, long: data.longitude, color: "red", onClick: () => {console.log(data); setSelectedEvent(data)}};
-      });
+      const mapLocation = eventData.map((data) => ({
+        lat: data.latitude,
+        long: data.longitude,
+        color: "red",
+        onClick: () => {
+          console.log(data);
+          setSelectedEvent(data);
+        },
+      }));
       setLocations(mapLocation);
     }
   }, [eventData]);
@@ -61,13 +57,13 @@ const MapView: React.FC = () => {
           anchor="bottom"
           onClick={(e) => {
             e.originalEvent.stopPropagation();
-            loc.onClick()
+            loc.onClick();
           }}
         >
           <Pin color={loc.color} />
         </Marker>
       )),
-    [locations],
+    [locations]
   );
 
   const initialViewState: ViewState = {
@@ -76,7 +72,6 @@ const MapView: React.FC = () => {
     zoom: 18,
     bearing: 40,
     pitch: 70,
-    padding: { top: 0, bottom: 0, left: 0, right: 0 },
   };
 
   if (isLoading) {
@@ -98,8 +93,8 @@ const MapView: React.FC = () => {
             <GeolocateControl position="top-left" />
             <FullscreenControl position="top-left" />
             <NavigationControl position="top-left" />
-
             {markers}
+
             {selectedEvent && (
               <div
                 className="fixed left-0 right-0 bottom-16 bg-white p-4 shadow-lg z-50 flex justify-center"
@@ -107,13 +102,12 @@ const MapView: React.FC = () => {
               >
                 <div className="relative max-w-sm w-full">
                   <button
-                    onClick={() => setSelectedEvent(undefined)}
+                    onClick={() => setSelectedEvent(null)}
                     className="absolute top-2 right-2 text-gray-500 text-2xl font-bold"
                     aria-label="Close"
                   >
                     ×
                   </button>
-
                   <h2 className="text-xl font-semibold break-words">{selectedEvent.name}</h2>
                   <p className="mt-1 break-words">{selectedEvent.description}</p>
                   <p className="mt-2 text-sm text-gray-600">

@@ -1,7 +1,13 @@
 .mainStyle {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 84vh;
+}
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .mapStyle {
