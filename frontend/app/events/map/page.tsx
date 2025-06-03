@@ -1,7 +1,9 @@
 "use client";
 
 import ProtectedRoute from "@/components/protected-route";
+import { Button } from "@/components/ui/button";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
 import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
 import { useFetchApi } from "../../../lib/use-api";
@@ -98,7 +100,7 @@ const MapView: React.FC = () => {
 
             {selectedEvent && (
               <div
-                className="fixed left-0 right-0 bottom-16 bg-white p-4 shadow-lg z-50 flex justify-center"
+                className="fixed left-0 right-0 bottom-0 bg-white p-4 shadow-lg z-50 flex justify-center"
                 style={{ backdropFilter: "blur(8px)" }}
               >
                 <div className="relative max-w-sm w-full">
@@ -115,6 +117,11 @@ const MapView: React.FC = () => {
                     {new Date(selectedEvent.start_date).toLocaleString()} -{" "}
                     {new Date(selectedEvent.end_date).toLocaleString()}
                   </p>
+                  <div className="mt-4 text-center">
+                  <Link href={`/events/${selectedEvent.id}`}>
+                    <Button>More Info</Button>
+                  </Link>
+                </div>
                 </div>
               </div>
             )}

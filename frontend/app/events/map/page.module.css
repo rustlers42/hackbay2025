@@ -1,7 +1,7 @@
 .mainStyle {
   display: flex;
   flex-direction: column;
-  height: 84vh;
+  height: 92vh;
 }
 
 html, body, #__next {
