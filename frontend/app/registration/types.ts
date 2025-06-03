@@ -16,7 +16,7 @@ export type Step = (typeof steps)[number];
 // Zod schemas for each step
 export const personalSchema = z.object({
   username: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().min(4, "Not correct email format"),
+  email: z.string().regex(.*@.*, "Not correct email format"),
   birthday: z
     .string()
     .refine((val) => !isNaN(Date.parse(val)), {

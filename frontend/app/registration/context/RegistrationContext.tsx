@@ -135,7 +135,7 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
       }
 
       // Handle successful registration
-      router.push("/events/map");
+      router.push("/connect");
     } catch (error) {
       console.error("Registration error:", error);
       setErrors({
