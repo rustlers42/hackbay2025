@@ -41,6 +41,7 @@ interface EventApiResponse {
 }
 
 export default function EventInfoPage() {
+  const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(null);
   const id = usePathname().split("/")[2];
   const { data, isLoading } = useFetchApi<EventApiResponse>(
     `http://localhost:8000/events/${id}`
@@ -93,6 +94,7 @@ export default function EventInfoPage() {
           latitude={event.latitude}
           longitude={event.longitude}
           anchor="bottom"
+        color="red"
         >
         </Marker>
   </Map>
