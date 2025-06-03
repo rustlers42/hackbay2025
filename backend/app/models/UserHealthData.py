@@ -3,7 +3,11 @@ from enum import Enum
 
 from sqlmodel import Field, SQLModel
 
-HealthDataType = Enum("HealtDataType", ["steps", "distance", "calories"])
+
+class HealthDataType(str, Enum):
+    steps = "steps"
+    distance = "distance"
+    calories = "calories"
 
 
 class UserHealthData(SQLModel, table=True):

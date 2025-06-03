@@ -3,7 +3,13 @@ from enum import Enum
 
 from sqlmodel import Field, SQLModel
 
-EventParticipationType = Enum("EventParticipationType", ["accepted", "tentative", "participated"])
+
+class EventParticipationType(str, Enum):
+    accepted = "accepted"
+    tentative = "tentative"
+    organiser = "organiser"
+    participated = "participated"
+    not_participated = "not_participated"
 
 
 class EventUserLink(SQLModel, table=True):
