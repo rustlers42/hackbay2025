@@ -64,7 +64,7 @@ export const RegistrationWizard: React.FC = () => {
         />
       </div>
 
-      <Card className="min-h-[420px] flex flex-col justify-between">
+      <Card className="min-h-[420px] min-w-[300px] flex flex-col justify-between">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
