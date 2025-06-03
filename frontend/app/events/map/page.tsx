@@ -7,7 +7,7 @@ import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Vi
 import classes from "./page.module.css";
 
 import ProtectedRoute from "@/components/protected-route";
-import { useFetchApi } from "../../lib/use-api";
+import { useFetchApi } from "../../../lib/use-api";
 import Pin from "./pin";
 
 interface Location {
