@@ -1,4 +1,8 @@
 .DS_Store
 .env
 .idea
+<<<<<<< Updated upstream
 .env.local
+=======
+frontend/lib/api-config.ts
+>>>>>>> Stashed changes
