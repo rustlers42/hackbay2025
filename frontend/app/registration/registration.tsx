@@ -8,7 +8,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
 import { redirect } from "next/navigation";
-import { todo } from "node:test";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -40,7 +39,7 @@ const formSchema = z.object({
 type RegistrationFormData = z.infer<typeof formSchema>;
 
 function handleLogin() {
-  !todo;
+  /*!todo;*/
 }
 
 export default function RegistrationWizard() {
