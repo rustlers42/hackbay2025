@@ -6,7 +6,7 @@ from pydantic import BaseModel, field_validator
 from sqlmodel import Session, select
 
 from ..database import get_session
-from ..models import Event, User, UserDTO
+from ..models import Event, User, UserDTO, UserPublicDTO
 from ..oauth2_helper import get_current_user, get_password_hash
 
 router = APIRouter()
@@ -71,10 +71,11 @@ async def register_user(registration_data: RegistrationRequest, session: Session
     return RegistrationResponse(
         message="User registered successfully",
         user=UserDTO(
-            id=user.id,
             email=user.email,
             username=user.username,
             bonus_points=user.bonus_points,
+            birthday=user.birthday,
+            intensity=user.intensity,
             level=user.level,
             interests=user.interests,
         ),
@@ -87,10 +88,11 @@ async def get_users_me(*, current_user: User = Depends(get_current_user)):
     Get the current user
     """
     return UserDTO(
-        id=current_user.id,
         email=current_user.email,
         username=current_user.username,
         bonus_points=current_user.bonus_points,
+        birthday=current_user.birthday,
+        intensity=current_user.intensity,
         level=current_user.level,
         interests=current_user.interests,
     )
@@ -104,17 +106,15 @@ async def get_users_meevents(*, current_user: User = Depends(get_current_user)):
     return current_user.events
 
 
-@router.get("/leaderboard", response_model=list[UserDTO])
+@router.get("/leaderboard", response_model=list[UserPublicDTO])
 async def get_leaderboard(session: Session = Depends(get_session)):
     """
     Get the leaderboard
     """
     return [
-        UserDTO(
-            id=user.id,
+        UserPublicDTO(
             email=user.email,
             username=user.username,
-            bonus_points=user.bonus_points,
             level=user.level,
             interests=user.interests,
         )
