@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <Header />
 
-            <main className="flex-1 flex flex-col pb-16">{children}</main> {/* padding-bottom = footer height */}
+            <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
         </Providers>
       </body>
