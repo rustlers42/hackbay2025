@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const CALENDAR_LIST_URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList";
 const EVENTS_URL = (calendarId: string, timeMin: string, timeMax: string) =>
@@ -9,7 +9,7 @@ const EVENTS_URL = (calendarId: string, timeMin: string, timeMax: string) =>
     orderBy: "startTime",
   }).toString()}`;
 
-export async function GET(request: NextRequest) {
+/*export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const token = authHeader?.split(" ")[1];
 
@@ -80,4 +80,10 @@ export async function GET(request: NextRequest) {
       { status: 500 },
     );
   }
+}*/
+
+import example from "./example.json";
+
+export function GET() {
+  return NextResponse.json(example);
 }
