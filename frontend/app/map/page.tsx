@@ -7,27 +7,32 @@ import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Vi
 import classes from "./page.module.css";
 
 import ProtectedRoute from "@/components/protected-route";
+import { useFetchApi } from "../../lib/use-api";
 import Pin from "./pin";
 
 interface Location {
   lat: number;
   long: number;
   color: string;
-  onClick: () => void;
+  onClick?  : () => void;
+}
+
+interface Event {
+  id: number;
+  name: string;
+  description: string;
+  start_date: string; // ISO 8601 date string
+  end_date: string;   // ISO 8601 date string
+  latitude: number;
+  longitude: number;
 }
 
 const MapView: React.FC = () => {
+  const { data: eventData } = useFetchApi<Event[]>("http://lukas.dev.rustlers.xyz:8000/events");
+  console.log(eventData)
+
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
-  const [locations, setLocations] = useState<Location[]>([
-    {
-      lat: 49.4305421,
-      long: 11.0946655,
-      color: "red",
-      onClick: () => {
-        alert("Beispiel-Pin geklickt!");
-      },
-    },
-  ]);
+  const [locations, setLocations] = useState<Location[]>([  ]);
 
   const addPin = useCallback((loc: Location) => {
     setLocations((prev) => [...prev, loc]);
@@ -36,6 +41,12 @@ const MapView: React.FC = () => {
   const clearPins = useCallback(() => {
     setLocations((prev) => []);
   }, []);
+
+  const mapLocation = eventData.map((data) => {
+    return {lat: data.latitude, long: data.longitude, color: "red"}
+  })
+  
+  setLocations(mapLocation)
 
   const markers = useMemo(
     () =>
