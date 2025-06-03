@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useRegistration } from "../context/RegistrationContext";
 import { personalSchema, RegistrationData } from "../types";
 
-type PersonalFormData = Pick<RegistrationData, "name" | "email" | "birthday">;
+type PersonalFormData = Pick<RegistrationData, "name" | "email" | "birthday" | "password">;
 
 export const PersonalStep: React.FC = () => {
   const { data, updateStepData, errors } = useRegistration();
@@ -23,6 +23,7 @@ export const PersonalStep: React.FC = () => {
       name: data.name || "",
       email: data.email || "",
       birthday: data.birthday || "",
+      password: data.password || "",
     },
   });
 
@@ -30,6 +31,7 @@ export const PersonalStep: React.FC = () => {
   const watchedName = watch("name");
   const watchedEmail = watch("email");
   const watchedBirthday = watch("birthday");
+  const watchedPassword = watch("password");
 
   useEffect(() => {
     // Update context data whenever form values change
@@ -37,8 +39,9 @@ export const PersonalStep: React.FC = () => {
       name: watchedName,
       email: watchedEmail,
       birthday: watchedBirthday,
+      password: watchedPassword,
     });
-  }, [watchedName, watchedEmail, watchedBirthday, updateStepData]);
+  }, [watchedName, watchedEmail, watchedBirthday, watchedPassword, updateStepData]);
 
   return (
     <div className="space-y-4">
@@ -74,6 +77,18 @@ export const PersonalStep: React.FC = () => {
         />
         {(formErrors.birthday || errors.birthday) && (
           <p className="text-red-500 text-sm mt-1">{formErrors.birthday?.message || errors.birthday}</p>
+        )}
+      </div>
+
+      <div>
+        <Label htmlFor="email">Password</Label>
+        <Input
+          id="email"
+          {...register("password")}
+          className={formErrors.password || errors.password ? "border-red-500" : ""}
+        />
+        {(formErrors.password || errors.password) && (
+          <p className="text-red-500 text-sm mt-1">{formErrors.password?.message || errors.password}</p>
         )}
       </div>
     </div>

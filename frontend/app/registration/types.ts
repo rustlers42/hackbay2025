@@ -43,6 +43,7 @@ export const personalSchema = z.object({
         message: "Birthday cannot be in the future",
       },
     ),
+  password: z.string().min(8, "password must at least be 8 characters long"),
 });
 
 export const whoSchema = z.object({
