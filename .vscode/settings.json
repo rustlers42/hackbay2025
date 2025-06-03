@@ -12,5 +12,13 @@
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "notebook.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
