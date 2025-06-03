@@ -6,8 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Calendar, Clock, Info, MapPin, X } from "lucide-react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Link from "next/link";
-import React, { useEffect, useMemo, useState } from "react";
-import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import Map, { FullscreenControl, GeolocateControl, MapRef, Marker, NavigationControl, ViewState } from "react-map-gl/mapbox";
 import { useFetchApi } from "../../../lib/use-api";
 import classes from "./page.module.css";
 
@@ -47,9 +47,11 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 }
 
 const MapView: React.FC = () => {
+
   const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
+  const mapRef = useRef<MapRef>(null);
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
@@ -60,15 +62,28 @@ const MapView: React.FC = () => {
         long: data.longitude,
         color: "red",
         onClick: () => {
-          console.log(data);
           setSelectedEvent(data);
+          flyToEvent(data.longitude, data.latitude, 18);
         },
       }));
       setLocations(mapLocation);
     }
   }, [eventData]);
 
-    const formatDateTime = (dateString: string) => {
+  const flyToEvent = (long, lat, zoom = 18, bearing = 60, pitch = 70, duration = 4000) => {
+    if (!mapRef.current) return;
+    mapRef.current.flyTo({
+      center: [lat, long],
+      zoom,
+      bearing,
+      pitch,
+      duration,
+    });
+  };
+
+  if (typeof window !== "undefined") window.flyToEvent = flyToEvent;
+
+  const formatDateTime = (dateString: string) => {
     const date = new Date(dateString)
     return {
       date: date.toLocaleDateString("en-EN", {
@@ -106,9 +121,9 @@ const MapView: React.FC = () => {
   const initialViewState: ViewState = {
     latitude: 49.4305421,
     longitude: 11.0946655,
-    zoom: 13,
-    bearing: 40,
-    pitch: 70,
+    zoom: 18,
+    bearing: 0,
+    pitch: 0,
     padding: { top: 0, left: 0, right: 0, bottom: 0 },
   };
 
@@ -121,6 +136,7 @@ const MapView: React.FC = () => {
       <main className={classes.mainStyle}>
         <div className="flex items-center justify-center flex-1">
           <Map
+            ref={mapRef}
             mapboxAccessToken={mapboxToken}
             mapStyle="mapbox://styles/yves147/cmbgcd7j6007601qw6e7z7n3i/draft"
             initialViewState={initialViewState}
@@ -136,61 +152,61 @@ const MapView: React.FC = () => {
             {selectedEvent && (
               <>
 
-            <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={() => setSelectedEvent(null)} />
+                <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={() => setSelectedEvent(null)} />
 
-            <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300">
-              <Card className="w-full max-w-lg mx-auto shadow-2xl bg-white">
-                <CardHeader className="relative pb-3">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setSelectedEvent(null)}
-                    className="absolute top-2 right-2 h-8 w-8 p-0 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
+                <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300">
+                  <Card className="w-full max-w-lg mx-auto shadow-2xl bg-white">
+                    <CardHeader className="relative pb-3">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setSelectedEvent(null)}
+                        className="absolute top-2 right-2 h-8 w-8 p-0 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
 
-                  <CardTitle className="text-xl font-bold text-gray-900 pr-8 leading-tight">
-                    {selectedEvent.name}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 mt-2">{selectedEvent.description}</CardDescription>
-                </CardHeader>
+                      <CardTitle className="text-xl font-bold text-gray-900 pr-8 leading-tight">
+                        {selectedEvent.name}
+                      </CardTitle>
+                      <CardDescription className="text-gray-600 mt-2">{selectedEvent.description}</CardDescription>
+                    </CardHeader>
 
-                <CardContent className="space-y-4">
+                    <CardContent className="space-y-4">
 
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
-                      <Calendar className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium text-green-800">Start</p>
-                        <p className="text-sm text-gray-700">
-                          {formatDateTime(selectedEvent.start_date).date} at{" "}
-                          {formatDateTime(selectedEvent.start_date).time}
-                        </p>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                          <Calendar className="w-5 h-5 text-green-600 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-green-800">Start</p>
+                            <p className="text-sm text-gray-700">
+                              {formatDateTime(selectedEvent.start_date).date} at{" "}
+                              {formatDateTime(selectedEvent.start_date).time}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
+                          <Clock className="w-5 h-5 text-red-600 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-red-800">End</p>
+                            <p className="text-sm text-gray-700">
+                              {formatDateTime(selectedEvent.end_date).date} at {formatDateTime(selectedEvent.end_date).time}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
-                      <Clock className="w-5 h-5 text-red-600 flex-shrink-0" />
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium text-red-800">End</p>
-                        <p className="text-sm text-gray-700">
-                          {formatDateTime(selectedEvent.end_date).date} at {formatDateTime(selectedEvent.end_date).time}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link href={`/events/${selectedEvent.id}`} className="block">
-                    <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold">
-                      <Info className="w-4 h-4 mr-2" />
-                      View Event Details
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            </div>
-          </>
+                      <Link href={`/events/${selectedEvent.id}`} className="block">
+                        <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold">
+                          <Info className="w-4 h-4 mr-2" />
+                          View Event Details
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </div>
+              </>
             )}
           </Map>
         </div>
