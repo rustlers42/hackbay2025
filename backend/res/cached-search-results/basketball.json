@@ -1,0 +1,143 @@
+[
+    {
+        "name": "N\u00fcrnberg Falcons BC vs Crailsheim Merlins",
+        "description": "Basketball match between N\u00fcrnberg Falcons BC and Crailsheim Merlins in Germany Pro A.",
+        "weekly": false,
+        "start_date": "2025-04-19T16:30",
+        "end_date": "2025-04-19T16:30",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.sofascore.com/basketball/match/crailsheim-merlins-nurnberg-falcons-bc/fpHslpH"
+    },
+    {
+        "name": "BARMER 2. Basketball Bundesliga",
+        "description": "Basketball Bundesliga game",
+        "weekly": true,
+        "start_date": "2025-04-19T16:30",
+        "end_date": "2025-04-19T16:30",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena",
+        "url": "https://www.nuernberg-falcons.de/"
+    },
+    {
+        "name": "JUGENDBASKETBALL BUNDESLIGA - JBBL",
+        "description": "Youth Basketball Bundesliga game",
+        "weekly": true,
+        "start_date": "2025-04-19T16:30",
+        "end_date": "2025-04-19T16:30",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena",
+        "url": "https://www.nuernberg-falcons.de/"
+    },
+    {
+        "name": "NACHWUCHSBASKETBALL BUNDESLIGA - NBBL",
+        "description": "Junior Basketball Bundesliga game",
+        "weekly": true,
+        "start_date": "2025-04-19T16:30",
+        "end_date": "2025-04-19T16:30",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena",
+        "url": "https://www.nuernberg-falcons.de/"
+    },
+    {
+        "name": "Rollstuhlbasketball - REGIONALLIGA",
+        "description": "Wheelchair Basketball - Regional League game",
+        "weekly": true,
+        "start_date": "2025-04-19T16:30",
+        "end_date": "2025-04-19T16:30",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena",
+        "url": "https://www.nuernberg-falcons.de/"
+    },
+    {
+        "name": "Basketball- Club BBC N\u00fcrnberg",
+        "description": "Basketball club located in Zirndorf, Germany.",
+        "weekly": false,
+        "start_date": "2025-06-01T00:00",
+        "end_date": "2025-06-01T00:00",
+        "latitude": 49.44859025020006,
+        "longitude": 10.96466224026292,
+        "location": "Robert-Koch-Str. 2a, 90513 Zirndorf, Germany",
+        "url": "https://www.yelp.com/biz/basketball-club-bbc-n%C3%BCrnberg-zirndorf"
+    },
+    {
+        "name": "Bayerische U18-Meisterschaften 2025",
+        "description": "Bayerische Meisterschaften der U18 m\u00e4nnlich mit teilnehmenden Teams aus Neumarkt, Breiteng\u00fc\u00dfbach, Schwabing, Aschaffenburg, Post SV N\u00fcrnberg und voraussichtlich VSC Donauw\u00f6rth.",
+        "weekly": false,
+        "start_date": "2025-04-05T00:00",
+        "end_date": "2025-04-06T00:00",
+        "latitude": 49.4656512531113,
+        "longitude": 11.075837403487037,
+        "location": "Ludwig-Uhland-Schule, N\u00fcrnberg",
+        "url": "https://postsvnuernberg-basketball.de/spielberichte/bayerische-u18-meisterschaften-2025-in-nuernberg-sei-dabei/"
+    },
+    {
+        "name": "N\u00fcrnberg Falcons BC",
+        "description": "Basketball club based in Nuremberg, Germany.",
+        "weekly": false,
+        "start_date": "2009-01-01T00:00",
+        "end_date": "2025-04-11T20:53",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "Nuremberg, Germany",
+        "url": "https://en.wikipedia.org/wiki/N%C3%BCrnberg_Falcons_BC"
+    },
+    {
+        "name": "2. Liga Pro A Basketball",
+        "description": "Spiele des N\u00fcrnberger Basketball Clubs in der 2. Liga Pro A 2024/2025",
+        "weekly": false,
+        "start_date": "2024-09-22T15:00",
+        "end_date": "2025-04-26T19:30",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.hessenschau.de/sport/ergebnisse-tabellen/basketball-2bl100~team_id-5419.html"
+    },
+    {
+        "name": "N\u00fcrnberg Falcons BC \u2014 BBC Bayreuth",
+        "description": "N\u00fcrnberg Falcons BC plays against BBC Bayreuth. Find out who will win this game live on game day!",
+        "weekly": false,
+        "start_date": "2025-03-29T18:30",
+        "end_date": "2025-03-29T20:30",
+        "location": "Kia Metropol Arena, Dr.-Ingeborg-Bausenwein-Stra\u00dfe 1, 90431 N\u00fcrnberg, Deutschland",
+        "url": "https://kia-metropol-arena.de/event/nuernberg-falcons-bc-bbc-bayreuth"
+    },
+    {
+        "name": "Taekwondo Turnier \u2014 Bavaria Open 2025 (DTU Final 7)",
+        "description": "Taekwondo Tournament",
+        "weekly": false,
+        "start_date": "2025-06-21T09:00",
+        "end_date": "2025-06-21T20:30",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena, Dr.-Ingeborg-Bausenwein-Stra\u00dfe 1, 90431 N\u00fcrnberg, Deutschland",
+        "url": "https://kia-metropol-arena.de/event/nuernberg-falcons-bc-bbc-bayreuth"
+    },
+    {
+        "name": "BayernCheerMasters 2025",
+        "description": "Cheerleading competition",
+        "weekly": false,
+        "start_date": "2025-06-28T11:00",
+        "end_date": "2025-06-28T19:00",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena, Dr.-Ingeborg-Bausenwein-Stra\u00dfe 1, 90431 N\u00fcrnberg, Deutschland",
+        "url": "https://kia-metropol-arena.de/event/nuernberg-falcons-bc-bbc-bayreuth"
+    },
+    {
+        "name": "Evolution Ride 2025",
+        "description": "Ride event",
+        "weekly": false,
+        "start_date": "2025-09-20T10:00",
+        "end_date": "2025-09-20T19:00",
+        "latitude": 49.43338700837065,
+        "longitude": 11.037271982590626,
+        "location": "Kia Metropol Arena, Dr.-Ingeborg-Bausenwein-Stra\u00dfe 1, 90431 N\u00fcrnberg, Deutschland",
+        "url": "https://kia-metropol-arena.de/event/nuernberg-falcons-bc-bbc-bayreuth"
+    }
+]

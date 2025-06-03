@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Badminton",
+        "description": "Fun & Action! Simply book a court and start playing or learn effective hitting and playing techniques under supervision in our courses.",
+        "weekly": false,
+        "start_date": "2024-01-01T08:00",
+        "end_date": "2024-12-31T23:00",
+        "latitude": 49.45287697265708,
+        "longitude": 11.117687971164193,
+        "location": "Sportcentrum Nuremberg",
+        "url": "https://www.sportcentrum-nbg.de/en/ball-sports/badminton/"
+    },
+    {
+        "name": "Badminton Classes",
+        "description": "Badminton classes are offered in Nuremberg.",
+        "weekly": true,
+        "start_date": "Friday",
+        "end_date": "Friday",
+        "latitude": 49.488944626620764,
+        "longitude": 11.097297199786745,
+        "location": "Sportpark Nord",
+        "url": "https://urbansportsclub.com/en/sports/badminton/nurnberg"
+    },
+    {
+        "name": "Badminton Classes",
+        "description": "Badminton classes are offered in Nuremberg.",
+        "weekly": true,
+        "start_date": "Friday",
+        "end_date": "Friday",
+        "latitude": 49.49322783749932,
+        "longitude": 11.103236930928896,
+        "location": "Ziegelstein",
+        "url": "https://urbansportsclub.com/en/sports/badminton/nurnberg"
+    },
+    {
+        "name": "YONEX German Open 2025",
+        "description": "BWF World Tour Super 300",
+        "weekly": false,
+        "start_date": "2025-02-25T00:00",
+        "end_date": "2025-03-02T00:00",
+        "latitude": 51.420378140658634,
+        "longitude": 6.883108220748275,
+        "location": "M\u00fclheim an der Ruhr, Germany",
+        "url": "http://www.badmintonpeople.com/Cms/EventInfo/?eventID=27786&clubid=4685&cmsid=239"
+    },
+    {
+        "name": "BBV-Victor-Einzelmeisterschaft U22 / O35-O75",
+        "description": "Badminton tournament with various age categories.",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 49.50972139620288,
+        "longitude": 11.277945525080998,
+        "location": "Lauf",
+        "url": "https://www.bc-nuernberg.de/index.php/turniererfolge/245-2025"
+    },
+    {
+        "name": "34. Moritzbergpokal",
+        "description": "Badminton tournament.",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 49.50972139620288,
+        "longitude": 11.277945525080998,
+        "location": "Lauf",
+        "url": "https://www.bc-nuernberg.de/index.php/turniererfolge/245-2025"
+    },
+    {
+        "name": "S\u00fcdostdeutsche Altersklassenmeisterschaften",
+        "description": "Am 14. und 15. M\u00e4rz starteten die \u201eAlten Herren\u201c vom ESV \u2013 die letzten sechs Mohikaner: Stefan, Stephan, Frank, Nobbi, Sascha und Lutz \u2013 bei den S\u00fcdostdeutschen Altersklassenmeisterschaften in Herrenberg mit wechselndem Erfolg.",
+        "weekly": false,
+        "start_date": "2025-03-14T00:00",
+        "end_date": "2025-03-15T00:00",
+        "latitude": 48.59482630734736,
+        "longitude": 8.863450279158076,
+        "location": "Herrenberg",
+        "url": "https://www.badminton-nuernberg.de/"
+    }
+]

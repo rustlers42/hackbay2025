@@ -6,7 +6,7 @@ from pydantic import BaseModel, validator
 from sqlmodel import Session, select
 
 from ..database import get_session
-from ..models import FitnessLevel, User, UserDTO
+from ..models import Event, FitnessLevel, User, UserDTO
 from ..oauth2_helper import get_current_user, get_password_hash
 
 router = APIRouter()
@@ -104,7 +104,6 @@ async def register_user(registration_data: RegistrationRequest, session: Session
         hashed_password=hashed_password,
         bonus_points=0,
         level=0.0,
-
         # Personal information
         first_name=registration_data.firstName,
         last_name=registration_data.lastName,
@@ -138,6 +137,14 @@ async def get_users_me(*, current_user: User = Depends(get_current_user)):
         bonus_points=current_user.bonus_points,
         level=current_user.level,
     )
+
+
+@router.get("/me/events", response_model=list[Event])
+async def get_users_meevents(*, current_user: User = Depends(get_current_user)):
+    """
+    Get the events for the current user
+    """
+    return current_user.events
 
 
 @router.get("/leaderboard", response_model=list[UserDTO])
