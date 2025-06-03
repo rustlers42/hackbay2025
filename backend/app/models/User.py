@@ -33,14 +33,9 @@ class User(SQLModel, UserDTO, table=True):
     last_name: str | None = None
     birthday: date | None = None
 
-    # Insurance information
-    insurance_provider: str | None = None
-    insurance_number: str | None = None
-
     # Fitness and activity preferences
     fitness_level: FitnessLevel | None = None
     activities: str | None = None
-    location: str | None = None
     start_time: time | None = None
     end_time: time | None = None
 

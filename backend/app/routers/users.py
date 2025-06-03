@@ -22,22 +22,10 @@ class RegistrationRequest(BaseModel):
     firstName: str
     lastName: str
     birthday: str  # Will be converted to date
-    insuranceProvider: Optional[str] = None
-    insuranceNumber: Optional[str] = None
     fitnessLevel: Optional[FitnessLevel] = None
     activities: Optional[str] = None
-    location: Optional[str] = None
     startTime: Optional[str] = None  # Will be converted to time
     endTime: Optional[str] = None  # Will be converted to time
-
-    @validator("insuranceNumber")
-    def validate_insurance_number(cls, v):
-        # Skip validation if value is None or empty
-        if not v:
-            return v
-        if len(v) != 10 or not v[0].isalpha() or not v[1:].isdigit():
-            raise ValueError("Insurance number must be in format A123456789")
-        return v.upper()
 
     @validator("email")
     def validate_email(cls, v):
@@ -62,7 +50,7 @@ async def register_user(registration_data: RegistrationRequest, session: Session
     password = registration_data.password or "temppassword123"  # Temporary password
 
     if not email:
-        # Generate email based on name and insurance number
+        # Generate email based on name
         email = f"{registration_data.firstName.lower()}.{registration_data.lastName.lower()}@temp.com"
 
     if not username:
@@ -121,13 +109,9 @@ async def register_user(registration_data: RegistrationRequest, session: Session
         first_name=registration_data.firstName,
         last_name=registration_data.lastName,
         birthday=birthday,
-        # Insurance information
-        insurance_provider=registration_data.insuranceProvider,
-        insurance_number=registration_data.insuranceNumber,
         # Fitness and activity preferences
         fitness_level=registration_data.fitnessLevel,
         activities=registration_data.activities,
-        location=registration_data.location,
         start_time=start_time,
         end_time=end_time,
     )
