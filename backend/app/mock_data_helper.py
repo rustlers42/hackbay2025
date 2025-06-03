@@ -61,6 +61,8 @@ def setup_mock_data(session: Session):
                 organiser_id=rewe_organiser_id,
                 latitude=51.050397,
                 longitude=13.731702,
+                max_participants=0,
+                bonus_points=10,
                 start_date=datetime(2025, 5, 28, 17, 0, 0),
                 end_date=datetime(2025, 5, 28, 22, 0, 0),
                 created_at=datetime(2025, 5, 20, 0, 0, 0),
