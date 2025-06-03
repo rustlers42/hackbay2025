@@ -33,3 +33,4 @@ class User(SQLModel, UserDTO, table=True):
     intensity: int | None = None
 
     events: list["Event"] = Relationship(back_populates="attendees", link_model=EventUserLink)  # noqa: F821
+    tags: list["Tag"] = Relationship(back_populates="users", link_model=UserTagLink)  # noqa: F821
