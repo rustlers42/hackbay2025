@@ -20,7 +20,7 @@ class RegistrationRequest(BaseModel):
 
     # Profile fields
     birthday: datetime
-    interests: list[str] | None = None
+    interests: str | None = None  # TODO: change to list
     intensity: int
 
     @validator("email")
