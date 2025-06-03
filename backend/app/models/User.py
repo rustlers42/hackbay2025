@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime
 
 from pydantic import BaseModel
 from sqlmodel import Field, Relationship, SQLModel

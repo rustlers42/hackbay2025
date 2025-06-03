@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from sqlmodel import Session, select
 
 from ..database import get_session
@@ -23,7 +23,7 @@ class RegistrationRequest(BaseModel):
     interests: str | None = None  # TODO: change to list
     intensity: int
 
-    @validator("email")
+    @field_validator("email")
     def validate_email(cls, v):
         if v and "@" not in v:
             raise ValueError("Invalid email format")
