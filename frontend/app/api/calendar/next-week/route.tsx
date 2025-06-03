@@ -9,7 +9,7 @@ const EVENTS_URL = (calendarId: string, timeMin: string, timeMax: string) =>
     orderBy: "startTime",
   }).toString()}`;
 
-/*export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const token = authHeader?.split(" ")[1];
 
@@ -21,17 +21,17 @@ const EVENTS_URL = (calendarId: string, timeMin: string, timeMax: string) =>
 
   const now = new Date();
   const dayOfWeek = now.getDay();
-  const diffToNextMonday = dayOfWeek === 1 ? 7 : (1 - dayOfWeek + 7) % 7;
-  const nextMonday = new Date(now);
-  nextMonday.setDate(now.getDate() + diffToNextMonday);
-  nextMonday.setHours(0, 0, 0, 0);
+  const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Get difference to current/previous Monday
+  const currentMonday = new Date(now);
+  currentMonday.setDate(now.getDate() + diffToMonday);
+  currentMonday.setHours(0, 0, 0, 0);
 
-  const nextMondayPlus7 = new Date(nextMonday);
-  nextMondayPlus7.setDate(nextMonday.getDate() + 7);
-  nextMondayPlus7.setHours(0, 0, 0, 0);
+  const mondayPlus7 = new Date(currentMonday);
+  mondayPlus7.setDate(currentMonday.getDate() + 7);
+  mondayPlus7.setHours(0, 0, 0, 0);
 
-  const timeMin = nextMonday.toISOString();
-  const timeMax = nextMondayPlus7.toISOString();
+  const timeMin = currentMonday.toISOString();
+  const timeMax = mondayPlus7.toISOString();
 
   try {
     // 1. Liste aller Kalender abrufen
@@ -80,10 +80,4 @@ const EVENTS_URL = (calendarId: string, timeMin: string, timeMax: string) =>
       { status: 500 },
     );
   }
-}*/
-
-import example from "./example.json";
-
-export function GET() {
-  return NextResponse.json(example);
 }
