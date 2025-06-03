@@ -67,7 +67,7 @@ export default function LoginForm() {
       // Use the login function from AuthContext
       login(data.access_token, data.token_type);
 
-      router.push("/map");
+      router.push("/events/map");
     } catch (error) {
       console.error("Login failed", error);
       setError("Invalid username or password");
@@ -128,7 +128,7 @@ export default function LoginForm() {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
-          <Button variant="link" className="p-0" onClick={() => router.push("/register")}>
+          <Button variant="link" className="p-0" onClick={() => router.push("/registration")}>
             Sign up
           </Button>
         </p>

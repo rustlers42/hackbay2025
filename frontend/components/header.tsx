@@ -37,13 +37,13 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <AxeIcon className="h-6 w-6  text-green-600" />
-          <h1 className="text-2xl font-bold">boilerplate</h1>
+          <h1 className="text-2xl font-bold">activate</h1>
         </Link>
 
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link href="/map" legacyBehavior passHref>
+              <Link href="/events/map" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>Karte</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
