@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, Info, MapPin, X } from "lucide-react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Link from "next/link";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Map, {
   FullscreenControl,
@@ -16,6 +15,7 @@ import Map, {
   ViewState,
 } from "react-map-gl/mapbox";
 import { useFetchApi } from "../../../lib/use-api";
+import EventDetailsOverlay from "./components/EventDetails";
 import classes from "./page.module.css";
 
 interface Location {
@@ -53,6 +53,7 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 };
 
 const MapView: React.FC = () => {
+  const [showFullDetails, setShowFullDetails] = useState(false);
   const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
@@ -208,7 +209,7 @@ const MapView: React.FC = () => {
                           <div className="min-w-0 flex-1">
                             <p className="text-sm font-medium text-green-800">Start</p>
                             <p className="text-sm text-gray-700">
-                              {formatDateTime(selectedEvent.start_date).date} at{" "}
+                               {formatDateTime(selectedEvent.start_date).date} at{" "}
                               {formatDateTime(selectedEvent.start_date).time}
                             </p>
                           </div>
@@ -226,20 +227,36 @@ const MapView: React.FC = () => {
                         </div>
                       </div>
 
-                      <Link href={`/events/${selectedEvent.id}`} className="block">
-                        <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold">
+                    
+                        <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold" onClick={() => setShowFullDetails(true)}>
                           <Info className="w-4 h-4 mr-2" />
                           View Event Details
                         </Button>
-                      </Link>
                     </CardContent>
                   </Card>
                 </div>
               </>
             )}
           </Map>
+          
         </div>
+        
       </main>
+      {showFullDetails && selectedEvent && (
+        <div className="fixed inset-0 bg-black/50 z-60 flex justify-center items-center">
+          <div className="bg-white max-w-4xl w-full overflow-auto max-h-[100vh] relative">
+            <button
+              onClick={() => setShowFullDetails(false)}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-200"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* You can reuse your event detail UI here or import the detail component */}
+            <EventDetailsOverlay eventId={selectedEvent.id} onClose={() => setShowFullDetails(false)} />
+          </div>
+        </div>
+      )}
     </ProtectedRoute>
   );
 };
