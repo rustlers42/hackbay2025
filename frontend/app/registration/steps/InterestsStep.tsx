@@ -6,47 +6,47 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRegistration } from "../context/RegistrationContext";
-import { activitiesSchema, RegistrationData } from "../types";
+import { interestsSchema, RegistrationData } from "../types";
 
-type ActivitiesFormData = Pick<RegistrationData, "activities">;
+type InterestsFormData = Pick<RegistrationData, "interests">;
 
-export const ActivitiesStep: React.FC = () => {
+export const InterestsStep: React.FC = () => {
   const { data, updateStepData, errors } = useRegistration();
 
   const {
     register,
     watch,
     formState: { errors: formErrors },
-  } = useForm<ActivitiesFormData>({
-    resolver: zodResolver(activitiesSchema),
+  } = useForm<InterestsFormData>({
+    resolver: zodResolver(interestsSchema),
     defaultValues: {
-      activities: data.activities || "",
+      interests: data.interests || "",
     },
   });
 
   // Watch form values and sync with context in real-time
-  const watchedActivities = watch("activities");
+  const watchedinterests = watch("interests");
 
   useEffect(() => {
     // Update context data whenever form values change
     updateStepData({
-      activities: watchedActivities,
+      interests: watchedinterests,
     });
-  }, [watchedActivities, updateStepData]);
+  }, [watchedinterests, updateStepData]);
 
   return (
     <div className="space-y-4">
       <div>
-        <Label htmlFor="activities">Your favorite sports or activities</Label>
+        <Label htmlFor="interests">Your favorite sports or interests</Label>
         <Input
-          id="activities"
-          {...register("activities")}
+          id="interests"
+          {...register("interests")}
           placeholder="e.g. Yoga, Running, Bouldering..."
           autoFocus
-          className={formErrors.activities || errors.activities ? "border-red-500" : ""}
+          className={formErrors.interests || errors.interests ? "border-red-500" : ""}
         />
-        {(formErrors.activities || errors.activities) && (
-          <p className="text-red-500 text-sm mt-1">{formErrors.activities?.message || errors.activities}</p>
+        {(formErrors.interests || errors.interests) && (
+          <p className="text-red-500 text-sm mt-1">{formErrors.interests?.message || errors.interests}</p>
         )}
       </div>
     </div>

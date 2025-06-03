@@ -6,7 +6,7 @@ import { AxeIcon, LogOut, SproutIcon, User } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-<<<<<<< HEAD
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,16 +17,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-
-=======
->>>>>>> 205f621e9d00d7084fc05d7c70a51689196ae5bb
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 

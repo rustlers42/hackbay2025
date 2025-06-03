@@ -5,77 +5,35 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { useRegistration } from "../context/RegistrationContext";
-import {
-  ActivitiesStep,
-  BirthdayStep,
-  FitnessStep,
-  InsuranceStep,
-  LocationStep,
-  NameStep,
-  ReviewStep,
-  TimeStep,
-} from "../steps";
+import { InterestsStep, PersonalStep, WhoStep } from "../steps";
 import { Step, steps } from "../types";
 
 // Map steps to their corresponding components
 const stepComponents: Record<Step, React.ComponentType> = {
-  name: NameStep,
-  birthday: BirthdayStep,
-  insurance: InsuranceStep,
-  fitness: FitnessStep,
-  activities: ActivitiesStep,
-  location: LocationStep,
-  time: TimeStep,
-  review: ReviewStep,
+  personal: PersonalStep,
+  who: WhoStep,
+  interest: InterestsStep,
 };
 
 // Step titles and descriptions
 const stepInfo: Record<Step, { title: string; description: string }> = {
-  name: {
+  personal: {
     title: "Personal Information",
     description: "Let's start with your name",
   },
-  birthday: {
-    title: "Birthday",
-    description: "When were you born?",
+  who: {
+    title: "WHO suggestion",
+    description: "Select how much you intend to meet WHOs Standards",
   },
-  insurance: {
-    title: "Insurance Information",
-    description: "Your insurance details (optional)",
-  },
-  fitness: {
-    title: "Fitness Level",
-    description: "How would you describe your fitness level?",
-  },
-  activities: {
-    title: "Favorite Activities",
-    description: "What sports or activities do you enjoy?",
-  },
-  location: {
-    title: "Location",
-    description: "Where are you located?",
-  },
-  time: {
-    title: "Availability",
-    description: "When are you usually available?",
-  },
-  review: {
-    title: "Review & Submit",
-    description: "Please review your information before submitting",
+  interest: {
+    title: "Interests",
+    description: "What do you like to do physically?",
   },
 };
 
 export const RegistrationWizard: React.FC = () => {
-  const {
-    currentStep,
-    currentStepIndex,
-    nextStep,
-    previousStep,
-    canSkipCurrentStep,
-    submitRegistration,
-    errors,
-    isLoading,
-  } = useRegistration();
+  const { currentStep, currentStepIndex, nextStep, previousStep, submitRegistration, errors, isLoading } =
+    useRegistration();
 
   const CurrentStepComponent = stepComponents[currentStep];
   const { title, description } = stepInfo[currentStep];
@@ -146,13 +104,6 @@ export const RegistrationWizard: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="flex space-x-2">
-            {/* Skip Button */}
-            {canSkipCurrentStep && !isLastStep && (
-              <Button type="button" variant="ghost" onClick={nextStep} disabled={isLoading}>
-                Skip
-              </Button>
-            )}
-
             {/* Next/Submit Button */}
             <Button type="button" onClick={handleNext} disabled={isLoading} className="min-w-[80px]">
               {isLoading ? (

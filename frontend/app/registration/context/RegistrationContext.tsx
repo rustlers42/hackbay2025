@@ -3,7 +3,7 @@
 import { BASE_API_URL } from "@/lib/api-config";
 import { useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useState } from "react";
-import { birthdaySchema, nameSchema, RegistrationData, skippableSteps, Step, steps, stepSchemas } from "../types";
+import { interestsSchema, personalSchema, RegistrationData, Step, steps, stepSchemas, whoSchema } from "../types";
 
 interface RegistrationContextType {
   currentStep: Step;
@@ -16,7 +16,6 @@ interface RegistrationContextType {
   nextStep: () => Promise<boolean>;
   previousStep: () => void;
   goToStep: (step: Step) => void;
-  canSkipCurrentStep: boolean;
 
   // Data management
   updateStepData: <T extends keyof RegistrationData>(stepData: Pick<RegistrationData, T>) => void;
@@ -43,14 +42,11 @@ interface RegistrationProviderProps {
 export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ children }) => {
   const router = useRouter();
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [data, setData] = useState<Partial<RegistrationData>>({
-    fitnessLevel: "beginner", // Default value
-  });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [data, setData] = useState<Partial<RegistrationData>>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const currentStep = steps[currentStepIndex];
-  const canSkipCurrentStep = skippableSteps.includes(currentStep);
 
   const updateStepData = useCallback(<T extends keyof RegistrationData>(stepData: Pick<RegistrationData, T>) => {
     setData((prev) => ({ ...prev, ...stepData }));
@@ -86,7 +82,7 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
   const nextStep = useCallback(async (): Promise<boolean> => {
     const isValid = await validateCurrentStep();
 
-    if (isValid || canSkipCurrentStep) {
+    if (isValid) {
       if (currentStepIndex < steps.length - 1) {
         setCurrentStepIndex((prev) => prev + 1);
         return true;
@@ -94,7 +90,7 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
     }
 
     return false;
-  }, [currentStepIndex, validateCurrentStep, canSkipCurrentStep]);
+  }, [currentStepIndex, validateCurrentStep]);
 
   const previousStep = useCallback(() => {
     if (currentStepIndex > 0) {
@@ -116,7 +112,7 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
       setIsLoading(true);
 
       // Final validation of all data
-      const requiredSchema = nameSchema.merge(birthdaySchema);
+      const requiredSchema = personalSchema.merge(whoSchema).merge(interestsSchema);
       const result = requiredSchema.safeParse(data);
       if (!result.success) {
         throw new Error("Please complete all required fields");
@@ -159,7 +155,6 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
     nextStep,
     previousStep,
     goToStep,
-    canSkipCurrentStep,
     updateStepData,
     validateCurrentStep,
     submitRegistration,
