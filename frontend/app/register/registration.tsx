@@ -49,7 +49,7 @@ export default function RegistrationForm() {
   };
 
   return (
-    <form onSubmit={handleSdfghjkubmit(onSubmit)} className="space-y-4 max-w-md mx-auto mt-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md mx-auto mt-8">
       <div>
         <Label>First Name</Label>
         <Input {...register("firstName")} />
