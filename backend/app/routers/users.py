@@ -22,8 +22,8 @@ class RegistrationRequest(BaseModel):
     firstName: str
     lastName: str
     birthday: str  # Will be converted to date
-    insuranceProvider: str
-    insuranceNumber: str
+    insuranceProvider: Optional[str] = None
+    insuranceNumber: Optional[str] = None
     fitnessLevel: Optional[FitnessLevel] = None
     activities: Optional[str] = None
     location: Optional[str] = None
@@ -32,7 +32,10 @@ class RegistrationRequest(BaseModel):
     
     @validator('insuranceNumber')
     def validate_insurance_number(cls, v):
-        if not v or len(v) != 10 or not v[0].isalpha() or not v[1:].isdigit():
+        # Skip validation if value is None or empty
+        if not v:
+            return v
+        if len(v) != 10 or not v[0].isalpha() or not v[1:].isdigit():
             raise ValueError('Insurance number must be in format A123456789')
         return v.upper()
     
