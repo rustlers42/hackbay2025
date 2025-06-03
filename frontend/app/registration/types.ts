@@ -47,7 +47,7 @@ export const personalSchema = z.object({
 });
 
 export const whoSchema = z.object({
-  intensity: z.number().min(0).max(100),
+  intensity: z.number().min(0),
 });
 
 export const interestsSchema = z.object({

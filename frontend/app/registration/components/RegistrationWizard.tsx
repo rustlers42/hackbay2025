@@ -23,7 +23,7 @@ const stepInfo: Record<Step, { title: string; description: string }> = {
   },
   who: {
     title: "WHO suggestion",
-    description: "Select how much you intend to meet WHOs Standards",
+    description: "",
   },
   interest: {
     title: "Interests",
