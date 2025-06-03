@@ -7,12 +7,23 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 
@@ -24,21 +35,43 @@ type UserProfile = {
 
 export default function Header() {
   const { isAuthenticated, user, logout } = useAuth();
-
-  // Only fetch user profile when authenticated
   const { data: userProfile, isLoading } = useFetchApi<UserProfile>(BASE_API_URL + "/users/me", {
     requireAuth: true,
-    // Skip the API call if not authenticated
     enabled: isAuthenticated,
   });
 
   return (
     <header className="border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <AxeIcon className="h-6 w-6  text-green-600" />
-          <h1 className="text-2xl font-bold">activate</h1>
-        </Link>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="flex items-center gap-2 focus:outline-none">
+              <AxeIcon className="h-6 w-6 text-green-600" />
+              <h1 className="text-2xl font-bold cursor-pointer">activate</h1>
+            </button>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent className="w-48" align="start">
+            <DropdownMenuLabel>Account</DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <Link href="/events/map">Map</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/settings">Settings</Link>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onSelect={(event) => {
+                event.preventDefault();
+                logout();
+              }}
+            >
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <NavigationMenu>
           <NavigationMenuList>
