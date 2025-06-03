@@ -22,10 +22,7 @@ router.include_router(users_router, prefix="/users")
 
 
 @router.post("/register", response_model=RegistrationResponse, tags=["auth"])
-async def register(
-    registration_data: RegistrationRequest,
-    session: Session = Depends(get_session)
-):
+async def register(registration_data: RegistrationRequest, session: Session = Depends(get_session)):
     """
     Register endpoint at root level to match frontend expectations
     """
