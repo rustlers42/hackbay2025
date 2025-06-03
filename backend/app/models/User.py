@@ -18,11 +18,15 @@ class UserDTO(BaseModel):
     email: str
     username: str
     bonus_points: int
+    level: float
 
 
 class User(SQLModel, UserDTO, table=True):
     id: int | None = Field(default=None, primary_key=True)
     hashed_password: str
+
+    bonus_points: int
+    level: float
 
     # Personal information
     first_name: str | None = None

@@ -115,6 +115,8 @@ async def register_user(registration_data: RegistrationRequest, session: Session
         username=username,
         hashed_password=hashed_password,
         bonus_points=0,
+        level=0.0,
+
         # Personal information
         first_name=registration_data.firstName,
         last_name=registration_data.lastName,
@@ -136,7 +138,7 @@ async def register_user(registration_data: RegistrationRequest, session: Session
 
     return RegistrationResponse(
         message="User registered successfully",
-        user=UserDTO(email=user.email, username=user.username, bonus_points=user.bonus_points),
+        user=UserDTO(email=user.email, username=user.username, bonus_points=user.bonus_points, level=user.level),
     )
 
 
@@ -150,6 +152,7 @@ async def get_users_me(*, current_user: User = Depends(get_current_user)):
         email=current_user.email,
         username=current_user.username,
         bonus_points=current_user.bonus_points,
+        level=current_user.level,
     )
 
 
@@ -159,6 +162,6 @@ async def get_leaderboard(session: Session = Depends(get_session)):
     Get the leaderboard
     """
     return [
-        UserDTO(email=user.email, username=user.username, bonus_points=user.bonus_points)
+        UserDTO(email=user.email, username=user.username, bonus_points=user.bonus_points, level=user.level)
         for user in session.exec(select(User).order_by(User.bonus_points.desc())).all()
     ]

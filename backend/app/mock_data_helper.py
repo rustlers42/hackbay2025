@@ -16,12 +16,14 @@ def setup_mock_data(session: Session):
                 username="admin",
                 hashed_password=get_password_hash("admin"),
                 bonus_points=0,
+                level=0.0,
             ),
             User(
                 email="user@user.de",
                 username="user",
                 hashed_password=get_password_hash("user"),
                 bonus_points=0,
+                level=0.0,
             ),
         ]
         session.add_all(user)
