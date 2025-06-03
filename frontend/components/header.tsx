@@ -6,6 +6,7 @@ import { Footprints, LogOut, Star, User } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +17,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
@@ -46,7 +54,6 @@ export default function Header() {
                 <span className="text-green-700">M</span>
                 <span className="text-lg">ATCH</span>
               </h1>
-
             </button>
           </DropdownMenuTrigger>
 
@@ -95,11 +102,11 @@ export default function Header() {
 
           {isAuthenticated ? (
             <div className="flex items-center gap-2">
-            {/*  
+              {/*  
               <span>{user?.username}</span>
           */}
               <User className="h-4 w-4" />
-              
+
               <Button variant="ghost" size="icon" onClick={logout} aria-label="Logout">
                 <LogOut className="h-4 w-4" />
               </Button>
