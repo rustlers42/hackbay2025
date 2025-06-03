@@ -117,15 +117,15 @@ def setup_mock_data(session: Session):
     if session.exec(select(Organiser)).first() is None:
         logging.info("creating default organiser because there are none")
         organiser = [
-            Organiser(name="REWE", description="REWE is a german company."),
-            Organiser(name="Sparkasse", description="Sparkasse is a german company."),
-            Organiser(name="DAK Gesundheit", description="DAK Gesundheit is a german company."),
+            Organiser(name="REWE", description="REWE is a German company."),
+            Organiser(name="Sparkasse", description="Sparkasse is a German company."),
+            Organiser(name="DAK Gesundheit", description="DAK Gesundheit is a German company."),
             Organiser(name="Mammutmarsch", description="Mammutmarsch is a running event."),
             Organiser(
                 name="Ruderverein Nürnberg",
-                description="Der Ruderverein Nürnberg von 1880 e.V. ist Ausrichter der jährlich stattfindenden Nürnberger Kurzstreckenregatta des Deutschen Ruderverbandes in Nürnberg.",
+                description="The Ruderverein Nürnberg von 1880 e.V. is the organizer of the annual Nuremberg Short Distance Regatta of the German Rowing Association in Nuremberg.",
             ),
-            Organiser(name="stmgp", description="Bayrisches Staatsministerium für Gesundheit, Pflege und Prävention."),
+            Organiser(name="stmgp", description="Bavarian State Ministry for Health, Care and Prevention."),
         ]
         session.add_all(organiser)
         session.commit()
@@ -147,8 +147,8 @@ def setup_mock_data(session: Session):
 
         event = [
             Event(
-                name="REWE Teamchallenge",
-                description="16. REWE Team Challenge Dresden, running with your team",
+                name="REWE Team Challenge",
+                description="16th REWE Team Challenge Dresden, running with your team",
                 organiser_type=EventOrganiserType.company,
                 organiser_id=rewe_organiser_id,
                 latitude=51.050397,
@@ -163,7 +163,7 @@ def setup_mock_data(session: Session):
             ),
             Event(
                 name="Mammutmarsch",
-                description="Für uns ist klar: Nürnberg und Mammutmarsch gehören einfach zusammen! Für unser Event in 2026 haben wir für euch wieder drei wunderschöne Strecken für die 30, 42 und 55 KM-Distanzen zusammengestellt. Egal, für welche Route ihr euch entscheidet, alle drei haben so einiges zu bieten: Eines der absoluten Highlights ist der Aufstieg zur historischen Kaiserburg - ein Erlebnis, das Geschichte und Abenteuer vereint. Außerdem führt euch ein großer Teil der Strecke direkt durch den eindrucksvollen Burggraben der Stadt, wo ihr die faszinierende Verbindung von städtischem Flair und malerischen Landschaften hautnah erleben könnt.",
+                description="For us, it's clear: Nuremberg and Mammutmarsch simply belong together! For our 2026 event, we've put together three beautiful routes for the 30, 42, and 55 KM distances. No matter which route you choose, all three have a lot to offer: One of the absolute highlights is the climb to the historic Imperial Castle - an experience that combines history and adventure. Additionally, a large part of the route takes you directly through the impressive castle moat of the city, where you can experience the fascinating connection between urban flair and picturesque landscapes up close.",
                 organiser_type=EventOrganiserType.company,
                 organiser_id=mammutmarsch_organiser_id,
                 latitude=49.455210209867445,
@@ -178,7 +178,7 @@ def setup_mock_data(session: Session):
             ),
             Event(
                 name="Sparkassen Metropolmarathon",
-                description="Zwei Städte, zahlreiche Wettbewerbe, 600 Volunteers, 9.000 Läuferinnen und Läufer  – und DU mittendrin! Am 22. Juni 2025 heißt es: „Von der Kaiserburg zum Kleeblatt“!",
+                description="Two cities, numerous competitions, 600 volunteers, 9,000 runners - and YOU in the middle of it all! On June 22, 2025, it's time for 'From the Imperial Castle to the Cloverleaf'!",
                 organiser_type=EventOrganiserType.company,
                 organiser_id=sparkasse_organiser_id,
                 latitude=49.45391579580075,
@@ -192,8 +192,8 @@ def setup_mock_data(session: Session):
                 updated_at=datetime(2025, 6, 1, 0, 0, 0),
             ),
             Event(
-                name="Kurzstreckenregatta",
-                description="Anders als die Rennen über die Normalstrecke von 2000 Meter bietet die „nur“ 500 Meter lange Strecke der Kurzstreckenregatta den Vorteil von schnellen und knappen Rennen, die im Abstand von nur wenigen Minuten gestartet werden und so ein unvergleichliches Spektakel für Zuschauer aller Altersklassen bietet. Am 12./13.07.2025",
+                name="Short Distance Regatta",
+                description="Unlike the races over the normal 2000-meter course, the 'only' 500-meter course of the Short Distance Regatta offers the advantage of fast and concise races, which are started at intervals of just a few minutes, thus providing an incomparable spectacle for spectators of all age groups. On July 12/13, 2025",
                 organiser_type=EventOrganiserType.company,
                 organiser_id=ruderverein_nbg_organiser_id,
                 latitude=49.433557427339736,
@@ -207,8 +207,8 @@ def setup_mock_data(session: Session):
                 updated_at=datetime(2025, 6, 1, 0, 0, 0),
             ),
             Event(
-                name="B2Run Firmenlauf",
-                description="Der B2Run Firmenlauf ist ein Laufwettbewerb, der von der DAK Gesundheit organisiert wird. Er findet am 22.07.2025 statt.",
+                name="B2Run Corporate Run",
+                description="The B2Run Corporate Run is a running competition organized by DAK Gesundheit. It takes place on July 22, 2025.",
                 organiser_type=EventOrganiserType.company,
                 organiser_id=dak_gesundheit_organiser_id,
                 latitude=49.42637818095163,
@@ -226,7 +226,7 @@ def setup_mock_data(session: Session):
         session.commit()
 
     if session.exec(select(EventTagLink)).first() is None:
-        event = session.exec(select(Event).where(Event.name == "REWE Teamchallenge")).first()
+        event = session.exec(select(Event).where(Event.name == "REWE Team Challenge")).first()
         running_tag = session.exec(select(Tag).where(Tag.name == "running")).first()
 
         event_tag_link = [
@@ -236,7 +236,7 @@ def setup_mock_data(session: Session):
         session.commit()
 
     if session.exec(select(EventUserLink)).first() is None:
-        event = session.exec(select(Event).where(Event.name == "REWE Teamchallenge")).first()
+        event = session.exec(select(Event).where(Event.name == "REWE Team Challenge")).first()
         user = session.exec(select(User).where(User.username == "user")).first()
 
         event_user_link = [
