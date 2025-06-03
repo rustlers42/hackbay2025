@@ -30,9 +30,14 @@ def setup_mock_data(session: Session):
     if session.exec(select(Tag)).first() is None:
         logging.info("creating default tags because there are none")
         tag = [
-            Tag(name="cycling"),
+            Tag(name="badminton"),
             Tag(name="running"),
-            Tag(name="workshop"),
+            Tag(name="cycling"),
+            Tag(name="yoga"),
+            Tag(name="pilates"),
+            Tag(name="soccer"),
+            Tag(name="basketball"),
+            Tag(name="volleyball"),
         ]
         session.add_all(tag)
         session.commit()
@@ -61,6 +66,7 @@ def setup_mock_data(session: Session):
                 organiser_id=rewe_organiser_id,
                 latitude=51.050397,
                 longitude=13.731702,
+                url="https://team-challenge-dresden.de",
                 max_participants=0,
                 bonus_points=10,
                 start_date=datetime(2025, 5, 28, 17, 0, 0),
