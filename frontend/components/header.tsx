@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { LogOut, SproutIcon, SproutIcon as Seedling, User, AxeIcon } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { useFetchApi } from "@/lib/use-api";
+import { AxeIcon, LogOut, SproutIcon, User } from "lucide-react";
+import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,7 +13,6 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 

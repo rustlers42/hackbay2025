@@ -1,9 +1,9 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { AuthProvider } from "@/lib/auth-context";
 import { Inter } from "next/font/google";
 import type React from "react";
 import "./globals.css";
-import { AuthProvider } from "@/lib/auth-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
