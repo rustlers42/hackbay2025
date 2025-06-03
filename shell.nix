@@ -7,6 +7,7 @@ pkgs.mkShell {
     libyaml
     uv
     bun
+    ruff
   ];
 }
 

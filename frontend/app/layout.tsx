@@ -1,4 +1,3 @@
-import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { Inter } from "next/font/google";
 import type React from "react";
@@ -20,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
 
             <main className="flex-1 flex flex-col">{children}</main>
-          <Footer />
+          {/*<Footer />*/}
         </Providers>
       </body>
     </html>

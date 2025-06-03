@@ -6,6 +6,7 @@ import { AxeIcon, LogOut, SproutIcon, User } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +25,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
+=======
+>>>>>>> 205f621e9d00d7084fc05d7c70a51689196ae5bb
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 
@@ -73,7 +76,7 @@ export default function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <NavigationMenu>
+        {/*<NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <Link href="/events/map" legacyBehavior passHref>
@@ -81,7 +84,7 @@ export default function Header() {
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
-        </NavigationMenu>
+        </NavigationMenu>*/}
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
