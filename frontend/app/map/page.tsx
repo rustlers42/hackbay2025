@@ -6,6 +6,7 @@ import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Vi
 
 import classes from "./page.module.css";
 
+import ProtectedRoute from "@/components/protected-route";
 import Pin from "./pin";
 
 interface Location {
@@ -65,24 +66,26 @@ const MapView: React.FC = () => {
   };
 
   return (
-    <main className={classes.mainStyle}>
-      <div className="flex items-center justify-center flex-1">
-        <Map
-          mapboxAccessToken={mapboxToken}
-          mapStyle="mapbox://styles/yves147/cmbgcd7j6007601qw6e7z7n3i/draft"
-          initialViewState={initialViewState}
-          maxZoom={20}
-          minZoom={3}
-          style={{ width: "100%", height: "100%" }}
-        >
-          <GeolocateControl position="top-left" />
-          <FullscreenControl position="top-left" />
-          <NavigationControl position="top-left" />
+    <ProtectedRoute>
+      <main className={classes.mainStyle}>
+        <div className="flex items-center justify-center flex-1">
+          <Map
+            mapboxAccessToken={mapboxToken}
+            mapStyle="mapbox://styles/yves147/cmbgcd7j6007601qw6e7z7n3i/draft"
+            initialViewState={initialViewState}
+            maxZoom={20}
+            minZoom={3}
+            style={{ width: "100%", height: "100%" }}
+          >
+            <GeolocateControl position="top-left" />
+            <FullscreenControl position="top-left" />
+            <NavigationControl position="top-left" />
 
-          {markers}
-        </Map>
-      </div>
-    </main>
+            {markers}
+          </Map>
+        </div>
+      </main>
+    </ProtectedRoute>
   );
 };
 

@@ -43,10 +43,8 @@ export default function Header() {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link href="/dashboard" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Dashboard (nicht fertig)
-                </NavigationMenuLink>
+              <Link href="/map" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Karte</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
