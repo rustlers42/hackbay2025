@@ -53,7 +53,7 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 };
 
 const MapView: React.FC = () => {
-  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/search?tags=badminton");
+  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
   const mapRef = useRef<MapRef>(null);
@@ -78,7 +78,7 @@ const MapView: React.FC = () => {
 
     const timeout = setTimeout(() => {
       resetFly();
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timeout);
   }, [eventData]);
@@ -102,7 +102,7 @@ const MapView: React.FC = () => {
   };
 
   const resetFly = () => {
-    flyToEvent(49.4405421, 11.1046655, 12, 330, 30);
+    flyToEvent(49.4405421, 11.1046655, 11, 330, 30);
     setSelectedEvent(null);
   };
 
