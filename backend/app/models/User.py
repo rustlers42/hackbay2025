@@ -23,16 +23,16 @@ class UserDTO(BaseModel):
 class User(SQLModel, UserDTO, table=True):
     id: int | None = Field(default=None, primary_key=True)
     hashed_password: str
-    
+
     # Personal information
     first_name: str | None = None
     last_name: str | None = None
     birthday: date | None = None
-    
+
     # Insurance information
     insurance_provider: str | None = None
     insurance_number: str | None = None
-    
+
     # Fitness and activity preferences
     fitness_level: FitnessLevel | None = None
     activities: str | None = None
