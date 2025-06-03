@@ -12,12 +12,24 @@ from .events import router as events_router
 from .health import router as health_router
 from .tags import router as tags_router
 from .users import router as users_router
+from .users import register_user, RegistrationRequest, RegistrationResponse
 
 router = APIRouter()
 router.include_router(events_router, prefix="/events")
 router.include_router(tags_router, prefix="/tags")
 router.include_router(health_router, prefix="/health", tags=["health"])
 router.include_router(users_router, prefix="/users")
+
+
+@router.post("/register", response_model=RegistrationResponse, tags=["auth"])
+async def register(
+    registration_data: RegistrationRequest,
+    session: Session = Depends(get_session)
+):
+    """
+    Register endpoint at root level to match frontend expectations
+    """
+    return await register_user(registration_data, session)
 
 
 @router.post("/token", tags=["auth"])
