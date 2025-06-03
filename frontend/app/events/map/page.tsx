@@ -35,6 +35,16 @@ interface Event {
   longitude: number;
 }
 
+interface SearchResult {
+  url: string;
+  name: string;
+  description: string;
+  start_date: string;
+  end_date: string;
+  latitude: number;
+  longitude: number;
+}
+
 const Pin: React.FC<{ color: string }> = ({ color }) => {
   return (
     <div className="relative">
@@ -55,7 +65,7 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 const MapView: React.FC = () => {
   const [showFullDetails, setShowFullDetails] = useState(false);
   const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
-  const { data: searchData, isLoading: isSearchLoading } = useFetchApi<Event[]>(
+  const { data: searchData, isLoading: isSearchLoading } = useFetchApi<SearchResult[]>(
     "http://localhost:8000/search?tags=badminton&tags=basketball",
   );
 
@@ -66,7 +76,7 @@ const MapView: React.FC = () => {
   const [allSearchLocations, setAllSearchLocations] = useState<Location[]>([]);
   const [displayedSearchCount, setDisplayedSearchCount] = useState(0);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [selectedSearchEvent, setSelectedSearchEvent] = useState<Event | null>(null);
+  const [selectedSearchEvent, setSelectedSearchEvent] = useState<SearchResult | null>(null);
 
   useEffect(() => {
     if (eventData) {
@@ -338,10 +348,12 @@ const MapView: React.FC = () => {
 
                       <Button
                         className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-                        onClick={() => setShowFullDetails(true)}
+                        onClick={() => {
+                          window.open(selectedSearchEvent.url, "_blank");
+                        }}
                       >
                         <Info className="w-4 h-4 mr-2" />
-                        View Search Result Details
+                        Interested?
                       </Button>
                     </CardContent>
                   </Card>
@@ -351,13 +363,10 @@ const MapView: React.FC = () => {
           </Map>
         </div>
       </main>
-      {showFullDetails && (selectedEvent || selectedSearchEvent) && (
+      {showFullDetails && selectedEvent && (
         <div className="fixed inset-0 bg-black/50 z-60 flex justify-center items-center">
           <div className="bg-white max-w-4xl w-full overflow-auto max-h-[100vh] relative">
-            <EventDetailsOverlay
-              eventId={(selectedEvent || selectedSearchEvent)?.id || 0}
-              onClose={() => setShowFullDetails(false)}
-            />
+            <EventDetailsOverlay eventId={selectedEvent.id} onClose={() => setShowFullDetails(false)} />
           </div>
         </div>
       )}
