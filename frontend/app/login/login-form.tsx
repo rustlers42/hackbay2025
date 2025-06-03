@@ -48,6 +48,8 @@ export default function LoginForm() {
       formData.append("username", values.username);
       formData.append("password", values.password);
 
+      console.log(BASE_API_URL);
+
       // Use the proxied API endpoint to avoid CORS issues
       const response = await fetch(BASE_API_URL + "/token", {
         method: "POST",
