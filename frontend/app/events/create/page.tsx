@@ -14,7 +14,7 @@ import Map, { Marker } from "react-map-gl/mapbox";
 interface NewEvent {
   name: string;
   description: string;
-  organiser_type: "individual" | "organization";
+  organiser_type: "individual" | "company" | "professional" | "advertisement";
   organiser_id: string;
   latitude: number;
   longitude: number;
@@ -40,7 +40,7 @@ export default function CreateEventPage() {
     "latitude" | "longitude" | "id"
   >>({
     name: "",
-    organiser_type: "organization",
+    organiser_type: "company",
     description: "",
     organiser_id: "1", // assuming fixed organisation
     max_participants: 0,
@@ -110,7 +110,7 @@ export default function CreateEventPage() {
       setFormData({
         name: "",
         description: "",
-        organiser_type: "organization",
+        organiser_type: "company",
         organiser_id: "1",
         max_participants: 0,
         bonus_points: 0,
