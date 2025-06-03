@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useRegistration } from "../context/RegistrationContext";
 import { personalSchema, RegistrationData } from "../types";
 
-type PersonalFormData = Pick<RegistrationData, "name" | "email" | "birthday" | "password">;
+type PersonalFormData = Pick<RegistrationData, "username" | "email" | "birthday" | "password">;
 
 export const PersonalStep: React.FC = () => {
   const { data, updateStepData, errors } = useRegistration();
@@ -20,7 +20,7 @@ export const PersonalStep: React.FC = () => {
   } = useForm<PersonalFormData>({
     resolver: zodResolver(personalSchema),
     defaultValues: {
-      name: data.name || "",
+      username: data.username || "",
       email: data.email || "",
       birthday: data.birthday || "",
       password: data.password || "",
@@ -28,7 +28,7 @@ export const PersonalStep: React.FC = () => {
   });
 
   // Watch form values and sync with context in real-time
-  const watchedName = watch("name");
+  const watchedName = watch("username");
   const watchedEmail = watch("email");
   const watchedBirthday = watch("birthday");
   const watchedPassword = watch("password");
@@ -36,7 +36,7 @@ export const PersonalStep: React.FC = () => {
   useEffect(() => {
     // Update context data whenever form values change
     updateStepData({
-      name: watchedName,
+      username: watchedName,
       email: watchedEmail,
       birthday: watchedBirthday,
       password: watchedPassword,
@@ -46,15 +46,15 @@ export const PersonalStep: React.FC = () => {
   return (
     <div className="space-y-4">
       <div>
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="username">Name</Label>
         <Input
-          id="name"
-          {...register("name")}
+          id="username"
+          {...register("username")}
           autoFocus
-          className={formErrors.name || errors.name ? "border-red-500" : ""}
+          className={formErrors.username || errors.username ? "border-red-500" : ""}
         />
-        {(formErrors.name || errors.name) && (
-          <p className="text-red-500 text-sm mt-1">{formErrors.name?.message || errors.name}</p>
+        {(formErrors.username || errors.username) && (
+          <p className="text-red-500 text-sm mt-1">{formErrors.username?.message || errors.username}</p>
         )}
       </div>
 
