@@ -1,0 +1,90 @@
+[
+    {
+        "name": "STADTRADELN 2025",
+        "description": "A campaign to motivate people to cycle and show that cycling plays an important role in urban mobility. N\u00fcrnberger k\u00f6nnen Rad-Kilometer sammeln und messen sich mit anderen Teilnehmern. Mitradeln f\u00fcr den Klimaschutz in N\u00fcrnberg. City cycling event.",
+        "weekly": true,
+        "start_date": "2025-05-19T00:00",
+        "end_date": "2025-06-08T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.nuernberg.de/internet/verkehrsplanung/stadtradeln.html"
+    },
+    {
+        "name": "Verkehrsausschuss-Sitzung mit ganz viel Fahrrad",
+        "description": "Verkehrsausschuss-Sitzung des N\u00fcrnberger Stadtrates mit Schwerpunkt auf Fahrradthemen.",
+        "weekly": false,
+        "start_date": "2025-01-16T00:00",
+        "end_date": "2025-01-16T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://nuernberg.adfc.de/neuigkeit/16012025-eine-verkehrsausschuss-sitzung-mit-ganz-viel-fahrrad"
+    },
+    {
+        "name": "ADFC N\u00fcrnberg Saisonauftakt",
+        "description": "Der Allgemeine Deutsche Fahrrad-Club (ADFC) l\u00e4dt zum Saisonstart ein, mit sechs gef\u00fchrten Er\u00f6ffnungstouren. Start ist um 13 Uhr am Wei\u00dfen Turm (Ludwigsplatz) in der N\u00fcrnberger Innenstadt.",
+        "weekly": false,
+        "start_date": "2025-04-05T13:00",
+        "end_date": "2025-04-05T13:00",
+        "latitude": 49.45067696845646,
+        "longitude": 11.070725797934596,
+        "location": "Wei\u00dfer Turm (Ludwigsplatz), N\u00fcrnberg",
+        "url": "https://nuernberg.adfc.de/pressemitteilung/adfc-nuernberg-saisonauftakt-am-5-april-2025"
+    },
+    {
+        "name": "Radtour durch die N\u00fcrnberger Altstadt",
+        "description": "Rund f\u00fcnf Kilometer lange Route durch die N\u00fcrnberger Altstadt mit bekannten und unbekannten Sehensw\u00fcrdigkeiten.",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.vagrad.de/de/"
+    },
+    {
+        "name": "VAG_Rad Fahrradverleih",
+        "description": "Fahrradverleih in N\u00fcrnberg, F\u00fcrth, Erlangen und Schwabach mit verschiedenen Tarifen und Lastenr\u00e4dern.",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-12-31T23:59",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg, F\u00fcrth, Erlangen, Schwabach",
+        "url": "https://www.vagrad.de/de/"
+    },
+    {
+        "name": "Mountainbike-Panoramatour zu den Heum\u00f6derntrails im Altm\u00fchltal",
+        "description": "Solnhofen - Treucht\u00e4drischer Eisenhammer -Eckersm\u00fchlen - Hilpoltstein - Rothsee - Allersberg",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 49.07263992000743,
+        "longitude": 11.35583000627375,
+        "location": "Altm\u00fchltal",
+        "url": "https://www.vgn.de/freizeit/radtouren/"
+    },
+    {
+        "name": "Mountainbiken im Trail-Paradies Ochsenkopf",
+        "description": "Fleckl/Ochsenkopf - Moosbachtal - K\u00f6nigsheide - Weidenberg",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 50.03152148319737,
+        "longitude": 11.80908083741365,
+        "location": "Ochsenkopf",
+        "url": "https://www.vgn.de/freizeit/radtouren/"
+    },
+    {
+        "name": "Industriegeschichte und Beach-Flair im Fr\u00e4nkischen Seenland",
+        "description": "Roth - Hisst\u00f6drischer Eisenhammer -Eckersm\u00fchlen - Hilpoltstein - Rothsee - Allersberg",
+        "weekly": false,
+        "start_date": "2025-01-01T00:00",
+        "end_date": "2025-01-01T00:00",
+        "latitude": 49.13432892417745,
+        "longitude": 10.817586998731246,
+        "location": "Fr\u00e4nkisches Seenland",
+        "url": "https://www.vgn.de/freizeit/radtouren/"
+    }
+]
