@@ -53,7 +53,7 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 };
 
 const MapView: React.FC = () => {
-  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
+  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/search?tags=badminton");
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
   const mapRef = useRef<MapRef>(null);

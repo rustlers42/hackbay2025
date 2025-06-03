@@ -1,4 +1,4 @@
-# adopt-a-seed
+# meetmatch
 
 ## Getting Started
 

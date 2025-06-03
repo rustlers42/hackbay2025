@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "adopt-a-seed",
+      "name": "meetmatch",
       "dependencies": {
         "@daypilot/daypilot-lite-react": "^4.0.2",
         "@hookform/resolvers": "^4.1.3",
