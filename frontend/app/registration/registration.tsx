@@ -24,11 +24,14 @@ const stepFields: Record<Step, (keyof RegistrationFormData)[]> = {
 };
 
 const formSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
+  firstName: z.string().min(2, "First name too short"),
+  lastName: z.string().min(2, "Last name too short"),
   birthday: z.string().refine((val) => !isNaN(Date.parse(val)), { message: "Invalid date" }),
-  insuranceProvider: z.enum(insuranceProviders as [string, ...string[]]),
-  insuranceNumber: z.string().regex(/^[A-Z]{1}[0-9]{9}$/i, "Invalid insurance number"),
+  insuranceProvider: z.enum(insuranceProviders as [string, ...string[]]).optional(),
+  insuranceNumber: z
+    .string()
+    .regex(/^[A-Z]{1}[0-9]{9}$/i, "Invalid insurance number")
+    .optional(),
   fitnessLevel: z.enum(["beginner", "intermediate", "pro"]).optional(),
   activities: z.string().optional(),
   location: z.string().optional(),
@@ -70,9 +73,12 @@ export default function RegistrationWizard() {
   };
 
   const prev = () => setStepIndex((i) => Math.max(i - 1, 0));
-  const skip = () => setStepIndex((i) => i + 1);
 
   const onSubmit = async (data: RegistrationFormData) => {
+    if (!getValues().insuranceNumber || !getValues().insuranceProvider) {
+      setValue("insuranceNumber", undefined);
+      setValue("insuranceProvider", undefined);
+    }
     const res = await fetch("/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -84,7 +90,15 @@ export default function RegistrationWizard() {
   };
 
   return (
-    <form className="max-w-xl w-full mx-auto mt-10">
+    <form
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          next();
+        }
+      }}
+      className="max-w-xl w-full mx-auto mt-10"
+    >
       <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
         <div
           className="h-full bg-blue-500 transition-all duration-300"
@@ -111,7 +125,7 @@ export default function RegistrationWizard() {
               {currentStep === "name" && (
                 <>
                   <Label>First Name</Label>
-                  <Input {...register("firstName")} />
+                  <Input {...register("firstName")} autoFocus />
                   {errors.firstName && <p className="text-red-500 max-w-[100%]">{errors.firstName.message}</p>}
 
                   <Label className="mt-2">Last Name</Label>
@@ -123,7 +137,7 @@ export default function RegistrationWizard() {
               {currentStep === "birthday" && (
                 <>
                   <Label>Birthday</Label>
-                  <Input type="date" {...register("birthday")} />
+                  <Input type="date" {...register("birthday")} autoFocus />
                   {errors.birthday && <p className="text-red-500 max-w-[100%]">{errors.birthday.message}</p>}
                 </>
               )}
@@ -145,9 +159,6 @@ export default function RegistrationWizard() {
 
                   <Label className="mt-4">Insurance Number</Label>
                   <Input {...register("insuranceNumber")} placeholder="A123456789" />
-                  {errors.insuranceNumber && (
-                    <p className="text-red-500 max-w-[100%]">{errors.insuranceNumber.message}</p>
-                  )}
                 </>
               )}
 
@@ -174,7 +185,6 @@ export default function RegistrationWizard() {
                 <>
                   <Label>Your favorite sports or activities</Label>
                   <Input {...register("activities")} placeholder="e.g. Yoga, Running, Bouldering..." />
-                  {errors.activities && <p className="text-red-500 max-w-[100%]">{errors.activities.message}</p>}
                 </>
               )}
 
@@ -182,7 +192,6 @@ export default function RegistrationWizard() {
                 <>
                   <Label>Where do you live?</Label>
                   <Input {...register("location")} placeholder="City or area" />
-                  {errors.location && <p className="text-red-500 max-w-[100%]">{errors.location.message}</p>}
                 </>
               )}
 
@@ -248,17 +257,17 @@ export default function RegistrationWizard() {
 
           <div className="flex space-x-2">
             {skippableSteps.includes(currentStep) && (
-              <Button type="button" variant="ghost" onClick={skip}>
+              <Button type="button" variant="ghost" onClick={next}>
                 Skip
               </Button>
             )}
 
             {stepIndex < steps.length - 1 ? (
-              <Button type="button" onClick={next}>
+              <Button type="button" onClick={next} autoFocus>
                 Next
               </Button>
             ) : (
-              <Button type="submit" onClick={handleSubmit(onSubmit)}>
+              <Button type="submit" onClick={handleSubmit(onSubmit)} autoFocus>
                 Submit
               </Button>
             )}
