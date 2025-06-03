@@ -6,3 +6,4 @@ class User(SQLModel, table=True):
     email: str
     username: str
     hashed_password: str
+    bonus_points: int
