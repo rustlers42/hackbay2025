@@ -6,6 +6,7 @@ from sqlmodel import Field, SQLModel
 
 class EventOrganiserType(str, Enum):
     individual = "individual"
+    professional = "professional"
     company = "company"
     advertisement = "advertisement"
 
