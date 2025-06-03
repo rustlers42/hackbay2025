@@ -30,13 +30,17 @@ const formSchema = z.object({
   insuranceProvider: z.enum(insuranceProviders as [string, ...string[]]),
   insuranceNumber: z.string().regex(/^[A-Z]{1}[0-9]{9}$/i, "Invalid insurance number"),
   fitnessLevel: z.enum(["beginner", "intermediate", "pro"]).optional(),
-  activities: z.string().min(3).optional(),
-  location: z.string().min(2).optional(),
+  activities: z.string().optional(),
+  location: z.string().optional(),
   startTime: z.string().optional(),
   endTime: z.string().optional(),
 });
 
 type RegistrationFormData = z.infer<typeof formSchema>;
+
+function handleLogin() {
+  /*!todo;*/
+}
 
 export default function RegistrationWizard() {
   const [stepIndex, setStepIndex] = useState(0);
@@ -75,8 +79,7 @@ export default function RegistrationWizard() {
       body: JSON.stringify(data),
     });
     alert(res.ok ? "Registered!" : "Registration failed.");
-    //make user logged in "ogin()
-    // handleLogin()
+    handleLogin();
     redirect("events/map");
   };
 
@@ -208,7 +211,10 @@ export default function RegistrationWizard() {
                     <strong>Birthday:</strong> {getValues().birthday}
                   </p>
                   <p>
-                    <strong>Insurance:</strong> {getValues().insuranceProvider} - {getValues().insuranceNumber}
+                    <strong>Insurance:</strong>{" "}
+                    {getValues().insuranceProvider && getValues().insuranceNumber
+                      ? `${getValues().insuranceProvider} - ${getValues().insuranceNumber}`
+                      : "N/A"}
                   </p>
                   <p>
                     <strong>Fitness Level:</strong> {getValues().fitnessLevel || "N/A"}

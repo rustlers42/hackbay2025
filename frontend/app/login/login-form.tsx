@@ -64,7 +64,6 @@ export default function LoginForm() {
 
       const data = await response.json();
 
-      // Use the login function from AuthContext
       login(data.access_token, data.token_type);
 
       router.push("/events/map");
