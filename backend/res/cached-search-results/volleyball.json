@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Volleyball",
+        "description": "Gamecourt Experience indoor volleyball at its best! At Sportcentrum, we provide ideal conditions for thrilling volleyball matches and professional training.",
+        "weekly": false,
+        "start_date": "2025-01-01T08:00",
+        "end_date": "2025-12-31T22:00",
+        "latitude": 49.45299278817267,
+        "longitude": 11.117768088168221,
+        "location": "Sch\u00fcblerstra\u00dfe 15, 90482 N\u00fcrnberg",
+        "url": "https://www.sportcentrum-nbg.de/en/ball-sports/volleyball/"
+    },
+    {
+        "name": "Volleyball Firmenbeachcup 2025",
+        "description": "Volleyball Firmenbeachcup 2025",
+        "weekly": false,
+        "start_date": "2025-07-04T00:00",
+        "end_date": "2025-07-04T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.procup.de/cup/cup_showinfo_skin03.php?ev=38527&lang=GER&t=menu&id=4%7C2%7C0"
+    }
+]

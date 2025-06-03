@@ -1,0 +1,123 @@
+[
+    {
+        "name": "S\u00fcdwestpark FunRun",
+        "description": "Running event. After the run, enjoy a summer festival with delicious food, cool drinks, and live music.",
+        "weekly": false,
+        "start_date": "2025-06-05T00:00",
+        "end_date": "2025-06-05T00:00",
+        "latitude": 49.429320409464694,
+        "longitude": 11.017578804741152,
+        "location": "S\u00fcdwestpark, N\u00fcrnberg",
+        "url": "https://www.funrunsuedwest.de/"
+    },
+    {
+        "name": "Sparkassen Metropolmarathon",
+        "description": "A run across city borders.",
+        "weekly": false,
+        "start_date": "2025-06-22T00:00",
+        "end_date": "2025-06-22T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg und F\u00fcrth",
+        "url": "https://www.metropolregionnuernberg.de/aktuelles/veranstaltungen/sparkassen-metropolmarathon"
+    },
+    {
+        "name": "Night RUN",
+        "description": "Part of the SportScheck RUN-Serie.",
+        "weekly": false,
+        "start_date": "2025-06-20T00:00",
+        "end_date": "2025-06-20T00:00",
+        "latitude": 53.54948467243432,
+        "longitude": 9.98068590877087,
+        "location": "Hamburg",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "RUN M\u00fcnchen",
+        "description": "Part of the SportScheck RUN-Serie.",
+        "weekly": false,
+        "start_date": "2025-07-06T00:00",
+        "end_date": "2025-07-06T00:00",
+        "latitude": 48.13334728704551,
+        "longitude": 11.578569193851473,
+        "location": "M\u00fcnchen",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "Night RUN K\u00f6ln",
+        "description": "Part of the SportScheck RUN-Serie.",
+        "weekly": false,
+        "start_date": "2025-07-25T00:00",
+        "end_date": "2025-07-25T00:00",
+        "latitude": 50.9333597480479,
+        "longitude": 6.965941281507006,
+        "location": "K\u00f6ln",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "Night RUN Hannover",
+        "description": "Part of the SportScheck RUN-Serie.",
+        "weekly": false,
+        "start_date": "2025-09-19T00:00",
+        "end_date": "2025-09-19T00:00",
+        "latitude": 52.377541968599296,
+        "longitude": 9.72576397972333,
+        "location": "Hannover",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "Night RUN Berlin",
+        "description": "Part of the SportScheck RUN-Serie.",
+        "weekly": false,
+        "start_date": "2025-10-18T00:00",
+        "end_date": "2025-10-18T00:00",
+        "latitude": 52.51607026098522,
+        "longitude": 13.397068534727229,
+        "location": "Berlin",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "RUN N\u00fcrnberg",
+        "description": "The largest broad sports event in Upper Franconia.",
+        "weekly": false,
+        "start_date": "2025-10-26T00:00",
+        "end_date": "2025-10-26T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg",
+        "url": "https://www.runnersworld.de/laufkalender/run-nue-nuernberg/"
+    },
+    {
+        "name": "SportScheck RUN N\u00fcrnberg",
+        "description": "Road race in Nuremberg with various distances (6 km, 10 km, half marathon).",
+        "weekly": false,
+        "start_date": "2025-10-01T00:00",
+        "end_date": "2025-10-05T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg, Deutschland",
+        "url": "https://www.finishers.com/de/e/sportscheck-run-nurnberg"
+    },
+    {
+        "name": "SportScheck RUN N\u00fcrnberg 10 km",
+        "description": "Road race over 10 km in Nuremberg.",
+        "weekly": false,
+        "start_date": "2025-10-01T00:00",
+        "end_date": "2025-10-05T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg, Deutschland",
+        "url": "https://www.finishers.com/de/e/sportscheck-run-nurnberg"
+    },
+    {
+        "name": "SportScheck RUN N\u00fcrnberg 6 km",
+        "description": "Road race over 6 km in Nuremberg.",
+        "weekly": false,
+        "start_date": "2025-10-01T00:00",
+        "end_date": "2025-10-05T00:00",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "N\u00fcrnberg, Deutschland",
+        "url": "https://www.finishers.com/de/e/sportscheck-run-nurnberg"
+    }
+]
