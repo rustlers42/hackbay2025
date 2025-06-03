@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { BASE_API_URL } from "./api-config";
@@ -31,9 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = (token: string, tokenType: string) => {
     localStorage.setItem("access_token", token);
     localStorage.setItem("token_type", tokenType);
-    //checkAuth();
-
-    signIn("google", { callbackUrl: "/dashboard" });
+    checkAuth();
   };
 
   const logout = () => {

@@ -48,8 +48,6 @@ export default function LoginForm() {
       formData.append("username", values.username);
       formData.append("password", values.password);
 
-      console.log(BASE_API_URL);
-
       // Use the proxied API endpoint to avoid CORS issues
       const response = await fetch(BASE_API_URL + "/token", {
         method: "POST",
@@ -66,7 +64,6 @@ export default function LoginForm() {
 
       const data = await response.json();
 
-      // Use the login function from AuthContext
       login(data.access_token, data.token_type);
 
       router.push("/events/map");

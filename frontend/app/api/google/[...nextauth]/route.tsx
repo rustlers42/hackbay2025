@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-console.log(process.env.GOOGLE_REDIRECT_URI);
-
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -25,7 +23,6 @@ const handler = NextAuth({
   },
   callbacks: {
     async jwt({ token, account, profile }) {
-      console.log(token, account, profile);
       if (account && account.provider === "google") {
         token.googleAccessToken = account.access_token;
         token.googleRefreshToken = account.refresh_token;
