@@ -22,9 +22,36 @@ export const nameSchema = z.object({
 });
 
 export const birthdaySchema = z.object({
-  birthday: z.string().refine((val) => !isNaN(Date.parse(val)), {
-    message: "Please enter a valid date",
-  }),
+  birthday: z
+    .string()
+    .refine((val) => !isNaN(Date.parse(val)), {
+      message: "Please enter a valid date",
+    })
+    .refine(
+      (val) => {
+        const date = new Date(val);
+        const currentYear = new Date().getFullYear();
+        const year = date.getFullYear();
+
+        // Check if year is realistic (between 1900 and current year)
+        return year >= 1900 && year <= currentYear;
+      },
+      {
+        message: "Please enter a realistic birth year between 1900 and current year",
+      },
+    )
+    .refine(
+      (val) => {
+        const date = new Date(val);
+        const today = new Date();
+
+        // Check if date is not in the future
+        return date <= today;
+      },
+      {
+        message: "Birthday cannot be in the future",
+      },
+    ),
 });
 
 export const insuranceSchema = z.object({
