@@ -32,8 +32,8 @@ export default function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      username: "admin@admin.de",
+      password: "admin",
     },
   });
 
@@ -66,7 +66,7 @@ export default function LoginForm() {
 
       login(data.access_token, data.token_type);
 
-      router.push("/events/map");
+      router.push("/connect");
     } catch (error) {
       console.error("Login failed", error);
       setError("Invalid username or password");
@@ -92,7 +92,7 @@ export default function LoginForm() {
                 <FormItem>
                   <FormLabel>E-Mail</FormLabel>
                   <FormControl>
-                    <Input placeholder="admin@admin.de" {...field} />
+                    <Input placeholder="admin@admin.de" {...field}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,7 +105,7 @@ export default function LoginForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="admin" type="password" {...field} />
+                    <Input placeholder="admin" type="password" {...field}></Input>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

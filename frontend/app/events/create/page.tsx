@@ -1,6 +1,10 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { BASE_API_URL } from "@/lib/api-config";
+import { postData } from "@/lib/api-helpers";
 import { useAuth } from "@/lib/auth-context";
 import { useFetchApi } from "@/lib/use-api";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -10,16 +14,14 @@ import Map, { Marker } from "react-map-gl/mapbox";
 interface NewEvent {
   name: string;
   description: string;
-  organiser_type: "individual" | "organization"; // guessing possible values
+  organiser_type: "individual" | "company" | "professional" | "advertisement";
   organiser_id: string;
   latitude: number;
   longitude: number;
   max_participants: number;
   bonus_points: number;
-  start_date: string; // ISO 8601 date string
-  end_date: string;   // ISO 8601 date string
-  created_at: string; // ISO 8601 date string
-  updated_at: string; // ISO 8601 date string
+  start_date: string;
+  end_date: string;
 }
 
 type UserProfile = {
@@ -33,36 +35,48 @@ export default function CreateEventPage() {
 
   const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [formData, setFormData] = useState<Omit<NewEvent, "latitude" | "longitude" | "id" | "created_at" | "updated_at">>({
-  name: "",
-  organiser_type: "organization",
-  description: "",
-  organiser_id: "",
-  max_participants: 0,
-  bonus_points: 0,
-  start_date: new Date().toISOString(),
-  end_date: new Date().toISOString(),
-});
-    const { isAuthenticated, user, logout } = useAuth();
-    const { data: userProfile, isLoading } = useFetchApi<UserProfile>(BASE_API_URL + "/users/me", {
-      requireAuth: true,
-      enabled: isAuthenticated,
-    });
+  const [formData, setFormData] = useState<Omit<
+    NewEvent,
+    "latitude" | "longitude" | "id"
+  >>({
+    name: "",
+    organiser_type: "company",
+    description: "",
+    organiser_id: "1", // assuming fixed organisation
+    max_participants: 0,
+    bonus_points: 0,
+    start_date: new Date().toISOString(),
+    end_date: new Date().toISOString(),
+  });
 
-  // On map click, place marker & show popup
+  const { isAuthenticated } = useAuth();
+  useFetchApi<UserProfile>(BASE_API_URL + "/users/me", {
+    requireAuth: true,
+    enabled: isAuthenticated,
+  });
+
   const handleMapClick = useCallback((event: any) => {
-    const {lng, lat} = event.lngLat;
+    const { lng, lat } = event.lngLat;
     setMarker({ lat, lng });
     setShowPopup(true);
   }, []);
 
-  // Form change handler
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]:
+        name === "max_participants"
+          ? parseInt(value)
+          : name === "start_date" || name === "end_date"
+          ? new Date(value).toISOString()
+          : value,
+    }));
   };
 
-  // Submit handler (no POST request)
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!marker) {
@@ -71,36 +85,43 @@ export default function CreateEventPage() {
     }
 
     const newEvent: NewEvent = {
-        ...formData,
-        latitude: marker.lat,
-        longitude: marker.lng,
-        organiser_type: "individual", // guessing possible values
-        organiser_id: "1",
-        max_participants: 45,
-        bonus_points: 0,   // ISO 8601 date string
-        created_at: new Date().toISOString(), // ISO 8601 date string
-        updated_at: new Date().toISOString()
+      ...formData,
+      latitude: marker.lat,
+      longitude: marker.lng
     };
 
-    console.log("New Event:", newEvent);
-    alert("Event saved locally (no API call made).");
-    console
+    try {
+      const result = await postData<NewEvent>(
+        "http://localhost:8000/events",
+        newEvent
+      );
 
-    // Reset form & marker
-    setMarker(null);
-    setShowPopup(false);
-    setFormData({
-      name: "",
-      description: "",
-      max_participants: 0,
-      bonus_points: 0,
-      start_date: "",
-      end_date: "",
-    });
+      if (result.error) {
+        alert(`Error: ${result.error}`);
+      } else {
+        alert("Event created successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to create event. Please try again.");
+    } finally {
+      setMarker(null);
+      setShowPopup(false);
+      setFormData({
+        name: "",
+        description: "",
+        organiser_type: "company",
+        organiser_id: "1",
+        max_participants: 0,
+        bonus_points: 0,
+        start_date: new Date().toISOString(),
+        end_date: new Date().toISOString(),
+      });
+    }
   };
 
   return (
-    <main className="flex flex-col h-screen w-screen">
+    <main style={{height: "92vh"}} className="flex flex-col w-screen">
       <div className="flex-1 relative">
         <Map
           initialViewState={{
@@ -108,7 +129,7 @@ export default function CreateEventPage() {
             latitude: 49.4305421,
             zoom: 14,
           }}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "92vh" }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxAccessToken={mapboxToken}
           onClick={handleMapClick}
@@ -129,64 +150,63 @@ export default function CreateEventPage() {
             style={{ maxWidth: 600, margin: "0 auto" }}
           >
             <h2 className="text-xl font-semibold mb-4">Create Event</h2>
-
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-              <input
+              <Input
                 type="text"
                 name="name"
                 placeholder="Event Name"
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="border rounded px-3 py-2"
               />
-              <textarea
+              <Textarea
                 name="description"
                 placeholder="Description"
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={3}
-                className="border rounded px-3 py-2"
+              />
+              <Input
+                type="number"
+                name="max_participants"
+                placeholder="Max Participants"
+                value={formData.max_participants}
+                onChange={handleInputChange}
+                required
               />
               <label>
                 Start Date/Time:
-                <input
+                <Input
                   type="datetime-local"
-                  name="startDate"
-                  value={formData.start_date}
+                  name="start_date"
+                  value={formData.start_date.slice(0, 16)}
                   onChange={handleInputChange}
                   required
-                  className="border rounded px-3 py-2 w-full"
                 />
               </label>
               <label>
                 End Date/Time:
-                <input
+                <Input
                   type="datetime-local"
-                  name="endDate"
-                  value={formData.end_date}
+                  name="end_date"
+                  value={formData.end_date.slice(0, 16)}
                   onChange={handleInputChange}
                   required
-                  className="border rounded px-3 py-2 w-full"
                 />
               </label>
-
-              <button
-                type="submit"
-                className="bg-green-600 text-white rounded py-2 hover:bg-green-700 transition"
-              >
+              <Button type="submit" variant="default">
                 Save Event
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => {
                   setShowPopup(false);
                   setMarker(null);
                 }}
-                className="text-gray-500 mt-1 underline"
               >
                 Cancel
-              </button>
+              </Button>
             </form>
           </div>
         )}

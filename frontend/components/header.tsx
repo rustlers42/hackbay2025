@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/lib/auth-context";
 import { useFetchApi } from "@/lib/use-api";
-import { AxeIcon, LogOut, SproutIcon, User } from "lucide-react";
+import { Footprints, LogOut, Star, User } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+
+=======
+>>>>>>> 205f621e9d00d7084fc05d7c70a51689196ae5bb
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 
@@ -39,8 +49,14 @@ export default function Header() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 focus:outline-none">
-              <AxeIcon className="h-6 w-6 text-green-600" />
-              <h1 className="text-2xl font-bold cursor-pointer">activate</h1>
+              <Footprints className="h-6 w-6 text-green-600" />
+              <h1 className="text-2xl font-bold cursor-pointer">
+                <span className="text-green-700">M</span>
+                <span className="text-lg">EET</span>
+                <span className="text-green-700">M</span>
+                <span className="text-lg">ATCH</span>
+              </h1>
+
             </button>
           </DropdownMenuTrigger>
 
@@ -84,13 +100,16 @@ export default function Header() {
               ) : (
                 <span className="font-medium">{userProfile?.score || 0}</span>
               ))}
-            {isAuthenticated && <SproutIcon className="h-5 w-5" aria-hidden="true" />}
+            {isAuthenticated && <Star className="w-5 h-5 text-yellow-600" />}
           </div>
 
           {isAuthenticated ? (
             <div className="flex items-center gap-2">
-              <User className="h-4 w-4" />
+            {/*  
               <span>{user?.username}</span>
+          */}
+              <User className="h-4 w-4" />
+              
               <Button variant="ghost" size="icon" onClick={logout} aria-label="Logout">
                 <LogOut className="h-4 w-4" />
               </Button>

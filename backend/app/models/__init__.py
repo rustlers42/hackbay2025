@@ -1,4 +1,4 @@
-from .Event import Event, EventOrganiserType  # noqa: F401
+from .Event import Event, EventDTO, EventOrganiserType  # noqa: F401
 from .EventTagLink import EventTagLink  # noqa: F401
 from .EventUserLink import EventParticipationType, EventUserLink  # noqa: F401
 from .Organiser import Organiser  # noqa: F401

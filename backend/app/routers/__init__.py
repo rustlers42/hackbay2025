@@ -10,15 +10,17 @@ from ..oauth2_helper import Token, authenticate_user, create_access_token
 from ..settings import settings
 from .events import router as events_router
 from .health import router as health_router
+from .search import router as search_router
 from .tags import router as tags_router
+from .users import RegistrationRequest, RegistrationResponse, register_user
 from .users import router as users_router
-from .users import register_user, RegistrationRequest, RegistrationResponse
 
 router = APIRouter()
-router.include_router(events_router, prefix="/events")
-router.include_router(tags_router, prefix="/tags")
+router.include_router(events_router, prefix="/events", tags=["events"])
+router.include_router(tags_router, prefix="/tags", tags=["tags"])
 router.include_router(health_router, prefix="/health", tags=["health"])
-router.include_router(users_router, prefix="/users")
+router.include_router(users_router, prefix="/users", tags=["users"])
+router.include_router(search_router, prefix="/search", tags=["search"])
 
 
 @router.post("/register", response_model=RegistrationResponse, tags=["auth"])

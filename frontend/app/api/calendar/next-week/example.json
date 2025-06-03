@@ -1,0 +1,1104 @@
+{
+   "events": [
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723249977182\"",
+           "id": "6e5kol3j07pttrem29lbann2kt_20250609T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NmU1a29sM2owN3B0dHJlbTI5bGJhbm4ya3RfMjAyNTA2MDlUMTI1MDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-04-01T21:58:16.000Z",
+           "updated": "2025-06-02T10:53:44.988Z",
+           "summary": "Ü: Theolog",
+           "colorId": "1",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-09T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-09T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "6e5kol3j07pttrem29lbann2kt",
+           "originalStartTime": {
+               "dateTime": "2025-06-09T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "6e5kol3j07pttrem29lbann2kt@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723263363838\"",
+           "id": "5qcatg2fbi804e5mfu4c3sbk5o_20250610T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NXFjYXRnMmZiaTgwNGU1bWZ1NGMzc2JrNW9fMjAyNTA2MTBUMDkxMDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-03-27T02:32:49.000Z",
+           "updated": "2025-06-02T10:53:51.681Z",
+           "summary": "Database Vorlesung",
+           "location": "TRE/MATH/H, Zellescher Weg 18, 01069 Dresden, Deutschland",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-10T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-10T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "5qcatg2fbi804e5mfu4c3sbk5o",
+           "originalStartTime": {
+               "dateTime": "2025-06-10T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "5qcatg2fbi804e5mfu4c3sbk5o@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723358310078\"",
+           "id": "c5hm4pj1c4sjeb9k6cqm8b9k6pi3ib9pcooj0b9g68sj8db168qjeor5ck_20250610T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=YzVobTRwajFjNHNqZWI5azZjcW04YjlrNnBpM2liOXBjb29qMGI5ZzY4c2o4ZGIxNjhxamVvcjVja18yMDI1MDYxMFQxMjUwMDBaIDMyMzZmYTVmNzBlMjY4YjI1MTcyYzhhZWQyNjNmOTVkZWRiOWMwNzMwZWYyNjBlNTA4MTAzODI2MGU5ZjkwZTFAZw",
+           "created": "2025-03-24T13:47:11.000Z",
+           "updated": "2025-06-02T10:54:39.155Z",
+           "summary": "RechnerArch 2 Vorlesung",
+           "location": "Schönfeld-Hörsaal BAR/SCHÖ/E, Georg-Schumann-Straße 13, 01069 Dresden, Germany",
+           "creator": {
+               "email": "linus.eike.pauly@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-10T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-10T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "c5hm4pj1c4sjeb9k6cqm8b9k6pi3ib9pcooj0b9g68sj8db168qjeor5ck",
+           "originalStartTime": {
+               "dateTime": "2025-06-10T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "c5hm4pj1c4sjeb9k6cqm8b9k6pi3ib9pcooj0b9g68sj8db168qjeor5ck@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723402414462\"",
+           "id": "5hoecqbjiehrm4d8ne835q6r8m_20250611T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NWhvZWNxYmppZWhybTRkOG5lODM1cTZyOG1fMjAyNTA2MTFUMDkxMDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-04-22T14:13:52.000Z",
+           "updated": "2025-06-02T10:55:01.207Z",
+           "summary": "Database Management Übung",
+           "location": "Apb/E009",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "5hoecqbjiehrm4d8ne835q6r8m",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "5hoecqbjiehrm4d8ne835q6r8m@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723394833598\"",
+           "id": "49r3eugag7s9jngnqjkaee7j4c_20250611T110000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NDlyM2V1Z2FnN3M5am5nbnFqa2FlZTdqNGNfMjAyNTA2MTFUMTEwMDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-03-31T20:07:57.000Z",
+           "updated": "2025-06-02T10:54:57.416Z",
+           "summary": "YVES Analysis Übung",
+           "colorId": "11",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T14:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "49r3eugag7s9jngnqjkaee7j4c",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "49r3eugag7s9jngnqjkaee7j4c@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723430361598\"",
+           "id": "26aho1kff8ede9006impcd711u_20250611T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MjZhaG8xa2ZmOGVkZTkwMDZpbXBjZDcxMXVfMjAyNTA2MTFUMTI1MDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-04-07T17:23:23.000Z",
+           "updated": "2025-06-02T10:55:15.180Z",
+           "summary": "Ü: Rechnernetze",
+           "description": "APB/E009",
+           "colorId": "1",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "26aho1kff8ede9006impcd711u",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "26aho1kff8ede9006impcd711u@google.com",
+           "sequence": 2,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723419475774\"",
+           "id": "chi3ecj1coq6ab9oc8s68b9k6ph3ib9p70s3cb9lc8o3ad35ccoj4or66o_20250612T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=Y2hpM2VjajFjb3E2YWI5b2M4czY4YjlrNnBoM2liOXA3MHMzY2I5bGM4bzNhZDM1Y2NvajRvcjY2b18yMDI1MDYxMlQwOTEwMDBaIDMyMzZmYTVmNzBlMjY4YjI1MTcyYzhhZWQyNjNmOTVkZWRiOWMwNzMwZWYyNjBlNTA4MTAzODI2MGU5ZjkwZTFAZw",
+           "created": "2025-03-24T13:33:07.000Z",
+           "updated": "2025-06-02T10:55:09.737Z",
+           "summary": "Rechnernetze Vorlesung",
+           "location": "Hsz/0003",
+           "creator": {
+               "email": "linus.eike.pauly@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "chi3ecj1coq6ab9oc8s68b9k6ph3ib9p70s3cb9lc8o3ad35ccoj4or66o",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "chi3ecj1coq6ab9oc8s68b9k6ph3ib9p70s3cb9lc8o3ad35ccoj4or66o@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3487337911802750\"",
+           "id": "_5snmior3dgn6irj65pq7abb4e9in6p35don68p9fetim4bqkd1imusj5ehkn6or8clfkirj6dtp6qobkd5llutbechfkorr7d5llua2jacp30chl54hlud9l6sqj4dhh74qm8chi65h3acpg6dhj6e336gqm4p1m60s3ad1j",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=XzVzbm1pb3IzZGduNmlyajY1cHE3YWJiNGU5aW42cDM1ZG9uNjhwOWZldGltNGJxa2QxaW11c2o1ZWhrbjZvcjhjbGZraXJqNmR0cDZxb2JrZDVsbHV0YmVjaGZrb3JyN2Q1bGx1YTJqYWNwMzBjaGw1NGhsdWQ5bDZzcWo0ZGhoNzRxbThjaGk2NWgzYWNwZzZkaGo2ZTMzNmdxbTRwMW02MHMzYWQxaiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-04-03T08:29:15.000Z",
+           "updated": "2025-04-03T08:29:15.901Z",
+           "summary": "Theoretische Informatik und Logik: Pfingsten (Entfällt)",
+           "location": "HSZ/0002/E",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T14:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "//iccl.inf.tu-dresden.de/web/Theoretische_Informatik_und_Logik_(SS2025)#_557526195d221b5303c38c45bd608543",
+           "sequence": 42100,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3489819161498878\"",
+           "id": "68q3gdr164p30b9mcpj30b9k6oo3ibb274o32b9o6ko32pb665im6ophck_20250612T181500Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NjhxM2dkcjE2NHAzMGI5bWNwajMwYjlrNm9vM2liYjI3NG8zMmI5bzZrbzMycGI2NjVpbTZvcGhja18yMDI1MDYxMlQxODE1MDBaIDMyMzZmYTVmNzBlMjY4YjI1MTcyYzhhZWQyNjNmOTVkZWRiOWMwNzMwZWYyNjBlNTA4MTAzODI2MGU5ZjkwZTFAZw",
+           "created": "2025-04-17T17:05:53.000Z",
+           "updated": "2025-04-17T17:06:20.749Z",
+           "summary": "Faszien",
+           "location": "Chemnitzer Str. 46B, 01187 Dresden, Germany",
+           "colorId": "3",
+           "creator": {
+               "email": "linus.eike.pauly@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T20:15:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T21:45:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "68q3gdr164p30b9mcpj30b9k6oo3ibb274o32b9o6ko32pb665im6ophck",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T20:15:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "68q3gdr164p30b9mcpj30b9k6oo3ibb274o32b9o6ko32pb665im6ophck@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488734321799934\"",
+           "id": "6phj8dhg68r66bb46cp6ab9k6lj3cbb16orjgb9h6li3cc9pc4q3gdb16s_20250613T090000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NnBoajhkaGc2OHI2NmJiNDZjcDZhYjlrNmxqM2NiYjE2b3JqZ2I5aDZsaTNjYzlwYzRxM2dkYjE2c18yMDI1MDYxM1QwOTAwMDBaIDMyMzZmYTVmNzBlMjY4YjI1MTcyYzhhZWQyNjNmOTVkZWRiOWMwNzMwZWYyNjBlNTA4MTAzODI2MGU5ZjkwZTFAZw",
+           "created": "2024-10-22T18:02:54.000Z",
+           "updated": "2025-04-11T10:26:00.899Z",
+           "summary": "THEO: Saxophon",
+           "colorId": "5",
+           "creator": {
+               "email": "ttaldinger@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-13T11:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-13T11:45:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "6phj8dhg68r66bb46cp6ab9k6lj3cbb16orjgb9h6li3cc9pc4q3gdb16s",
+           "originalStartTime": {
+               "dateTime": "2025-06-13T11:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "6phj8dhg68r66bb46cp6ab9k6lj3cbb16orjgb9h6li3cc9pc4q3gdb16s@google.com",
+           "sequence": 2,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3497723439125790\"",
+           "id": "3ba8f3m7am1u5kvpq6qpljkktb_20250613T110000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=M2JhOGYzbTdhbTF1NWt2cHE2cXBsamtrdGJfMjAyNTA2MTNUMTEwMDAwWiAzMjM2ZmE1ZjcwZTI2OGIyNTE3MmM4YWVkMjYzZjk1ZGVkYjljMDczMGVmMjYwZTUwODEwMzgyNjBlOWY5MGUxQGc",
+           "created": "2025-04-01T22:02:36.000Z",
+           "updated": "2025-06-02T10:55:19.562Z",
+           "summary": "Ü: RechnerArch 2",
+           "colorId": "1",
+           "creator": {
+               "email": "yvesand42@gmail.com"
+           },
+           "organizer": {
+               "email": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+               "displayName": "Theo und Yves und Linus 8=>",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-13T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-13T14:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "3ba8f3m7am1u5kvpq6qpljkktb",
+           "originalStartTime": {
+               "dateTime": "2025-06-13T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "3ba8f3m7am1u5kvpq6qpljkktb@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "3236fa5f70e268b25172c8aed263f95dedb9c0730ef260e5081038260e9f90e1@group.calendar.google.com",
+           "calendarSummary": "Theo und Yves und Linus 8=>"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3483236473249214\"",
+           "id": "2okprmu780h5eebqac51mc45q7_20250609T072000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=Mm9rcHJtdTc4MGg1ZWVicWFjNTFtYzQ1cTdfMjAyNTA2MDlUMDcyMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-10T14:46:41.000Z",
+           "updated": "2025-03-10T14:50:36.624Z",
+           "summary": "Analysis (V)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-09T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-09T10:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "2okprmu780h5eebqac51mc45q7",
+           "originalStartTime": {
+               "dateTime": "2025-06-09T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "2okprmu780h5eebqac51mc45q7@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3483236486510078\"",
+           "id": "4sdusmltihg2fajlpp6e91j4rk_20250609T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NHNkdXNtbHRpaGcyZmFqbHBwNmU5MWo0cmtfMjAyNTA2MDlUMDkxMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-10T14:49:41.000Z",
+           "updated": "2025-03-10T14:50:43.255Z",
+           "summary": "Lineare Algebra (V)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-09T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-09T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "4sdusmltihg2fajlpp6e91j4rk",
+           "originalStartTime": {
+               "dateTime": "2025-06-09T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "4sdusmltihg2fajlpp6e91j4rk@google.com",
+           "sequence": 2,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488933921811518\"",
+           "id": "2g308g5lghtt5b6ep7j02pm29c_20250609T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MmczMDhnNWxnaHR0NWI2ZXA3ajAycG0yOWNfMjAyNTA2MDlUMTI1MDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-10T14:53:57.000Z",
+           "updated": "2025-04-12T14:09:20.905Z",
+           "summary": "Programmieren (V)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-09T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-09T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "2g308g5lghtt5b6ep7j02pm29c_R20250414T125000",
+           "originalStartTime": {
+               "dateTime": "2025-06-09T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "2g308g5lghtt5b6ep7j02pm29c_R20250414T125000@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488038998784894\"",
+           "id": "6gsmae9g6sr62bb170r30b9k74p6abb271i6cb9l6thjap1h6pi3epb2co_20250610T072000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NmdzbWFlOWc2c3I2MmJiMTcwcjMwYjlrNzRwNmFiYjI3MWk2Y2I5bDZ0aGphcDFoNnBpM2VwYjJjb18yMDI1MDYxMFQwNzIwMDBaIG1ldHpldmFsb3R0YUBt",
+           "created": "2025-04-07T09:51:39.000Z",
+           "updated": "2025-04-07T09:51:39.392Z",
+           "summary": "Programmieren Übung",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-10T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-10T10:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "6gsmae9g6sr62bb170r30b9k74p6abb271i6cb9l6thjap1h6pi3epb2co",
+           "originalStartTime": {
+               "dateTime": "2025-06-10T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "6gsmae9g6sr62bb170r30b9k74p6abb271i6cb9l6thjap1h6pi3epb2co@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488933951613662\"",
+           "id": "3o5s0buk88ndt23gar3d6so5mm_20250610T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=M281czBidWs4OG5kdDIzZ2FyM2Q2c281bW1fMjAyNTA2MTBUMDkxMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-25T17:16:02.000Z",
+           "updated": "2025-04-12T14:09:35.806Z",
+           "summary": "International Human Rights Law",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-10T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-10T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "3o5s0buk88ndt23gar3d6so5mm_R20250415T091000",
+           "originalStartTime": {
+               "dateTime": "2025-06-10T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "3o5s0buk88ndt23gar3d6so5mm_R20250415T091000@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3483236690629502\"",
+           "id": "3g45dcq57spkpc0asa4oa40cbk_20250610T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=M2c0NWRjcTU3c3BrcGMwYXNhNG9hNDBjYmtfMjAyNTA2MTBUMTI1MDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-10T14:52:06.000Z",
+           "updated": "2025-03-10T14:52:25.314Z",
+           "summary": "Lineare Algebra (V)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-10T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-10T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "3g45dcq57spkpc0asa4oa40cbk",
+           "originalStartTime": {
+               "dateTime": "2025-06-10T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "3g45dcq57spkpc0asa4oa40cbk@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488933458818462\"",
+           "id": "2quieqba5pkmtflglrh3oq2j9k_20250611T090000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MnF1aWVxYmE1cGttdGZsZ2xyaDNvcTJqOWtfMjAyNTA2MTFUMDkwMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-04-12T14:04:02.000Z",
+           "updated": "2025-04-12T14:05:29.409Z",
+           "summary": "Treffen Paula Nachbereitung",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T11:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T12:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "2quieqba5pkmtflglrh3oq2j9k",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T11:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "2quieqba5pkmtflglrh3oq2j9k@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488537983270462\"",
+           "id": "316t6vq99ibnnc2mialuj11u87_20250611T110000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MzE2dDZ2cTk5aWJubmMybWlhbHVqMTF1ODdfMjAyNTA2MTFUMTEwMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-24T15:26:12.000Z",
+           "updated": "2025-04-10T07:09:51.635Z",
+           "summary": "Russisch",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T14:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "316t6vq99ibnnc2mialuj11u87",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "316t6vq99ibnnc2mialuj11u87@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488537980944798\"",
+           "id": "2bfh8kt7tnl54b2h78j1t4kbqd_20250611T125000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MmJmaDhrdDd0bmw1NGIyaDc4ajF0NGticWRfMjAyNTA2MTFUMTI1MDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-04-03T07:53:57.000Z",
+           "updated": "2025-04-10T07:09:50.472Z",
+           "summary": "Analysis übung",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T16:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "2bfh8kt7tnl54b2h78j1t4kbqd",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T14:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "2bfh8kt7tnl54b2h78j1t4kbqd@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3495506090482078\"",
+           "id": "31h3u7ggthpin8k0i9sccvi1cn_20250611T144000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MzFoM3U3Z2d0aHBpbjhrMGk5c2NjdmkxY25fMjAyNTA2MTFUMTQ0MDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-05-20T14:57:15.000Z",
+           "updated": "2025-05-20T14:57:25.241Z",
+           "summary": "S&W Tutorium",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T16:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T18:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "31h3u7ggthpin8k0i9sccvi1cn",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T16:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "31h3u7ggthpin8k0i9sccvi1cn@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3489323623271582\"",
+           "id": "31ek6omi4latibs800o022546n_20250611T190000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MzFlazZvbWk0bGF0aWJzODAwbzAyMjU0Nm5fMjAyNTA2MTFUMTkwMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-04-14T20:16:51.000Z",
+           "updated": "2025-04-14T20:16:51.635Z",
+           "summary": "Schwimmen",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-11T21:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-11T22:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "31ek6omi4latibs800o022546n",
+           "originalStartTime": {
+               "dateTime": "2025-06-11T21:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "31ek6omi4latibs800o022546n@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488933986482334\"",
+           "id": "177uqojgjinpmtbk2dq72rsks9_20250612T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MTc3dXFvamdqaW5wbXRiazJkcTcycnNrczlfMjAyNTA2MTJUMDkxMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-24T17:06:34.000Z",
+           "updated": "2025-04-12T14:09:53.241Z",
+           "summary": "Law of International Organizations Sommersemester",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "177uqojgjinpmtbk2dq72rsks9_R20250417T091000",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "177uqojgjinpmtbk2dq72rsks9_R20250417T091000@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3483236499814654\"",
+           "id": "78mshh4dv644a66pbkvo6jvit1_20250612T091000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=Nzhtc2hoNGR2NjQ0YTY2cGJrdm82anZpdDFfMjAyNTA2MTJUMDkxMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-10T14:47:38.000Z",
+           "updated": "2025-03-10T14:50:49.907Z",
+           "summary": "Analysis (V)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T12:40:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "78mshh4dv644a66pbkvo6jvit1",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T11:10:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "78mshh4dv644a66pbkvo6jvit1@google.com",
+           "sequence": 1,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3491131053397854\"",
+           "id": "ds3rn491fgjuhg2ce81qcqvdle_20250612T110000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=ZHMzcm40OTFmZ2p1aGcyY2U4MXFjcXZkbGVfMjAyNTA2MTJUMTEwMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-04-12T14:04:41.000Z",
+           "updated": "2025-04-25T07:18:46.698Z",
+           "summary": "Treffen Nachbereitung",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T14:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "ds3rn491fgjuhg2ce81qcqvdle",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T13:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "ds3rn491fgjuhg2ce81qcqvdle@google.com",
+           "sequence": 2,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3491131086192478\"",
+           "id": "l4jd75j38t3p47rnqv1237o882_20250612T143000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=bDRqZDc1ajM4dDNwNDdybnF2MTIzN284ODJfMjAyNTA2MTJUMTQzMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-04-03T07:55:42.000Z",
+           "updated": "2025-04-25T07:19:03.096Z",
+           "summary": "Lineare Algebra (Ü)",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-12T16:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-12T18:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "l4jd75j38t3p47rnqv1237o882",
+           "originalStartTime": {
+               "dateTime": "2025-06-12T16:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "l4jd75j38t3p47rnqv1237o882@google.com",
+           "sequence": 3,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488934013883742\"",
+           "id": "01cfbfmh8mqe23vee2a4611hmk_20250613T053000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MDFjZmJmbWg4bXFlMjN2ZWUyYTQ2MTFobWtfMjAyNTA2MTNUMDUzMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-24T17:23:10.000Z",
+           "updated": "2025-04-12T14:10:06.941Z",
+           "summary": "Russisch",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-13T07:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-13T09:00:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "01cfbfmh8mqe23vee2a4611hmk_R20250418T053000",
+           "originalStartTime": {
+               "dateTime": "2025-06-13T07:30:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "01cfbfmh8mqe23vee2a4611hmk_R20250418T053000@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       },
+       {
+           "kind": "calendar#event",
+           "etag": "\"3488934044338078\"",
+           "id": "1huqnhe5rii61ok9tmd6t6g8sh_20250613T072000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MWh1cW5oZTVyaWk2MW9rOXRtZDZ0Nmc4c2hfMjAyNTA2MTNUMDcyMDAwWiBtZXR6ZXZhbG90dGFAbQ",
+           "created": "2025-03-27T21:33:13.000Z",
+           "updated": "2025-04-12T14:10:22.169Z",
+           "summary": "Ökonomie der europäischen Integration",
+           "creator": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "organizer": {
+               "email": "metzevalotta@gmail.com",
+               "self": true
+           },
+           "start": {
+               "dateTime": "2025-06-13T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "end": {
+               "dateTime": "2025-06-13T10:50:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "recurringEventId": "1huqnhe5rii61ok9tmd6t6g8sh_R20250418T072000",
+           "originalStartTime": {
+               "dateTime": "2025-06-13T09:20:00+02:00",
+               "timeZone": "Europe/Berlin"
+           },
+           "iCalUID": "1huqnhe5rii61ok9tmd6t6g8sh_R20250418T072000@google.com",
+           "sequence": 0,
+           "reminders": {
+               "useDefault": true
+           },
+           "eventType": "default",
+           "calendarId": "metzevalotta@gmail.com",
+           "calendarSummary": "metzevalotta@gmail.com"
+       }
+   ]
+}
