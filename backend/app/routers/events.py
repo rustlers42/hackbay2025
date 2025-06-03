@@ -18,7 +18,7 @@ class EventResponse(BaseModel):
     end_date: datetime
 
 
-@router.get("/", response_model=list[EventResponse])
+@router.get("", response_model=list[EventResponse])
 def get_events(session: Session = Depends(get_session)):
     events = session.exec(select(Event)).all()
     return [
