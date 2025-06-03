@@ -75,7 +75,8 @@ export default function RegistrationWizard() {
       body: JSON.stringify(data),
     });
     alert(res.ok ? "Registered!" : "Registration failed.");
-    //make user logged in "login()"
+    //make user logged in "ogin()
+    // handleLogin()
     redirect("events/map");
   };
 
