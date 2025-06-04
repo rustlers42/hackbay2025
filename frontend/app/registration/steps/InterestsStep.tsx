@@ -10,8 +10,21 @@ import { useForm } from "react-hook-form";
 
 type InterestsFormData = Pick<RegistrationData, "interests">;
 
+interface TagOption {
+  id: number;
+  name: string;
+  emoji?: string;
+}
+
 export const InterestsStep: React.FC = () => {
-  const { data: options = [], isLoading, error } = useFetchApi<{ name: string; id: number }[]>(BASE_API_URL + "/tags");
+  const {
+    data: options,
+    isLoading,
+    error,
+  } = useFetchApi<TagOption[]>(BASE_API_URL + "/tags", {
+    requireAuth: false,
+  });
+
   const {
     getValues,
     setValue,
@@ -36,6 +49,8 @@ export const InterestsStep: React.FC = () => {
   if (isLoading || !options) return <p>Loading interests...</p>;
   if (error) return <p>Error loading interests.</p>;
 
+  console.log(options);
+
   return (
     <div>
       <Label className="text-lg">Select your favorite interests:</Label>
@@ -46,7 +61,10 @@ export const InterestsStep: React.FC = () => {
               checked={selected?.includes(interest.name)}
               onCheckedChange={() => toggleSelection(interest.name)}
             />
-            <span>{interest.name}</span>
+            <span className="flex items-center gap-2">
+              {interest.emoji && <span className="text-lg">{interest.emoji}</span>}
+              <span className="capitalize">{interest.name}</span>
+            </span>
           </label>
         ))}
       </div>

@@ -32,8 +32,8 @@ async def create_tag(tag: Tag, session: Session = Depends(get_session)):
     if existing_tag:
         raise HTTPException(status_code=400, detail="Tag already exists")
 
-    tag = Tag(name=tag.name)
-    session.add(tag)
+    new_tag = Tag(name=tag.name, emoji=tag.emoji)
+    session.add(new_tag)
     session.commit()
-    session.refresh(tag)
-    return tag
+    session.refresh(new_tag)
+    return new_tag

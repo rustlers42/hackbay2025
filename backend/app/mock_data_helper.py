@@ -102,14 +102,14 @@ def setup_mock_data(session: Session):
     if session.exec(select(Tag)).first() is None:
         logging.info("creating default tags because there are none")
         tag = [
-            Tag(name="badminton"),
-            Tag(name="running"),
-            Tag(name="cycling"),
-            Tag(name="yoga"),
-            Tag(name="pilates"),
-            Tag(name="soccer"),
-            Tag(name="basketball"),
-            Tag(name="volleyball"),
+            Tag(name="badminton", emoji="🏸"),
+            Tag(name="running", emoji="🏃"),
+            Tag(name="cycling", emoji="🚴"),
+            Tag(name="yoga", emoji="🧘"),
+            Tag(name="pilates", emoji="🤸"),
+            Tag(name="soccer", emoji="⚽"),
+            Tag(name="basketball", emoji="🏀"),
+            Tag(name="volleyball", emoji="🏐"),
         ]
         session.add_all(tag)
         session.commit()
