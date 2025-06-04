@@ -74,7 +74,7 @@ export const RegistrationWizard: React.FC = () => {
 
         {/* Progress Bar */}
         <div className="w-full mb-4 sm:mb-8 px-2">
-          <div className="flex justify-between items-center mb-2">
+          <div className="flex justify-between content-center items-center mb-2">
             {steps.map((step, index) => (
               <div key={step} className="flex items-center">
                 <div
@@ -86,7 +86,7 @@ export const RegistrationWizard: React.FC = () => {
                 </div>
                 {index < steps.length - 1 && (
                   <div
-                    className={`w-8 sm:w-16 h-1 mx-1 sm:mx-2 rounded-full transition-all ${
+                    className={`w-10 sm:w-16 h-1 mx-1 sm:mx-2 rounded-full transition-all transform translate-x-2/3 ${
                       index < currentStepIndex ? "bg-blue-500" : "bg-gray-200"
                     }`}
                   />

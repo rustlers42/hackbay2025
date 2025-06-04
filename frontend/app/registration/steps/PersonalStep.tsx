@@ -93,7 +93,7 @@ export const PersonalStep: React.FC = () => {
           type="date"
           {...register("birthday")}
           autoComplete="bday"
-          className={`px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+          className={`px-4 py-3 border flex justify-between items-stretch border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
             formErrors.birthday || errors.birthday ? "border-red-500 focus:ring-red-500" : ""
           }`}
         />

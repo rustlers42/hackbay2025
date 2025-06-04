@@ -85,7 +85,6 @@ export const WhoStep: React.FC = () => {
   const defaultIntensity = 40;
 
   const {
-    getValues,
     watch,
     register,
     setValue,
@@ -107,7 +106,7 @@ export const WhoStep: React.FC = () => {
     updateStepData({
       intensity: minutesPerWeek || 0,
     });
-  }, [watchedIntensity, updateStepData]);
+  }, [watchedIntensity, minutesPerWeek, updateStepData]);
 
   // Handle slider change
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
