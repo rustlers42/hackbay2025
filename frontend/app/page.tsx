@@ -28,9 +28,9 @@ export default function LandingPage() {
             {/* Tagline */}
             <div className="mb-6">
               <Badge variant="secondary" className="mb-4 bg-green-100 text-green-800 border-green-200">
-                AI-Powered Sports Matching
+                AI-Powered Activity Discovery
               </Badge>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">Find Your Perfect Sports Event</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">Discover Local Sports Events</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 Connect with like-minded athletes in your area. Our AI matches you based on skill level, location, and
                 schedule.
@@ -44,7 +44,8 @@ export default function LandingPage() {
               className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-6 rounded-xl shadow-lg"
             >
               <Link href="/registration">
-                Get Started Free <ArrowRight className="ml-2 h-5 w-5" />
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
 
@@ -65,7 +66,7 @@ export default function LandingPage() {
         {/* Features Section */}
         <section className="py-12 px-4 bg-white/50">
           <div className="max-w-md mx-auto">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Why Choose MeetMatch?</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Why Choose LiveMesh?</h3>
 
             <div className="space-y-4">
               <Card className="border-0 shadow-sm bg-white/80 backdrop-blur">
@@ -77,7 +78,7 @@ export default function LandingPage() {
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-2">AI-Powered Matching</h4>
                       <p className="text-gray-600 text-sm">
-                        Our smart algorithm finds players who match your skill level and playing style.
+                        Our intelligent algorithm finds activities that match your skill level and preferences.
                       </p>
                     </div>
                   </div>
@@ -91,9 +92,9 @@ export default function LandingPage() {
                       <MapPin className="h-6 w-6 text-blue-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Location-Based</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">Local Events</h4>
                       <p className="text-gray-600 text-sm">
-                        Find players and courts near you. Never travel far for a great game.
+                        Discover activities and venues in your neighborhood. Stay active without the commute.
                       </p>
                     </div>
                   </div>
@@ -109,7 +110,7 @@ export default function LandingPage() {
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-2">Flexible Scheduling</h4>
                       <p className="text-gray-600 text-sm">
-                        Match with players who share your availability and preferred playing times.
+                        Find activities that fit your schedule. We'll help you stay active at times that work for you.
                       </p>
                     </div>
                   </div>
@@ -140,8 +141,8 @@ export default function LandingPage() {
                   2
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Get Matched</h4>
-                  <p className="text-gray-600 text-sm">Our AI finds compatible players in your area</p>
+                  <h4 className="font-semibold text-gray-900">Discover Activities</h4>
+                  <p className="text-gray-600 text-sm">Our AI finds the perfect activities for you in your area</p>
                 </div>
               </div>
 
@@ -150,8 +151,8 @@ export default function LandingPage() {
                   3
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Start Playing</h4>
-                  <p className="text-gray-600 text-sm">Connect, schedule, and enjoy your favorite sports</p>
+                  <h4 className="font-semibold text-gray-900">Join the Community</h4>
+                  <p className="text-gray-600 text-sm">Connect with others and start your active lifestyle journey</p>
                 </div>
               </div>
             </div>
@@ -161,7 +162,7 @@ export default function LandingPage() {
         {/* Sports Categories */}
         <section className="py-12 px-4 bg-gradient-to-r from-green-50 to-blue-50">
           <div className="max-w-md mx-auto">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Popular Sports</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Featured Activities</h3>
 
             <div className="grid grid-cols-2 gap-4">
               {[
@@ -179,7 +180,7 @@ export default function LandingPage() {
                   <CardContent className="p-4 text-center">
                     <div className="text-2xl mb-2">{sport.icon}</div>
                     <h4 className="font-semibold text-gray-900 text-sm">{sport.name}</h4>
-                    <p className="text-xs text-gray-500">{sport.users} players</p>
+                    <p className="text-xs text-gray-500">{sport.users} participants</p>
                   </CardContent>
                 </Card>
               ))}
@@ -192,9 +193,10 @@ export default function LandingPage() {
           <div className="max-w-md mx-auto text-center">
             <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white">
               <Trophy className="h-12 w-12 mx-auto mb-4 text-yellow-300" />
-              <h3 className="text-xl font-bold mb-3">Ready to Find Your Match?</h3>
+              <h3 className="text-xl font-bold mb-3">Ready to Get Active?</h3>
               <p className="text-green-100 mb-6 text-sm">
-                Join thousands of athletes already using MeetMatch to find their perfect sports partners.
+                Join thousands of active individuals already using LiveMesh to discover and participate in local
+                activities.
               </p>
               <Button
                 asChild
@@ -202,7 +204,7 @@ export default function LandingPage() {
                 className="w-full bg-white text-green-600 hover:bg-gray-100 font-semibold py-6 rounded-xl"
               >
                 <Link href="/registration">
-                  Start Matching Now <Heart className="ml-2 h-5 w-5" />
+                  Start Your Journey <Heart className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>

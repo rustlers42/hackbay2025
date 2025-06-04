@@ -69,7 +69,7 @@ export const RegistrationWizard: React.FC = () => {
               Step {currentStepIndex + 1} of {steps.length}
             </span>
           </motion.div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Join MeetMatch</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Join LifeMesh</h1>
           <p className="text-sm sm:text-base text-gray-600">Connect with like-minded people in your area</p>
         </div>
 
