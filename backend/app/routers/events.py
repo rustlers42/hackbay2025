@@ -17,7 +17,7 @@ def get_events(session: Session = Depends(get_session)):
 
 
 @router.get("/{event_id}", response_model=dict)
-def get_event(event_id: int, session: Session = Depends(get_session)):
+def get_event(event_id: int, session: Session = Depends(get_session), current_user: User = Depends(get_current_user)):
     event = session.exec(select(Event).where(Event.id == event_id)).one_or_none()
 
     if not event:
@@ -26,6 +26,7 @@ def get_event(event_id: int, session: Session = Depends(get_session)):
     return {
         "event": event,
         "tags": event.tags,
+        "is_participating": any(p.id == current_user.id for p in event.attendees),
         "attendees": [
             UserDTO(
                 email=attendee.email,
