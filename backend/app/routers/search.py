@@ -1,4 +1,5 @@
 import json
+import logging
 from datetime import datetime, timedelta
 
 from fastapi import APIRouter, Query
@@ -27,6 +28,8 @@ async def search(*, tags: list[str] = Query(...), location: str | None = Query(N
     for tag in tags:
         with open(f"{PATH_TO_EVENTS}/{tag}.json", "r") as f:
             events.extend(json.load(f))
+
+    logging.info(f"events: {events}")
 
     for event in events:
         if event["weekly"]:
@@ -59,6 +62,9 @@ async def search(*, tags: list[str] = Query(...), location: str | None = Query(N
         else:
             event["start_date"] = datetime.fromisoformat(event["start_date"])
             event["end_date"] = datetime.fromisoformat(event["end_date"])
+
+    logging.debug(f"type of start_date: {[type(event['start_date']) for event in events]}")
+    logging.debug(f"type of end_date: {[type(event['end_date']) for event in events]}")
 
     # filter events by date show only events that are in the future or today
     return [event for event in events if event["start_date"] >= datetime.now()]
