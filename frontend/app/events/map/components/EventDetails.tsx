@@ -4,43 +4,44 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { putData } from "@/lib/api-helpers";
 import { useFetchApi } from "@/lib/use-api";
 import { ArrowLeft, Calendar, Clock, Loader2, MapPin, Star, UserCheck, Users, UserX } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Map, { Marker } from "react-map-gl/mapbox";
 
 interface Event {
-  id: number
-  name: string
-  description: string
-  organiser_type: string
-  organiser_id: string
-  latitude: number
-  longitude: number
-  max_participants: number
-  bonus_points: number
-  start_date: string
-  end_date: string
+  id: number;
+  name: string;
+  description: string;
+  organiser_type: string;
+  organiser_id: string;
+  latitude: number;
+  longitude: number;
+  max_participants: number;
+  bonus_points: number;
+  start_date: string;
+  end_date: string;
 }
 
 interface Tag {
-  id: number
-  name: string
+  id: number;
+  name: string;
 }
 
 interface Attendee {
-  email: string
-  username: string
-  bonus_points: number
+  email: string;
+  username: string;
+  bonus_points: number;
 }
 
 interface EventApiResponse {
-  event: Event
-  tags: Tag[]
-  attendees: Attendee[]
+  event: Event;
+  tags: Tag[];
+  is_participating: boolean;
+  attendees: Attendee[];
 }
-
 
 interface EventDetailOverlayProps {
   eventId: number;
@@ -48,12 +49,26 @@ interface EventDetailOverlayProps {
 }
 
 export default function EventDetails({ eventId, onClose }: EventDetailOverlayProps) {
-  const { data, isLoading } = useFetchApi<any>(`http://localhost:8000/events/${eventId}`);
-  const [isAttending, setIsAttending] = useState(false)
+  const { data, isLoading } = useFetchApi<EventApiResponse>(`http://localhost:8000/events/${eventId}`);
+  const [isAttending, setIsAttending] = useState(false);
 
-  const handleAttendToggle = () => {
-    setIsAttending((prev) => !prev)
-  }
+  useEffect(() => {
+    setIsAttending(data?.is_participating || false);
+  }, [data]);
+
+  const handleAttendToggle = async () => {
+    const result = await putData<any>(
+      `http://localhost:8000/events/${eventId}/participate`,
+      {},
+      localStorage.getItem("access_token"),
+    );
+
+    if (result.error) {
+      console.error(result.error);
+    } else {
+      setIsAttending((prev) => !prev);
+    }
+  };
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
@@ -81,7 +96,7 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   if (!data || !data.event) {
@@ -95,7 +110,7 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
             <h2 className="text-xl font-semibold text-gray-900 mb-2">Event Not Found</h2>
             <p className="text-gray-600 mb-6">No event found or error loading event.</p>
             <Link href="/events">
-              <Button variant="outline" >
+              <Button variant="outline">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Events
               </Button>
@@ -103,10 +118,10 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
-  const { event, tags, attendees } = data
+  const { event, tags, attendees } = data;
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-EN", {
@@ -114,15 +129,15 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
-    })
-  }
+    });
+  };
 
   const formatTime = (dateString: string) => {
     return new Date(dateString).toLocaleTimeString("en-EN", {
       hour: "2-digit",
       minute: "2-digit",
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
@@ -130,7 +145,12 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
         {/* Header */}
         <div className="flex items-center gap-4 pt-4">
           <Link href="/events/map">
-            <Button variant="ghost" size="sm" className="text-green-700 hover:text-green-800 hover:bg-green-100" onClick={onClose}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-green-700 hover:text-green-800 hover:bg-green-100"
+              onClick={onClose}
+            >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Events
             </Button>
@@ -296,5 +316,5 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
         )}*/}
       </div>
     </div>
-  )
+  );
 }
