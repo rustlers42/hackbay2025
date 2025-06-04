@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { putData } from "@/lib/api-helpers";
+import { deleteData, putData } from "@/lib/api-helpers";
 import { useFetchApi } from "@/lib/use-api";
 import { ArrowLeft, Calendar, Clock, Loader2, MapPin, Star, UserCheck, Users, UserX } from "lucide-react";
 import Link from "next/link";
@@ -36,6 +36,15 @@ interface Attendee {
   bonus_points: number;
 }
 
+interface ParticipationResponse {
+  id: number;
+  participation_type: string;
+  date: string;
+  score: number;
+  event_id: number;
+  user_id: number;
+}
+
 interface EventApiResponse {
   event: Event;
   tags: Tag[];
@@ -57,15 +66,24 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
   }, [data]);
 
   const handleAttendToggle = async () => {
-    const result = await putData<any>(
-      `http://localhost:8000/events/${eventId}/participate`,
-      {},
-      localStorage.getItem("access_token"),
-    );
+    let result;
+
+    if (isAttending) {
+      // Leaving the event - use DELETE
+      result = await deleteData(`http://localhost:8000/events/${eventId}/leave`, localStorage.getItem("access_token"));
+    } else {
+      // Joining the event - use PUT
+      result = await putData<ParticipationResponse>(
+        `http://localhost:8000/events/${eventId}/participate`,
+        {},
+        localStorage.getItem("access_token"),
+      );
+    }
 
     if (result.error) {
       console.error(result.error);
     } else {
+      // Toggle the state since the operation was successful
       setIsAttending((prev) => !prev);
     }
   };

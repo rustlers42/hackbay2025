@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlmodel import Session, select
 
 from ..database import get_session
@@ -88,3 +88,26 @@ def participate_in_event(
     session.commit()
     session.refresh(event_user_link)
     return event_user_link
+
+
+@router.delete("/{event_id}/leave", response_model=dict)
+def leave_event(
+    event_id: int, session: Session = Depends(get_session), current_user: User = Depends(get_current_user)
+):
+    # check if the event exists
+    event = session.exec(select(Event).where(Event.id == event_id)).one_or_none()
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    # check if the user is actually participating in the event
+    event_user_link = session.exec(
+        select(EventUserLink).where(EventUserLink.event_id == event_id, EventUserLink.user_id == current_user.id)
+    ).one_or_none()
+    if not event_user_link:
+        raise HTTPException(status_code=400, detail="You are not participating in this event")
+
+    # remove the participation
+    session.delete(event_user_link)
+    session.commit()
+
+    return Response(status_code=204)
