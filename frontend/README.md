@@ -1,4 +1,4 @@
-# meetmatch
+# LiveMesh
 
 ## Getting Started
 

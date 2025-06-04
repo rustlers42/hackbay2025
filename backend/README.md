@@ -1,6 +1,6 @@
-# backend
+# LiveMeshBackend
 
-## start the backend
+## start the LiveMeshBackend
 
 firstly you need to create a .env file (example given in .example.env, using sqlite)
 
@@ -13,6 +13,14 @@ ACCESS_TOKEN_EXPIRE_MINUTES=<changeme>
 
 ```bash
 uv run main.py
+```
+
+## crawl events
+
+This maybe needs to be more intelligent.
+
+```bash
+uv run crawl.py
 ```
 
 ## swagger

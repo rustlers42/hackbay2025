@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
     logging.info("lifespan ending")
 
 
-app = FastAPI(title="backend", lifespan=lifespan)
+app = FastAPI(title="LiveMeshBackend", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
