@@ -20,8 +20,8 @@ export default function LandingPage() {
                 </div>
               </div>
               <h1 className="text-4xl font-bold">
-                <span className="text-green-700">MEET</span>
-                <span className="text-blue-600">MATCH</span>
+                <span className="text-green-700">LIFE</span>
+                <span className="text-blue-600">MESH</span>
               </h1>
             </div>
 
@@ -30,7 +30,7 @@ export default function LandingPage() {
               <Badge variant="secondary" className="mb-4 bg-green-100 text-green-800 border-green-200">
                 AI-Powered Sports Matching
               </Badge>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">Find Your Perfect Sports Partner</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">Find Your Perfect Sports Event</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 Connect with like-minded athletes in your area. Our AI matches you based on skill level, location, and
                 schedule.
