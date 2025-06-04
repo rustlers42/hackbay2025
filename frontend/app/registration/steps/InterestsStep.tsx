@@ -1,54 +1,55 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
+import { interestsSchema, RegistrationData } from "@/app/registration/types";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { useFetchApi } from "@/lib/use-api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useRegistration } from "../context/RegistrationContext";
-import { interestsSchema, RegistrationData } from "../types";
 
 type InterestsFormData = Pick<RegistrationData, "interests">;
 
 export const InterestsStep: React.FC = () => {
-  const { data, updateStepData, errors } = useRegistration();
-
+  const { data: options = [], isLoading, error } = useFetchApi<{ interest: string; id: string }[]>("/interests");
   const {
-    register,
+    getValues,
+    setValue,
     watch,
-    formState: { errors: formErrors },
+    formState: { errors },
   } = useForm<InterestsFormData>({
     resolver: zodResolver(interestsSchema),
     defaultValues: {
-      interests: data.interests || "",
+      interests: [],
     },
   });
 
-  // Watch form values and sync with context in real-time
-  const watchedinterests = watch("interests");
+  const selected = watch("interests");
 
-  useEffect(() => {
-    // Update context data whenever form values change
-    updateStepData({
-      interests: watchedinterests,
-    });
-  }, [watchedinterests, updateStepData]);
+  const toggleSelection = (interest: string) => {
+    const current = getValues("interests") || [];
+    const updated = current.includes(interest) ? current.filter((a) => a !== interest) : [...current, interest];
+
+    setValue("interests", updated, { shouldValidate: true });
+  };
+
+  if (isLoading || !options) return <p>Loading interests...</p>;
+  if (error) return <p>Error loading interests.</p>;
 
   return (
-    <div className="space-y-4">
-      <div>
-        <Label htmlFor="interests">Your favorite sports or interests</Label>
-        <Input
-          id="interests"
-          {...register("interests")}
-          placeholder="e.g. Yoga, Running, Bouldering..."
-          autoFocus
-          className={formErrors.interests || errors.interests ? "border-red-500" : ""}
-        />
-        {(formErrors.interests || errors.interests) && (
-          <p className="text-red-500 text-sm mt-1">{formErrors.interests?.message || errors.interests}</p>
-        )}
+    <div>
+      <Label className="text-lg">Select your favorite interests:</Label>
+      <div className="grid gap-3 mt-2">
+        {options.map((interest) => (
+          <label key={interest.id} className="flex items-center space-x-2">
+            <Checkbox
+              checked={selected?.includes(interest.interest)}
+              onCheckedChange={() => toggleSelection(interest.interest)}
+            />
+            <span>{interest.interest}</span>
+          </label>
+        ))}
       </div>
+      {errors.interests && <p className="text-red-500 text-sm">{errors.interests.message}</p>}
     </div>
   );
 };

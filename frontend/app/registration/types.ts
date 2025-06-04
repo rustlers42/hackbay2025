@@ -1,14 +1,5 @@
 import * as z from "zod";
 
-export const insuranceProviders = [
-  "AOK",
-  "TK (Techniker Krankenkasse)",
-  "Barmer",
-  "DAK-Gesundheit",
-  "KKH",
-  "IKK classic",
-] as const;
-
 export const steps = ["personal", "who", "interest"] as const;
 
 export type Step = (typeof steps)[number];
@@ -51,7 +42,7 @@ export const whoSchema = z.object({
 });
 
 export const interestsSchema = z.object({
-  interests: z.string().optional(),
+  interests: z.array(z.string()),
 });
 
 // Combined schema for full registration
