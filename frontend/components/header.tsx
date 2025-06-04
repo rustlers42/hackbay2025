@@ -123,9 +123,11 @@ export default function Header() {
                   style={{ transition: "stroke-dashoffset 0.35s" }}
                 />
               </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <User className="h-4 w-4 text-gray-800" />
-              </div>
+              <Link href={"/profile"}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <User className="h-4 w-4 text-gray-800" />
+                </div>
+              </Link>
             </div>
           )}
 
