@@ -44,12 +44,13 @@ export const PersonalStep: React.FC = () => {
   }, [watchedName, watchedEmail, watchedBirthday, watchedPassword, updateStepData]);
 
   return (
-    <div className="space-y-4">
+    <form className="space-y-4">
       <div>
         <Label htmlFor="username">Name</Label>
         <Input
           id="username"
           {...register("username")}
+          autoComplete="name"
           autoFocus
           className={formErrors.username || errors.username ? "border-red-500" : ""}
         />
@@ -60,7 +61,13 @@ export const PersonalStep: React.FC = () => {
 
       <div>
         <Label htmlFor="email">Email</Label>
-        <Input id="email" {...register("email")} className={formErrors.email || errors.email ? "border-red-500" : ""} />
+        <Input
+          id="email"
+          type="email"
+          {...register("email")}
+          autoComplete="email"
+          className={formErrors.email || errors.email ? "border-red-500" : ""}
+        />
         {(formErrors.email || errors.email) && (
           <p className="text-red-500 text-sm mt-1">{formErrors.email?.message || errors.email}</p>
         )}
@@ -72,7 +79,7 @@ export const PersonalStep: React.FC = () => {
           id="birthday"
           type="date"
           {...register("birthday")}
-          autoFocus
+          autoComplete="bday"
           className={formErrors.birthday || errors.birthday ? "border-red-500" : ""}
         />
         {(formErrors.birthday || errors.birthday) && (
@@ -86,12 +93,13 @@ export const PersonalStep: React.FC = () => {
           id="password"
           type="password"
           {...register("password")}
+          autoComplete="new-password"
           className={formErrors.password || errors.password ? "border-red-500" : ""}
         />
         {(formErrors.password || errors.password) && (
           <p className="text-red-500 text-sm mt-1">{formErrors.password?.message || errors.password}</p>
         )}
       </div>
-    </div>
+    </form>
   );
 };
