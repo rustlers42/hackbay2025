@@ -33,7 +33,6 @@ export default function UserDashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <StatsChart title="Weekly Activity" />
-          <StatsChart title="Monthly Progress" />
         </div>
       </div>
     </div>

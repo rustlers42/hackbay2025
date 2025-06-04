@@ -64,13 +64,16 @@ export default function Header() {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent className="w-48" align="start">
-            <DropdownMenuLabel>Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Menu</DropdownMenuLabel>
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
                 <Link href="/events/map">Map</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/settings">Settings</Link>
+                <Link href="/calendar">Calendar</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/events/create">Create Activity</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
