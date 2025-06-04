@@ -1,6 +1,7 @@
 "use client";
 
 import { BASE_API_URL } from "@/lib/api-config";
+import { useAuth } from "@/lib/auth-context";
 import { useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useState } from "react";
 import { personalSchema, RegistrationData, Step, steps, stepSchemas, tagsSchema, whoSchema } from "../types";
@@ -41,6 +42,7 @@ interface RegistrationProviderProps {
 
 export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ children }) => {
   const router = useRouter();
+  const { login } = useAuth();
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [data, setData] = useState<Partial<RegistrationData>>({});
@@ -133,6 +135,32 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
         console.log(await response.json());
         throw new Error("Registration failed. Please try again.");
       }
+
+      // Create URLSearchParams for x-www-form-urlencoded format
+      const formData = new URLSearchParams();
+      formData.append("grant_type", "password");
+      formData.append("username", submissionData.email);
+      formData.append("password", submissionData.password);
+
+      console.log(submissionData);
+
+      // Use the proxied API endpoint to avoid CORS issues
+      const tokenResponse = await fetch(BASE_API_URL + "/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!tokenResponse.ok) {
+        throw new Error("Authentication failed");
+      }
+
+      const loginData = await tokenResponse.json();
+
+      login(loginData.access_token, loginData.token_type);
 
       // Handle successful registration
       router.push("/connect");
