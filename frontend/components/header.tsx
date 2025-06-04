@@ -23,7 +23,7 @@ import { BASE_API_URL } from "@/lib/api-config";
 type UserProfile = {
   email: string;
   username: string;
-  score: number;
+  bonus_points: number;
   level: number;
 };
 
@@ -37,7 +37,7 @@ export default function Header() {
   let progress = 0;
 
   if (isAuthenticated && userProfile) {
-    progress = userProfile?.level % 5;
+    progress = userProfile?.level % 1;
   }
 
   const radius = 12;
@@ -54,10 +54,10 @@ export default function Header() {
             <button className="flex items-center gap-2 focus:outline-none">
               <Footprints className="h-6 w-6 text-green-600" />
               <h1 className="text-2xl font-bold cursor-pointer">
+                <span className="text-green-700">L</span>
+                <span className="text-lg">IFE</span>
                 <span className="text-green-700">M</span>
-                <span className="text-lg">EET</span>
-                <span className="text-green-700">M</span>
-                <span className="text-lg">ATCH</span>
+                <span className="text-lg">ESH</span>
               </h1>
             </button>
           </DropdownMenuTrigger>
@@ -99,7 +99,7 @@ export default function Header() {
             (isLoading ? (
               <Skeleton className="h-6 w-12" />
             ) : (
-              <span className="font-medium">{userProfile?.score || 0}</span>
+              <span className="font-medium">{userProfile?.bonus_points || 0}</span>
             ))}
           {/* Star Icon */}
           {isAuthenticated && <Star className="w-5 h-5 text-yellow-600" />}

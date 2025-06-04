@@ -15,8 +15,8 @@ def setup_mock_data(session: Session):
                 email="admin@admin.de",
                 username="admin",
                 hashed_password=get_password_hash("admin"),
-                bonus_points=0,
-                level=0.0,
+                bonus_points=10,
+                level=0.7,
             ),
             User(
                 email="user@user.de",

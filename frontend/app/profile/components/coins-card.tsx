@@ -4,7 +4,7 @@ export function CoinsCard(coins) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Coins</CardTitle>
+        <CardTitle>Achievements</CardTitle>
       </CardHeader>
       <CardContent className="flex justify-between text-center">
         <div>
