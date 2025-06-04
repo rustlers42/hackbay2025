@@ -24,6 +24,28 @@ const calculateAge = (birthday: string): number => {
   return age;
 };
 
+// Function to calculate minutes per week based on intensity percentage and age
+const calculateMinutesPerWeek = (intensityPercentage: number, age: number): number => {
+  if (age >= 5 && age <= 17) {
+    // Children: 420 minutes/week (7 hours) at 100%
+    return Math.round((intensityPercentage * 420) / 100);
+  } else if (age >= 18) {
+    // Adults: 225 minutes/week (middle of 150-300 range) at 100%
+    return Math.round((intensityPercentage * 225) / 100);
+  }
+  return 0;
+};
+
+// Function to get intensity percentage from minutes per week
+const getIntensityFromMinutes = (minutesPerWeek: number, age: number): number => {
+  if (age >= 5 && age <= 17) {
+    return Math.round((minutesPerWeek * 100) / 420);
+  } else if (age >= 18) {
+    return Math.round((minutesPerWeek * 100) / 225);
+  }
+  return 0;
+};
+
 // Function to get WHO recommendation based on age
 const getWhoRecommendation = (age: number) => {
   if (age >= 5 && age <= 17) {
@@ -56,29 +78,42 @@ const getWhoRecommendation = (age: number) => {
 export const WhoStep: React.FC = () => {
   const { data, updateStepData, errors } = useRegistration();
 
+  // Calculate age
+  const age = useMemo(() => calculateAge(data.birthday || ""), [data.birthday]);
+
+  // Get default intensity percentage
+  const defaultIntensity = 40;
+
   const {
     getValues,
     watch,
     register,
+    setValue,
     formState: { errors: formErrors },
   } = useForm<WhoFormData>({
     resolver: zodResolver(whoSchema),
     defaultValues: {
-      intensity: data.intensity ?? 40,
+      intensity: data.intensity ?? defaultIntensity,
     },
   });
 
   const watchedIntensity = watch("intensity");
-
-  // Calculate age and WHO recommendation
-  const age = useMemo(() => calculateAge(data.birthday || ""), [data.birthday]);
   const whoRecommendation = useMemo(() => getWhoRecommendation(age), [age]);
+
+  // Calculate minutes per week from intensity
+  const minutesPerWeek = useMemo(() => calculateMinutesPerWeek(watchedIntensity || 0, age), [watchedIntensity, age]);
 
   useEffect(() => {
     updateStepData({
-      intensity: watchedIntensity,
+      intensity: minutesPerWeek || 0,
     });
   }, [watchedIntensity, updateStepData]);
+
+  // Handle slider change
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const intensityPercentage = parseInt(event.target.value);
+    setValue("intensity", intensityPercentage);
+  };
 
   return (
     <div className="space-y-6">
@@ -105,21 +140,19 @@ export const WhoStep: React.FC = () => {
           min={10}
           max={150}
           step={10}
-          {...register("intensity", { valueAsNumber: true })}
+          value={watchedIntensity || 0}
+          onChange={handleSliderChange}
           className="w-full mt-2"
         />
 
+        {/* Hidden input for form data */}
+        <input type="hidden" {...register("intensity", { valueAsNumber: true })} />
+
         {/* Intensity Display */}
         <div className="flex justify-between items-center mt-3">
-          <div className="text-2xl font-bold text-blue-600">{getValues().intensity || 0}%</div>
+          <div className="text-2xl font-bold text-blue-600">{watchedIntensity || 0}%</div>
           <div className="text-sm text-gray-600">
-            {whoRecommendation.recommendation !== "N/A" && (
-              <span>
-                {age >= 5 && age <= 17
-                  ? `≈ ${Math.round(((getValues().intensity || 0) * 7) / 100)} hours/week`
-                  : `≈ ${Math.round(((getValues().intensity || 0) * 225) / 100)} minutes/week`}
-              </span>
-            )}
+            {whoRecommendation.recommendation !== "N/A" && <span>≈ {minutesPerWeek} minutes/week</span>}
           </div>
         </div>
 
@@ -132,7 +165,7 @@ export const WhoStep: React.FC = () => {
 
         {/* Validation Errors */}
         {(formErrors.intensity || errors.intensity) && (
-          <p className="text-red-500 text-sm mt-2">{formErrors.intensity?.message || errors.intensity}</p>
+          <p className="text-red-500 text-sm mt-2">{formErrors.intensity?.message || String(errors.intensity)}</p>
         )}
       </div>
     </div>
