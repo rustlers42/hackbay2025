@@ -20,11 +20,12 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
 
-type UserProfile = {
+export type UserProfile = {
   email: string;
   username: string;
   bonus_points: number;
   level: number;
+  intensity: number;
 };
 
 export default function Header() {

@@ -55,9 +55,10 @@ interface EventApiResponse {
 interface EventDetailOverlayProps {
   eventId: number;
   onClose: () => void;
+  onAdd: (minutes) => void;
 }
 
-export default function EventDetails({ eventId, onClose }: EventDetailOverlayProps) {
+export default function EventDetails({ eventId, onClose, onAdd }: EventDetailOverlayProps) {
   const { data, isLoading } = useFetchApi<EventApiResponse>(`http://localhost:8000/events/${eventId}`);
   const [isAttending, setIsAttending] = useState(false);
 
@@ -78,12 +79,27 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
         {},
         localStorage.getItem("access_token"),
       );
+
+      let startDate = new Date(data.event.start_date),
+        endDate = new Date(data.event.end_date);
+
+      let diffMin = 0;
+
+      if (startDate == endDate) {
+        console.log("setting diffMin to default 120");
+        diffMin = 120;
+      } else {
+        diffMin = Math.floor((endDate.getTime() - startDate.getTime()) / 60000);
+        if (diffMin < 1) diffMin = 120;
+      }
+
+      onAdd(diffMin);
+      onClose();
     }
 
     if (result.error) {
       console.error(result.error);
     } else {
-      // Toggle the state since the operation was successful
       setIsAttending((prev) => !prev);
     }
   };
@@ -285,9 +301,8 @@ export default function EventDetails({ eventId, onClose }: EventDetailOverlayPro
               <Button
                 onClick={handleAttendToggle}
                 size="lg"
-                className={`w-full h-14 text-lg font-semibold ${
-                  isAttending ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"
-                }`}
+                className={`w-full h-14 text-lg font-semibold ${isAttending ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"
+                  }`}
               >
                 {isAttending ? (
                   <>

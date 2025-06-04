@@ -1,48 +1,52 @@
-"use client";
+"use client"
 
-import ProtectedRoute from "@/components/protected-route";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, Info, MapPin, X } from "lucide-react";
-import "mapbox-gl/dist/mapbox-gl.css";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { UserProfile } from "@/components/header"
+import ProtectedRoute from "@/components/protected-route"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { Calendar, Clock, Info, MapPin, X } from "lucide-react"
+import "mapbox-gl/dist/mapbox-gl.css"
+import Link from "next/link"
+import type React from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import Map, {
   FullscreenControl,
   GeolocateControl,
-  MapRef,
+  type MapRef,
   Marker,
   NavigationControl,
-  ViewState,
-} from "react-map-gl/mapbox";
-import { useFetchApi } from "../../../lib/use-api";
-import EventDetailsOverlay from "./components/EventDetails";
-import classes from "./page.module.css";
+  type ViewState,
+} from "react-map-gl/mapbox"
+import { useFetchApi } from "../../../lib/use-api"
+import EventDetailsOverlay from "./components/EventDetails"
+import classes from "./page.module.css"
 
 interface Location {
-  lat: number;
-  long: number;
-  color: string;
-  onClick: () => void;
+  lat: number
+  long: number
+  color: string
+  onClick: () => void
 }
 
 interface Event {
-  id: number;
-  name: string;
-  description: string;
-  start_date: string;
-  end_date: string;
-  latitude: number;
-  longitude: number;
+  id: number
+  name: string
+  description: string
+  start_date: string
+  end_date: string
+  latitude: number
+  longitude: number
 }
 
 interface SearchResult {
-  url: string;
-  name: string;
-  description: string;
-  start_date: string;
-  end_date: string;
-  latitude: number;
-  longitude: number;
+  url: string
+  name: string
+  description: string
+  start_date: string
+  end_date: string
+  latitude: number
+  longitude: number
 }
 
 const Pin: React.FC<{ color: string }> = ({ color }) => {
@@ -59,24 +63,27 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
         style={{ borderTopColor: color === "red" ? "#16a34a" : color }}
       />
     </div>
-  );
-};
+  )
+}
 
 const MapView: React.FC = () => {
-  const [showFullDetails, setShowFullDetails] = useState(false);
-  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
+  const [showFullDetails, setShowFullDetails] = useState(false)
+  const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events")
   const { data: searchData, isLoading: isSearchLoading } = useFetchApi<SearchResult[]>(
     "http://localhost:8000/search?tags=badminton&tags=basketball",
-  );
+  )
 
-  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
-  const mapRef = useRef<MapRef>(null);
-  const [locations, setLocations] = useState<Location[]>([]);
-  const [searchLocations, setSearchLocations] = useState<Location[]>([]);
-  const [allSearchLocations, setAllSearchLocations] = useState<Location[]>([]);
-  const [displayedSearchCount, setDisplayedSearchCount] = useState(0);
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [selectedSearchEvent, setSelectedSearchEvent] = useState<SearchResult | null>(null);
+  const { data: userProfile } = useFetchApi<UserProfile>("http://localhost:8000/users/me");
+
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string
+  const mapRef = useRef<MapRef>(null)
+  const [locations, setLocations] = useState<Location[]>([])
+  const [searchLocations, setSearchLocations] = useState<Location[]>([])
+  const [allSearchLocations, setAllSearchLocations] = useState<Location[]>([])
+  const [displayedSearchCount, setDisplayedSearchCount] = useState(0)
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+  const [selectedSearchEvent, setSelectedSearchEvent] = useState<SearchResult | null>(null)
+  const [goalProgress, setGoalProgress] = useState(0) // Example: 67% progress
 
   useEffect(() => {
     if (eventData) {
@@ -85,21 +92,21 @@ const MapView: React.FC = () => {
         long: data.longitude,
         color: "red",
         onClick: () => {
-          flyToEvent(data.latitude, data.longitude, 18);
+          flyToEvent(data.latitude, data.longitude, 18)
           setTimeout(() => {
-            setSelectedEvent(data);
-          }, 2500);
+            setSelectedEvent(data)
+          }, 2500)
         },
-      }));
-      setLocations(mapLocation);
+      }))
+      setLocations(mapLocation)
     }
 
     const timeout = setTimeout(() => {
-      resetFly();
-    }, 2000);
+      resetFly()
+    }, 2000)
 
-    return () => clearTimeout(timeout);
-  }, [eventData]);
+    return () => clearTimeout(timeout)
+  }, [eventData])
 
   useEffect(() => {
     if (searchData) {
@@ -108,72 +115,72 @@ const MapView: React.FC = () => {
         long: data.longitude,
         color: "blue",
         onClick: () => {
-          flyToEvent(data.latitude, data.longitude, 18);
+          flyToEvent(data.latitude, data.longitude, 18)
           setTimeout(() => {
-            setSelectedSearchEvent(data);
-          }, 2500);
+            setSelectedSearchEvent(data)
+          }, 2500)
         },
-      }));
-      setAllSearchLocations(mapSearchLocation);
-      setDisplayedSearchCount(0);
+      }))
+      setAllSearchLocations(mapSearchLocation)
+      setDisplayedSearchCount(0)
     }
 
     const timeout = setTimeout(() => {
-      resetFly();
-    }, 2000);
+      resetFly()
+    }, 2000)
 
-    return () => clearTimeout(timeout);
-  }, [searchData]);
+    return () => clearTimeout(timeout)
+  }, [searchData])
 
   useEffect(() => {
     if (allSearchLocations.length > 0 && displayedSearchCount < allSearchLocations.length) {
       const initialTimeout = setTimeout(() => {
         const interval = setInterval(() => {
           setDisplayedSearchCount((prev) => {
-            const next = prev + 1;
+            const next = prev + 1
             if (next >= allSearchLocations.length) {
-              clearInterval(interval);
+              clearInterval(interval)
             }
-            return next;
-          });
-        }, 2500); // 2.5 seconds between each marker
+            return next
+          })
+        }, 2500) // 2.5 seconds between each marker
 
-        return () => clearInterval(interval);
-      }, 7000); // 7 seconds initial delay
+        return () => clearInterval(interval)
+      }, 7000) // 7 seconds initial delay
 
-      return () => clearTimeout(initialTimeout);
+      return () => clearTimeout(initialTimeout)
     }
-  }, [allSearchLocations.length, displayedSearchCount]);
+  }, [allSearchLocations.length, displayedSearchCount])
 
   useEffect(() => {
-    const visibleSearchLocations = allSearchLocations.slice(0, displayedSearchCount);
-    setSearchLocations(visibleSearchLocations);
-  }, [allSearchLocations, displayedSearchCount]);
+    const visibleSearchLocations = allSearchLocations.slice(0, displayedSearchCount)
+    setSearchLocations(visibleSearchLocations)
+  }, [allSearchLocations, displayedSearchCount])
 
   const flyToEvent = (long: number, lat: number, zoom = 18, bearing = 60, pitch = 70, duration = 4000) => {
-    if (!mapRef.current) return;
+    if (!mapRef.current) return
     mapRef.current.flyTo({
       center: [lat, long],
       zoom,
       bearing,
       pitch,
       duration,
-    });
-  };
+    })
+  }
 
   const resetFly = () => {
-    flyToEvent(49.4405421, 11.1046655, 11, 330, 30);
-    setSelectedEvent(null);
-    setSelectedSearchEvent(null);
-  };
+    flyToEvent(49.4305421, 11.1046655, 11, 330, 30)
+    setSelectedEvent(null)
+    setSelectedSearchEvent(null)
+  }
 
   if (typeof window !== "undefined") {
-    (window as any).flyToEvent = flyToEvent;
-    (window as any).resetFly = resetFly;
+    ; (window as any).flyToEvent = flyToEvent
+      ; (window as any).resetFly = resetFly
   }
 
   const formatDateTime = (dateString: string) => {
-    const date = new Date(dateString);
+    const date = new Date(dateString)
     return {
       date: date.toLocaleDateString("en-EN", {
         weekday: "short",
@@ -185,11 +192,11 @@ const MapView: React.FC = () => {
         hour: "2-digit",
         minute: "2-digit",
       }),
-    };
-  };
+    }
+  }
 
   const markers = useMemo(() => {
-    const allLocations = [...locations, ...searchLocations];
+    const allLocations = [...locations, ...searchLocations]
     return allLocations.map((loc, idx) => (
       <Marker
         key={`marker-${idx}`}
@@ -197,14 +204,14 @@ const MapView: React.FC = () => {
         longitude={loc.long}
         anchor="bottom"
         onClick={(e) => {
-          e.originalEvent.stopPropagation();
-          loc.onClick();
+          e.originalEvent.stopPropagation()
+          loc.onClick()
         }}
       >
         <Pin color={loc.color} />
       </Marker>
-    ));
-  }, [locations, searchLocations]);
+    ))
+  }, [locations, searchLocations])
 
   const initialViewState: ViewState = {
     latitude: 49.4305421,
@@ -213,10 +220,10 @@ const MapView: React.FC = () => {
     bearing: 0,
     pitch: 0,
     padding: { top: 0, left: 0, right: 0, bottom: 0 },
-  };
+  }
 
-  if (isLoading || isSearchLoading) {
-    return <div>Loading...</div>;
+  if (isLoading || isSearchLoading || !userProfile) {
+    return <div>Loading...</div>
   }
 
   return (
@@ -349,11 +356,15 @@ const MapView: React.FC = () => {
                       <Button
                         className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold"
                         onClick={() => {
-                          window.open(selectedSearchEvent.url, "_blank");
+                          window.open(selectedSearchEvent.url, "_blank")
                         }}
                       >
+                        Learn more
+                      </Button>
+
+                      <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold">
                         <Info className="w-4 h-4 mr-2" />
-                        Interested?
+                        View Event Details
                       </Button>
                     </CardContent>
                   </Card>
@@ -366,12 +377,29 @@ const MapView: React.FC = () => {
       {showFullDetails && selectedEvent && (
         <div className="fixed inset-0 bg-black/50 z-60 flex justify-center items-center">
           <div className="bg-white max-w-4xl w-full overflow-auto max-h-[100vh] relative">
-            <EventDetailsOverlay eventId={selectedEvent.id} onClose={() => setShowFullDetails(false)} />
+            <EventDetailsOverlay eventId={selectedEvent.id} onAdd={(min) => {
+              min = Math.min(120, min);
+              setGoalProgress(Math.min(100, goalProgress + Math.ceil((min / userProfile.intensity) * 100)));
+              resetFly();
+            }} onClose={() => setShowFullDetails(false)} />
           </div>
         </div>
       )}
+      {/* Floating Progress Bar */}
+      <Link href={"/calendar"} className="fixed bottom-4 left-4 right-4 z-30 pointer-events-none">
+        <div className="max-w-md mx-auto pointer-events-auto">
+          <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-4 shadow-lg">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-700">Weekly Goals</span>
+              <span className="text-sm font-bold text-green-600">{goalProgress}%</span>
+            </div>
+            <Progress value={goalProgress} className="h-2" />
+            <p className="text-xs text-gray-500 mt-1">You have achieved {goalProgress}% of your goals this week</p>
+          </div>
+        </div>
+      </Link>
     </ProtectedRoute>
-  );
-};
+  )
+}
 
-export default MapView;
+export default MapView
