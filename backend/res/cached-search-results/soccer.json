@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Testspiel gegen Bor. M\u00f6nchengladbach",
+        "description": "Generalprobe f\u00fcr die neue Zweitligasaison",
+        "weekly": false,
+        "start_date": "2025-07-26T14:00",
+        "end_date": "2025-07-26T14:00",
+        "latitude": 49.426357246051175,
+        "longitude": 11.125664782590297,
+        "location": "Max-Morlock-Stadion",
+        "url": "https://www.fcn.de/news/artikel/sommervorbereitung-2025-der-fahrplan/"
+    },
+    {
+        "name": "Zweites Vorbereitungsspiel",
+        "description": "Zweites Vorbereitungsspiel",
+        "weekly": false,
+        "start_date": "2025-07-05T00:00",
+        "end_date": "2025-07-05T00:00",
+        "latitude": 49.123184504401436,
+        "longitude": 9.737558184731196,
+        "location": "Sportfreunde Schw\u00e4bisch Hall",
+        "url": "https://www.fcn.de/news/artikel/sommervorbereitung-2025-der-fahrplan/"
+    },
+    {
+        "name": "Dritte Vorbereitungsspiel",
+        "description": "Dritte Vorbereitungsspiel",
+        "weekly": false,
+        "start_date": "2025-07-12T00:00",
+        "end_date": "2025-07-12T00:00",
+        "latitude": 49.43873938565877,
+        "longitude": 11.134160675995517,
+        "location": "Valznerweiher",
+        "url": "https://www.fcn.de/news/artikel/sommervorbereitung-2025-der-fahrplan/"
+    },
+    {
+        "name": "Saison 2024/2025: Daten, Zahlen und Rekorde",
+        "description": "Eine Zusammenfassung der Daten und Zahlen der Saison 2024/2025 des 1. FC N\u00fcrnberg.",
+        "weekly": false,
+        "start_date": "2024-07-01T00:00",
+        "end_date": "2025-05-31T00:00",
+        "latitude": 49.426357246051175,
+        "longitude": 11.125664782590297,
+        "location": "Max-Morlock-Stadion",
+        "url": "https://www.fcn.de/news/artikel/saison-20242025-daten-zahlen-und-rekorde/"
+    },
+    {
+        "name": "Frauen-Nationalmannschaft gegen \u00d6sterreich",
+        "description": "Erstes Heiml\u00e4nderspiel der Frauen-Nationalmannschaft in der UEFA Nations League gegen \u00d6sterreich.",
+        "weekly": false,
+        "start_date": "2025-02-25T20:45",
+        "end_date": "2025-02-25T20:45",
+        "latitude": 49.426357246051175,
+        "longitude": 11.125664782590297,
+        "location": "Max-Morlock-Stadion in N\u00fcrnberg",
+        "url": "https://www.dfb.de/news/erstes-heimlaenderspiel-2025-in-nuernberg"
+    },
+    {
+        "name": "StreetsoccerCup 2025",
+        "description": "StreetsoccerCup for children and teenagers in Nuremberg.",
+        "weekly": false,
+        "start_date": "2025-05-17T10:00",
+        "end_date": "2025-05-25T17:00",
+        "latitude": 49.426357246051175,
+        "longitude": 11.125664782590297,
+        "location": "Nordkurve Max-Morlock-Stadion",
+        "url": "https://www.nuernberg.de/presse/mitteilungen/pm_25122.html"
+    }
+]

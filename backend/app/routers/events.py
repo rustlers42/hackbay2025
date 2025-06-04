@@ -13,7 +13,7 @@ router = APIRouter()
 @router.get("", response_model=list[Event])
 def get_events(session: Session = Depends(get_session)):
     events = session.exec(select(Event)).all()
-    return events
+    return [event for event in events if event.start_date >= datetime.today()]
 
 
 @router.get("/{event_id}", response_model=dict)

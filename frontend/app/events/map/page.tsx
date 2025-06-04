@@ -35,6 +35,16 @@ interface Event {
   longitude: number;
 }
 
+interface SearchResult {
+  url: string;
+  name: string;
+  description: string;
+  start_date: string;
+  end_date: string;
+  latitude: number;
+  longitude: number;
+}
+
 const Pin: React.FC<{ color: string }> = ({ color }) => {
   return (
     <div className="relative">
@@ -55,11 +65,18 @@ const Pin: React.FC<{ color: string }> = ({ color }) => {
 const MapView: React.FC = () => {
   const [showFullDetails, setShowFullDetails] = useState(false);
   const { data: eventData, isLoading } = useFetchApi<Event[]>("http://localhost:8000/events");
+  const { data: searchData, isLoading: isSearchLoading } = useFetchApi<SearchResult[]>(
+    "http://localhost:8000/search?tags=badminton&tags=basketball",
+  );
 
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
   const mapRef = useRef<MapRef>(null);
   const [locations, setLocations] = useState<Location[]>([]);
+  const [searchLocations, setSearchLocations] = useState<Location[]>([]);
+  const [allSearchLocations, setAllSearchLocations] = useState<Location[]>([]);
+  const [displayedSearchCount, setDisplayedSearchCount] = useState(0);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [selectedSearchEvent, setSelectedSearchEvent] = useState<SearchResult | null>(null);
 
   useEffect(() => {
     if (eventData) {
@@ -84,14 +101,56 @@ const MapView: React.FC = () => {
     return () => clearTimeout(timeout);
   }, [eventData]);
 
-  const flyToEvent = (
-    long: number,
-    lat: number,
-    zoom = 18,
-    bearing = 60,
-    pitch = 70,
-    duration = 4000
-  ) => {
+  useEffect(() => {
+    if (searchData) {
+      const mapSearchLocation = searchData.map((data) => ({
+        lat: data.latitude,
+        long: data.longitude,
+        color: "blue",
+        onClick: () => {
+          flyToEvent(data.latitude, data.longitude, 18);
+          setTimeout(() => {
+            setSelectedSearchEvent(data);
+          }, 2500);
+        },
+      }));
+      setAllSearchLocations(mapSearchLocation);
+      setDisplayedSearchCount(0);
+    }
+
+    const timeout = setTimeout(() => {
+      resetFly();
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [searchData]);
+
+  useEffect(() => {
+    if (allSearchLocations.length > 0 && displayedSearchCount < allSearchLocations.length) {
+      const initialTimeout = setTimeout(() => {
+        const interval = setInterval(() => {
+          setDisplayedSearchCount((prev) => {
+            const next = prev + 1;
+            if (next >= allSearchLocations.length) {
+              clearInterval(interval);
+            }
+            return next;
+          });
+        }, 2500); // 2.5 seconds between each marker
+
+        return () => clearInterval(interval);
+      }, 7000); // 7 seconds initial delay
+
+      return () => clearTimeout(initialTimeout);
+    }
+  }, [allSearchLocations.length, displayedSearchCount]);
+
+  useEffect(() => {
+    const visibleSearchLocations = allSearchLocations.slice(0, displayedSearchCount);
+    setSearchLocations(visibleSearchLocations);
+  }, [allSearchLocations, displayedSearchCount]);
+
+  const flyToEvent = (long: number, lat: number, zoom = 18, bearing = 60, pitch = 70, duration = 4000) => {
     if (!mapRef.current) return;
     mapRef.current.flyTo({
       center: [lat, long],
@@ -105,6 +164,7 @@ const MapView: React.FC = () => {
   const resetFly = () => {
     flyToEvent(49.4405421, 11.1046655, 11, 330, 30);
     setSelectedEvent(null);
+    setSelectedSearchEvent(null);
   };
 
   if (typeof window !== "undefined") {
@@ -128,24 +188,23 @@ const MapView: React.FC = () => {
     };
   };
 
-  const markers = useMemo(
-    () =>
-      locations.map((loc, idx) => (
-        <Marker
-          key={`marker-${idx}`}
-          latitude={loc.lat}
-          longitude={loc.long}
-          anchor="bottom"
-          onClick={(e) => {
-            e.originalEvent.stopPropagation();
-            loc.onClick();
-          }}
-        >
-          <Pin color={loc.color} />
-        </Marker>
-      )),
-    [locations]
-  );
+  const markers = useMemo(() => {
+    const allLocations = [...locations, ...searchLocations];
+    return allLocations.map((loc, idx) => (
+      <Marker
+        key={`marker-${idx}`}
+        latitude={loc.lat}
+        longitude={loc.long}
+        anchor="bottom"
+        onClick={(e) => {
+          e.originalEvent.stopPropagation();
+          loc.onClick();
+        }}
+      >
+        <Pin color={loc.color} />
+      </Marker>
+    ));
+  }, [locations, searchLocations]);
 
   const initialViewState: ViewState = {
     latitude: 49.4305421,
@@ -156,7 +215,7 @@ const MapView: React.FC = () => {
     padding: { top: 0, left: 0, right: 0, bottom: 0 },
   };
 
-  if (isLoading) {
+  if (isLoading || isSearchLoading) {
     return <div>Loading...</div>;
   }
 
@@ -197,9 +256,7 @@ const MapView: React.FC = () => {
                       <CardTitle className="text-xl font-bold text-gray-900 pr-8 leading-tight">
                         {selectedEvent.name}
                       </CardTitle>
-                      <CardDescription className="text-gray-600 mt-2">
-                        {selectedEvent.description}
-                      </CardDescription>
+                      <CardDescription className="text-gray-600 mt-2">{selectedEvent.description}</CardDescription>
                     </CardHeader>
 
                     <CardContent className="space-y-4">
@@ -209,7 +266,7 @@ const MapView: React.FC = () => {
                           <div className="min-w-0 flex-1">
                             <p className="text-sm font-medium text-green-800">Start</p>
                             <p className="text-sm text-gray-700">
-                               {formatDateTime(selectedEvent.start_date).date} at{" "}
+                              {formatDateTime(selectedEvent.start_date).date} at{" "}
                               {formatDateTime(selectedEvent.start_date).time}
                             </p>
                           </div>
@@ -227,26 +284,88 @@ const MapView: React.FC = () => {
                         </div>
                       </div>
 
-                    
-                        <Button className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold" onClick={() => setShowFullDetails(true)}>
-                          <Info className="w-4 h-4 mr-2" />
-                          View Event Details
-                        </Button>
+                      <Button
+                        className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold"
+                        onClick={() => setShowFullDetails(true)}
+                      >
+                        <Info className="w-4 h-4 mr-2" />
+                        View Event Details
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </>
+            )}
+
+            {selectedSearchEvent && (
+              <>
+                <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={() => resetFly()} />
+
+                <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300">
+                  <Card className="w-full max-w-lg mx-auto shadow-2xl bg-blue-50 border-blue-200">
+                    <CardHeader className="relative pb-3">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => resetFly()}
+                        className="absolute top-2 right-2 h-8 w-8 p-0 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
+
+                      <CardTitle className="text-xl font-bold text-blue-900 pr-8 leading-tight">
+                        {selectedSearchEvent.name}
+                      </CardTitle>
+                      <CardDescription className="text-blue-700 mt-2">
+                        {selectedSearchEvent.description}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
+                          <Calendar className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-blue-800">Start</p>
+                            <p className="text-sm text-blue-700">
+                              {formatDateTime(selectedSearchEvent.start_date).date} at{" "}
+                              {formatDateTime(selectedSearchEvent.start_date).time}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
+                          <Clock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-blue-800">End</p>
+                            <p className="text-sm text-blue-700">
+                              {formatDateTime(selectedSearchEvent.end_date).date} at{" "}
+                              {formatDateTime(selectedSearchEvent.end_date).time}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <Button
+                        className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                        onClick={() => {
+                          window.open(selectedSearchEvent.url, "_blank");
+                        }}
+                      >
+                        <Info className="w-4 h-4 mr-2" />
+                        Interested?
+                      </Button>
                     </CardContent>
                   </Card>
                 </div>
               </>
             )}
           </Map>
-          
         </div>
-        
       </main>
       {showFullDetails && selectedEvent && (
         <div className="fixed inset-0 bg-black/50 z-60 flex justify-center items-center">
           <div className="bg-white max-w-4xl w-full overflow-auto max-h-[100vh] relative">
-
-            {/* You can reuse your event detail UI here or import the detail component */}
             <EventDetailsOverlay eventId={selectedEvent.id} onClose={() => setShowFullDetails(false)} />
           </div>
         </div>

@@ -3,14 +3,14 @@
   "configurations": [
     {
       "name": "Next.js: debug server-side",
-      "cwd": "${workspaceFolder}/adopt-a-seed",
+      "cwd": "${workspaceFolder}/frontend",
       "type": "node-terminal",
       "request": "launch",
       "command": "bun run dev"
     },
     {
       "name": "Next.js: debug client-side",
-      "cwd": "${workspaceFolder}/adopt-a-seed",
+      "cwd": "${workspaceFolder}/frontend",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:3000"

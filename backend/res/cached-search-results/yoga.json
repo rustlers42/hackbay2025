@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Candlelight Yoga",
+        "description": "Join us on Thursday evening for an intimate candlelight yoga session, limited to just 6 participants. This class blends Hatha, Ashtanga, and Kriya yoga, creating a relaxing and mindful practice that will help you release tension, find balance, and connect with your inner self.",
+        "weekly": false,
+        "start_date": "2025-05-08T19:30",
+        "end_date": "2025-05-08T20:30",
+        "latitude": 49.446576265325255,
+        "longitude": 11.098602712102508,
+        "location": "Hinterhof, Neubleiche 8, 90478 N\u00fcrnberg, Studio 1",
+        "url": "https://www.momoyoga.com/evolve-nuremberg/schedule?date=2025-05-05"
+    },
+    {
+        "name": "Sunday Morning Yoga Flow",
+        "description": "Join us on Sunday morning for a dynamic yoga class led by Lisa in English. This class blends Hatha, Ashtanga, and Kriya yoga, offering a well-rounded practice that helps you build strength, flexibility, and inner peace.",
+        "weekly": false,
+        "start_date": "2025-05-11T10:30",
+        "end_date": "2025-05-11T11:30",
+        "latitude": 49.46461798858707,
+        "longitude": 11.06878576963743,
+        "location": "Kressenstra\u00dfe 11, 90419 N\u00fcrnberg",
+        "url": "https://www.momoyoga.com/evolve-nuremberg/schedule?date=2025-05-05"
+    },
+    {
+        "name": "Sunday morning yoga class",
+        "description": "Join our Sunday morning yoga class from 10am\u201311am in Rosenau park this summer, followed by breakfast at a local cafe.",
+        "weekly": false,
+        "start_date": "2025-07-06T10:00",
+        "end_date": "2025-07-06T11:00",
+        "latitude": 49.450927719531165,
+        "longitude": 11.064298297934588,
+        "location": "Rosenau park",
+        "url": "https://www.evolve-nbg.de/"
+    },
+    {
+        "name": "Thursday evening yoga class",
+        "description": "Join us every Thursday evening from 7:30pm\u20138:30pm at W\u00f6hrder Wiese for an all-levels class.",
+        "weekly": true,
+        "start_date": "2025-07-03T19:30",
+        "end_date": "2025-07-03T20:30",
+        "latitude": 49.45048078378085,
+        "longitude": 11.093127756616648,
+        "location": "W\u00f6hrder Wiese",
+        "url": "https://www.evolve-nbg.de/"
+    },
+    {
+        "name": "Saturday morning yoga class",
+        "description": "Start your weekend with intention and presence at our Saturday morning yoga class in Nuremberg Stadtpark.",
+        "weekly": true,
+        "start_date": "2025-07-05T10:00",
+        "end_date": "2025-07-05T11:00",
+        "latitude": 49.4645359676206,
+        "longitude": 11.091799641560625,
+        "location": "Nuremberg Stadtpark",
+        "url": "https://www.evolve-nbg.de/"
+    },
+    {
+        "name": "Wednesday evening yoga class (Russian)",
+        "description": "Join us on Wednesday evening from 19:30 to 20:30 in Nuremberg for an energy-boosting yoga class in the fresh air.",
+        "weekly": true,
+        "start_date": "2025-07-03T19:30",
+        "end_date": "2025-07-03T20:30",
+        "latitude": 49.45615369517252,
+        "longitude": 11.06917723436903,
+        "location": "Nuremberg",
+        "url": "https://www.evolve-nbg.de/"
+    },
+    {
+        "name": "Evolve Energise | Hatha Yoga with \u0100nsh\u016b",
+        "description": "Join us on Thursday, May 29 for our last studio yoga class of the season from 10:30am\u201311:30am for a mindful practice to help you move, breathe, and connect.",
+        "weekly": false,
+        "start_date": "2025-05-29T10:30",
+        "end_date": "2025-05-29T11:30",
+        "latitude": 49.464652852865534,
+        "longitude": 11.068968159846106,
+        "location": "Kressenstra\u00dfe 11, 90419 N\u00fcrnberg",
+        "url": "https://www.momoyoga.com/evolve-nuremberg/schedule?date=2025-05-26"
+    },
+    {
+        "name": "Evolve Strength | Adho Yoga with Olga",
+        "description": "Join us this Sunday from 10am\u201311am in Rosenau Park for an energising outdoor yoga class with Olga.",
+        "weekly": false,
+        "start_date": "2025-06-01T10:00",
+        "end_date": "2025-06-01T11:00",
+        "latitude": 49.45179214117804,
+        "longitude": 11.065041634172882,
+        "location": "Rosenau Park, Bleichstra\u00dfe, 90429 N\u00fcrnberg, Meet at Cafe Kiosk",
+        "url": "https://www.momoyoga.com/evolve-nuremberg/schedule?date=2025-05-26"
+    },
+    {
+        "name": "Yoga Workshop",
+        "description": "Yoga workshop as part of the Open Beatz Festival",
+        "weekly": false,
+        "start_date": "2025-07-25T00:00",
+        "end_date": "2025-07-25T00:00",
+        "latitude": 49.481284769828335,
+        "longitude": 10.988045669099929,
+        "location": "Pegnitzstra\u00dfe 29, 90742 F\u00fcrth, Germany",
+        "url": "https://www.evolve-nbg.de/"
+    },
+    {
+        "name": "Ananda Festival",
+        "description": "Yoga event",
+        "weekly": false,
+        "start_date": "2025-09-06T00:00",
+        "end_date": "2025-09-06T00:00",
+        "latitude": 49.481284769828335,
+        "longitude": 10.988045669099929,
+        "location": "Pegnitzstra\u00dfe 29, 90742 F\u00fcrth, Germany",
+        "url": "https://www.evolve-nbg.de/"
+    }
+]

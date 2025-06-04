@@ -6,10 +6,18 @@ from pydantic import BaseModel, field_validator
 from sqlmodel import Session, select
 
 from ..database import get_session
-from ..models import Event, User, UserDTO, UserPublicDTO
+from ..models import Event, Tag, User, UserDTO, UserPublicDTO, UserTagLink
 from ..oauth2_helper import get_current_user, get_password_hash
 
 router = APIRouter()
+
+
+class UserPublicWithTagsDTO(UserPublicDTO):
+    tags: list[Tag]
+
+
+class UserWithTagsDTO(UserDTO):
+    tags: list[Tag]
 
 
 class RegistrationRequest(BaseModel):
@@ -20,8 +28,8 @@ class RegistrationRequest(BaseModel):
 
     # Profile fields
     birthday: datetime
-    interests: str | None = None  # TODO: change to list
     intensity: int
+    tags: list[Tag] = []
 
     @field_validator("email")
     def validate_email(cls, v):
@@ -58,14 +66,15 @@ async def register_user(registration_data: RegistrationRequest, session: Session
         username=username,
         hashed_password=hashed_password,
         birthday=registration_data.birthday,
-        interests=registration_data.interests,
         intensity=registration_data.intensity,
         bonus_points=0,
         level=0.0,
     )
-
     session.add(user)
-    # Single commit - everything succeeds or fails together
+
+    user_tags = [UserTagLink(tag_id=tag.id) for tag in registration_data.tags]
+    session.add_all(user_tags)
+
     session.commit()
 
     return RegistrationResponse(
@@ -82,19 +91,19 @@ async def register_user(registration_data: RegistrationRequest, session: Session
     )
 
 
-@router.get("/me", response_model=UserDTO)
+@router.get("/me", response_model=UserWithTagsDTO)
 async def get_users_me(*, current_user: User = Depends(get_current_user)):
     """
     Get the current user
     """
-    return UserDTO(
+    return UserWithTagsDTO(
         email=current_user.email,
         username=current_user.username,
         bonus_points=current_user.bonus_points,
         birthday=current_user.birthday,
         intensity=current_user.intensity,
         level=current_user.level,
-        interests=current_user.interests,
+        tags=current_user.tags,
     )
 
 
@@ -106,17 +115,17 @@ async def get_users_meevents(*, current_user: User = Depends(get_current_user)):
     return current_user.events
 
 
-@router.get("/leaderboard", response_model=list[UserPublicDTO])
+@router.get("/leaderboard", response_model=list[UserPublicWithTagsDTO])
 async def get_leaderboard(session: Session = Depends(get_session)):
     """
     Get the leaderboard
     """
     return [
-        UserPublicDTO(
+        UserPublicWithTagsDTO(
             email=user.email,
             username=user.username,
             level=user.level,
-            interests=user.interests,
+            tags=user.tags,
         )
-        for user in session.exec(select(User).order_by(User.bonus_points.desc())).all()
+        for user in session.exec(select(User).order_by(User.level.desc())).all()
     ]

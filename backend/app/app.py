@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
     logging.info("lifespan ending")
 
 
-app = FastAPI(title="adopt-a-seed-api", lifespan=lifespan)
+app = FastAPI(title="backend", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
