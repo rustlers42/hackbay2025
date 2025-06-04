@@ -288,7 +288,7 @@ export default function CalendarPage() {
           </div>
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 bg-emerald-500 rounded"></div>
-            <span className="text-xs text-gray-600">MeetMatch</span>
+            <span className="text-xs text-gray-600">LiveMesh</span>
           </div>
         </div>
       </div>
