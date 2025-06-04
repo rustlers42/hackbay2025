@@ -7,6 +7,7 @@ import type React from "react";
 import { useRegistration } from "../context/RegistrationContext";
 import { InterestsStep, PersonalStep, WhoStep } from "../steps";
 import { type Step, steps } from "../types";
+import { ProgressBar } from "./ProgressBar";
 
 // Map steps to their corresponding components
 const stepComponents: Record<Step, React.ComponentType> = {
@@ -73,32 +74,11 @@ export const RegistrationWizard: React.FC = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full mb-4 sm:mb-8 px-2">
-          <div className="flex justify-between content-center items-center mb-2">
-            {steps.map((step, index) => (
-              <div key={step} className="flex items-center">
-                <div
-                  className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                    index <= currentStepIndex ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-500"
-                  }`}
-                >
-                  {index < currentStepIndex ? "✓" : index + 1}
-                </div>
-                {index < steps.length - 1 && (
-                  <div
-                    className={`w-10 sm:w-16 h-1 mx-1 sm:mx-2 rounded-full transition-all transform translate-x-2/3 ${
-                      index < currentStepIndex ? "bg-blue-500" : "bg-gray-200"
-                    }`}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProgressBar currentStepIndex={currentStepIndex} />
 
         {/* Main Card */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm min-h-[400px] sm:min-h-[500px] flex flex-col justify-between mx-2 sm:mx-0">
+          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm min-h-[400px] sm:min-h-[500px] w-[90%] flex flex-col justify-between mx-2 sm:mx-0">
             <CardHeader className="pb-4 sm:pb-6 px-4 sm:px-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900">{title}</CardTitle>
               <CardDescription className="text-sm sm:text-lg text-gray-600">{description}</CardDescription>
