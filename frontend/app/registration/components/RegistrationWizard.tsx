@@ -78,7 +78,7 @@ export const RegistrationWizard: React.FC = () => {
 
         {/* Main Card */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm min-h-[400px] sm:min-h-[500px] w-[90%] flex flex-col justify-between mx-2 sm:mx-0">
+          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm min-h-[500px] w-[300px] flex flex-col justify-between mx-2 sm:mx-0">
             <CardHeader className="pb-4 sm:pb-6 px-4 sm:px-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900">{title}</CardTitle>
               <CardDescription className="text-sm sm:text-lg text-gray-600">{description}</CardDescription>
