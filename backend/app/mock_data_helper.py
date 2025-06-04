@@ -17,6 +17,7 @@ def setup_mock_data(session: Session):
                 hashed_password=get_password_hash("admin"),
                 bonus_points=10,
                 level=0.7,
+                intensity=120,
             ),
             User(
                 email="user@user.de",
