@@ -17,13 +17,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { BASE_API_URL } from "@/lib/api-config";
@@ -32,6 +25,7 @@ type UserProfile = {
   email: string;
   username: string;
   score: number;
+  level: number;
 };
 
 export default function Header() {
@@ -40,6 +34,18 @@ export default function Header() {
     requireAuth: true,
     enabled: isAuthenticated,
   });
+
+  let progress = 0;
+  if (isAuthenticated) {
+    progress = userProfile?.level % 5
+  }
+  console.log(progress)
+  const radius = 12;
+  const stroke = 2;
+  const normalizedRadius = radius - stroke / 2;
+  const circumference = 2 * Math.PI * normalizedRadius;
+  const strokeDashoffset = circumference - progress * circumference;
+
 
   return (
     <header className="border-b">
@@ -88,35 +94,54 @@ export default function Header() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>*/}
-
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            {isAuthenticated &&
-              (isLoading ? (
-                <Skeleton className="h-6 w-12" />
-              ) : (
-                <span className="font-medium">{userProfile?.score || 0}</span>
-              ))}
-            {isAuthenticated && <Star className="w-5 h-5 text-yellow-600" />}
-          </div>
+          {/* Score */}
+          {isAuthenticated &&
+            (isLoading ? (
+              <Skeleton className="h-6 w-12" />
+            ) : (
+              <span className="font-medium">{userProfile?.score || 0}</span>
+            ))}
+          {/* Star Icon */}
+          {isAuthenticated && <Star className="w-5 h-5 text-yellow-600" />}
 
-          {isAuthenticated ? (
-            <div className="flex items-center gap-2">
-              {/*  
-              <span>{user?.username}</span>
-          */}
-              <User className="h-4 w-4" />
-
-              <Button variant="ghost" size="icon" onClick={logout} aria-label="Logout">
-                <LogOut className="h-4 w-4" />
-              </Button>
+          {/* Progress Circle */}
+          {isAuthenticated && (
+            <div className="relative w-8 h-8 flex-shrink-0">
+              <svg className="w-full h-full" viewBox="0 0 32 32">
+                <circle
+                  stroke="#e5e7eb"
+                  fill="transparent"
+                  strokeWidth={stroke}
+                  r={normalizedRadius}
+                  cx="16"
+                  cy="16"
+                />
+                <circle
+                  stroke="#10b981"
+                  fill="transparent"
+                  strokeWidth={stroke}
+                  strokeLinecap="round"
+                  strokeDasharray={`${circumference} ${circumference}`}
+                  strokeDashoffset={strokeDashoffset}
+                  r={normalizedRadius}
+                  cx="16"
+                  cy="16"
+                  transform="rotate(-90 16 16)"
+                  style={{ transition: "stroke-dashoffset 0.35s" }}
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <User className="h-4 w-4 text-gray-800" />
+              </div>
             </div>
-          ) : (
-            <Link href="/login">
-              <Button variant="outline" size="sm">
-                Login
-              </Button>
-            </Link>
+          )}
+
+          {/* Logout */}
+          {isAuthenticated && (
+            <Button variant="ghost" size="icon" onClick={logout} aria-label="Logout">
+              <LogOut className="h-4 w-4" />
+            </Button>
           )}
         </div>
       </div>
