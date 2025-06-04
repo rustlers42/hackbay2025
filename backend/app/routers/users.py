@@ -29,7 +29,7 @@ class RegistrationRequest(BaseModel):
     # Profile fields
     birthday: datetime
     intensity: int
-    tags: list[Tag] = []
+    tags: list[str] = []
 
     @field_validator("email")
     def validate_email(cls, v):
@@ -72,7 +72,8 @@ async def register_user(registration_data: RegistrationRequest, session: Session
     )
     session.add(user)
 
-    user_tags = [UserTagLink(tag_id=tag.id) for tag in registration_data.tags]
+    tags = session.exec(select(Tag).where(Tag.name.in_(registration_data.tags))).all()
+    user_tags = [UserTagLink(user_id=user.id, tag_id=tag.id) for tag in tags]
     session.add_all(user_tags)
 
     session.commit()
@@ -86,7 +87,7 @@ async def register_user(registration_data: RegistrationRequest, session: Session
             birthday=user.birthday,
             intensity=user.intensity,
             level=user.level,
-            interests=user.interests,
+            tags=user.tags,
         ),
     )
 

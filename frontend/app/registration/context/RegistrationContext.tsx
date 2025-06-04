@@ -3,7 +3,7 @@
 import { BASE_API_URL } from "@/lib/api-config";
 import { useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useState } from "react";
-import { interestsSchema, personalSchema, RegistrationData, Step, steps, stepSchemas, whoSchema } from "../types";
+import { personalSchema, RegistrationData, Step, steps, stepSchemas, tagsSchema, whoSchema } from "../types";
 
 interface RegistrationContextType {
   currentStep: Step;
@@ -112,7 +112,7 @@ export const RegistrationProvider: React.FC<RegistrationProviderProps> = ({ chil
       setIsLoading(true);
 
       // Final validation of all data
-      const requiredSchema = personalSchema.merge(whoSchema).merge(interestsSchema);
+      const requiredSchema = personalSchema.merge(whoSchema).merge(tagsSchema);
       const result = requiredSchema.safeParse(data);
       if (!result.success) {
         throw new Error("Please complete all required fields");

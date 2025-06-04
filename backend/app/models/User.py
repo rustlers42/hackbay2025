@@ -15,7 +15,6 @@ class UserPublicDTO(BaseModel):
     email: str
     username: str
     level: float
-    interests: str | None = None
 
 
 class UserDTO(UserPublicDTO):

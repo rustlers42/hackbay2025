@@ -1,14 +1,16 @@
 "use client";
 
-import { interestsSchema, RegistrationData } from "@/app/registration/types";
+import { RegistrationData, tagsSchema } from "@/app/registration/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { BASE_API_URL } from "@/lib/api-config";
 import { useFetchApi } from "@/lib/use-api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRegistration } from "../context/RegistrationContext";
 
-type InterestsFormData = Pick<RegistrationData, "interests">;
+type InterestsFormData = Pick<RegistrationData, "tags">;
 
 interface TagOption {
   id: number;
@@ -17,6 +19,8 @@ interface TagOption {
 }
 
 export const InterestsStep: React.FC = () => {
+  const { data, updateStepData } = useRegistration();
+
   const {
     data: options,
     isLoading,
@@ -31,19 +35,26 @@ export const InterestsStep: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<InterestsFormData>({
-    resolver: zodResolver(interestsSchema),
+    resolver: zodResolver(tagsSchema),
     defaultValues: {
-      interests: [],
+      tags: data.tags || [],
     },
   });
 
-  const selected = watch("interests");
+  const selected = watch("tags");
+
+  // Sync form data with registration context
+  useEffect(() => {
+    updateStepData({
+      tags: selected,
+    });
+  }, [selected, updateStepData]);
 
   const toggleSelection = (interest: string) => {
-    const current = getValues("interests") || [];
+    const current = getValues("tags") || [];
     const updated = current.includes(interest) ? current.filter((a) => a !== interest) : [...current, interest];
 
-    setValue("interests", updated, { shouldValidate: true });
+    setValue("tags", updated, { shouldValidate: true });
   };
 
   if (isLoading || !options) return <p>Loading interests...</p>;
@@ -68,7 +79,7 @@ export const InterestsStep: React.FC = () => {
           </label>
         ))}
       </div>
-      {errors.interests && <p className="text-red-500 text-sm">{errors.interests.message}</p>}
+      {errors.tags && <p className="text-red-500 text-sm">{errors.tags.message}</p>}
     </div>
   );
 };

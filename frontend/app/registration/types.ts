@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const steps = ["personal", "who", "interest"] as const;
+export const steps = ["personal", "who", "tag"] as const;
 
 export type Step = (typeof steps)[number];
 
@@ -41,12 +41,12 @@ export const whoSchema = z.object({
   intensity: z.number().min(0),
 });
 
-export const interestsSchema = z.object({
-  interests: z.array(z.string()),
+export const tagsSchema = z.object({
+  tags: z.array(z.string()).default([]),
 });
 
 // Combined schema for full registration
-export const registrationSchema = personalSchema.merge(interestsSchema).merge(whoSchema);
+export const registrationSchema = personalSchema.merge(tagsSchema).merge(whoSchema);
 
 export type RegistrationData = z.infer<typeof registrationSchema>;
 
@@ -54,7 +54,7 @@ export type RegistrationData = z.infer<typeof registrationSchema>;
 export const stepSchemas: Record<Step, z.ZodType<any>> = {
   personal: personalSchema,
   who: whoSchema,
-  interest: interestsSchema,
+  tag: tagsSchema,
 };
 
 export interface StepProps {

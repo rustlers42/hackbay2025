@@ -12,7 +12,7 @@ import { Step, steps } from "../types";
 const stepComponents: Record<Step, React.ComponentType> = {
   personal: PersonalStep,
   who: WhoStep,
-  interest: InterestsStep,
+  tag: InterestsStep,
 };
 
 // Step titles and descriptions
@@ -25,7 +25,7 @@ const stepInfo: Record<Step, { title: string; description: string }> = {
     title: "WHO suggestion",
     description: "",
   },
-  interest: {
+  tag: {
     title: "Interests",
     description: "What do you like to do physically?",
   },
