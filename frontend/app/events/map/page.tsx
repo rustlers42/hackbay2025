@@ -4,10 +4,8 @@ import { UserProfile } from "@/components/header"
 import ProtectedRoute from "@/components/protected-route"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
 import { Calendar, Clock, Info, MapPin, X } from "lucide-react"
 import "mapbox-gl/dist/mapbox-gl.css"
-import Link from "next/link"
 import type React from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
 import Map, {
@@ -169,7 +167,7 @@ const MapView: React.FC = () => {
   }
 
   const resetFly = () => {
-    flyToEvent(49.4305421, 11.1046655, 11, 330, 30)
+    flyToEvent(49.4305421, 11.1046655, 11, 330, 30, 10000);
     setSelectedEvent(null)
     setSelectedSearchEvent(null)
   }
@@ -385,7 +383,7 @@ const MapView: React.FC = () => {
           </div>
         </div>
       )}
-      {/* Floating Progress Bar */}
+      {/* Floating Progress Bar
       <Link href={"/calendar"} className="fixed bottom-4 left-4 right-4 z-30 pointer-events-none">
         <div className="max-w-md mx-auto pointer-events-auto">
           <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-4 shadow-lg">
@@ -397,7 +395,7 @@ const MapView: React.FC = () => {
             <p className="text-xs text-gray-500 mt-1">You have achieved {goalProgress}% of your goals this week</p>
           </div>
         </div>
-      </Link>
+      </Link> */}
     </ProtectedRoute>
   )
 }
