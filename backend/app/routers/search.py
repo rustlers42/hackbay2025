@@ -56,6 +56,9 @@ async def search(*, tags: list[str] = Query(...), location: str | None = Query(N
 
             event["start_date"] = next_occurence
             event["end_date"] = next_occurence
+        else:
+            event["start_date"] = datetime.fromisoformat(event["start_date"])
+            event["end_date"] = datetime.fromisoformat(event["end_date"])
 
     # filter events by date show only events that are in the future or today
-    return [event for event in events if datetime.fromisoformat(event["start_date"]) >= datetime.now()]
+    return [event for event in events if event["start_date"] >= datetime.now()]
