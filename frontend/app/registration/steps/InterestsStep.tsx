@@ -3,6 +3,7 @@
 import { interestsSchema, RegistrationData } from "@/app/registration/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { BASE_API_URL } from "@/lib/api-config";
 import { useFetchApi } from "@/lib/use-api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -10,7 +11,7 @@ import { useForm } from "react-hook-form";
 type InterestsFormData = Pick<RegistrationData, "interests">;
 
 export const InterestsStep: React.FC = () => {
-  const { data: options = [], isLoading, error } = useFetchApi<{ interest: string; id: string }[]>("/interests");
+  const { data: options = [], isLoading, error } = useFetchApi<{ name: string; id: number }[]>(BASE_API_URL + "/tags");
   const {
     getValues,
     setValue,
@@ -42,10 +43,10 @@ export const InterestsStep: React.FC = () => {
         {options.map((interest) => (
           <label key={interest.id} className="flex items-center space-x-2">
             <Checkbox
-              checked={selected?.includes(interest.interest)}
-              onCheckedChange={() => toggleSelection(interest.interest)}
+              checked={selected?.includes(interest.name)}
+              onCheckedChange={() => toggleSelection(interest.name)}
             />
-            <span>{interest.interest}</span>
+            <span>{interest.name}</span>
           </label>
         ))}
       </div>
