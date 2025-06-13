@@ -8,7 +8,7 @@ Hier kommt eine tolle Beschreibung hin.
 
 ### Start Everything with a Single Command
 
-To simplify setup, use the following command to start the frontend, backend, and additional services. This will also build the required Docker images.
+To simplify setup, use the following command to start the frontend, backend, and additional services. This will also build the required Docker images. (not tested after hackathon)
 
 ```bash
 docker compose up --build
